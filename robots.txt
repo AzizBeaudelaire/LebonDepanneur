@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://depannage-auto-toulouse.netlify.app/sitemap.xml

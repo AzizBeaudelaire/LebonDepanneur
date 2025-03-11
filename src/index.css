@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-light-background text-light-text transition-colors duration-300;
+  }
+
+  .dark body {
+    @apply bg-dark-background text-dark-text;
+  }
+}
+
+/* Header styles */
+.header {
+  @apply bg-light-header text-white transition-colors duration-300;
+}
+
+.dark .header {
+  @apply bg-dark-header;
+}
+
+/* Card styles */
+.card {
+  @apply bg-light-card border border-light-border shadow-lg transition-all duration-300;
+}
+
+.dark .card {
+  @apply bg-dark-card border-dark-border;
+}
+
+/* Button styles */
+.btn-primary {
+  @apply bg-light-primary text-white hover:bg-light-hover transition-colors duration-300;
+}
+
+.dark .btn-primary {
+  @apply bg-dark-primary hover:bg-dark-hover;
+}
+
+/* Link styles */
+.link {
+  @apply text-light-primary hover:text-light-hover transition-colors duration-300;
+}
+
+.dark .link {
+  @apply text-dark-primary hover:text-dark-hover;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-light-background dark:bg-dark-background;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-light-border hover:bg-light-hover dark:bg-dark-border dark:hover:bg-dark-hover rounded-full transition-colors duration-300;
+}
+
+/* Focus styles */
+:focus-visible {
+  @apply outline-none ring-2 ring-light-primary dark:ring-dark-primary ring-offset-2 dark:ring-offset-dark-background;
+}
+
+/* Transition utilities */
+.theme-transition {
+  @apply transition-all duration-300;
+}
