@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import { Shield, Clock, PenTool as Tool, Truck, Wrench, CheckCircle } from 'lucide-react';
+import { Shield, Clock, PenTool as Tool, Truck, Wrench, CheckCircle, Phone } from 'lucide-react';
 
 export const HomePage = () => {
   return (
@@ -14,42 +14,85 @@ export const HomePage = () => {
         />
       </Helmet>
 
-      <div className="relative">
+      {/* Hero Section */}
+      <div className="relative min-h-screen">
+        {/* Background Image with Overlay */}
         <div 
-          className="absolute inset-0 bg-cover bg-center" 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ 
-            backgroundImage: 'url("https://images.unsplash.com/photo-1581094794329-c8112c4e56a9?ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80")',
-            filter: 'brightness(0.4)'
+            backgroundImage: 'url("https://images.unsplash.com/photo-1581094794329-c8112c4e56a9?ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80")'
           }}
-        />
-        
-        <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-24 lg:px-8">
+        >
+          <div className="absolute inset-0 bg-black/60" />
+        </div>
+
+        {/* Hero Content */}
+        <div className="relative flex min-h-screen items-center justify-center px-4 py-16 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
-              Dépannage d'urgence à Toulouse
+            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
+              Dépannage Auto<br />
+              <span className="text-light-primary dark:text-dark-primary">24h/24 - 7j/7</span>
             </h1>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-white sm:mt-6 sm:text-xl">
-              Service professionnel disponible 24h/24 et 7j/7. Intervention rapide garantie.
+            <p className="mx-auto mt-6 max-w-2xl text-xl text-gray-200 sm:text-2xl">
+              Service professionnel de dépannage et remorquage à Toulouse.<br />
+              Intervention rapide garantie en moins de 30 minutes.
             </p>
-            <div className="mt-6 flex flex-col items-center justify-center space-y-4 sm:mt-10 sm:flex-row sm:space-x-4 sm:space-y-0">
-              <Link
-                to="/urgence"
-                className="w-full rounded-md bg-light-primary px-6 py-3 text-lg font-semibold text-white shadow-sm transition-colors hover:bg-light-hover dark:bg-dark-primary dark:hover:bg-dark-hover sm:w-auto"
+
+            <div className="mt-8 flex flex-col items-center justify-center space-y-4 sm:mt-10 sm:flex-row sm:space-x-6 sm:space-y-0">
+              <a
+                href="tel:+33500000000"
+                className="group flex w-full items-center justify-center space-x-3 rounded-full bg-light-primary px-8 py-4 text-xl font-semibold text-white transition-all hover:bg-light-hover dark:bg-dark-primary dark:hover:bg-dark-hover sm:w-auto"
               >
-                Urgence 24/7
-              </Link>
+                <Phone className="h-6 w-6 animate-pulse" />
+                <span>Urgence 24/7</span>
+              </a>
               <Link
                 to="/services"
-                className="w-full rounded-md bg-white px-6 py-3 text-lg font-semibold text-gray-900 shadow-sm transition-colors hover:bg-gray-100 dark:bg-dark-card dark:text-white dark:hover:bg-dark-hover sm:w-auto"
+                className="flex w-full items-center justify-center space-x-2 rounded-full border-2 border-white bg-transparent px-8 py-4 text-xl font-semibold text-white transition-all hover:bg-white hover:text-gray-900 sm:w-auto"
               >
-                Nos services
+                <span>Nos services</span>
               </Link>
             </div>
+
+            {/* Key Features */}
+            <div className="mt-16 grid grid-cols-1 gap-6 sm:mt-20 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="rounded-xl bg-white/10 p-6 backdrop-blur-lg">
+                <div className="flex items-center justify-center">
+                  <Clock className="h-8 w-8 text-light-primary dark:text-dark-primary" />
+                  <h3 className="ml-3 text-lg font-semibold text-white">
+                    Intervention &lt; 30min
+                  </h3>
+                </div>
+              </div>
+              <div className="rounded-xl bg-white/10 p-6 backdrop-blur-lg">
+                <div className="flex items-center justify-center">
+                  <Shield className="h-8 w-8 text-light-primary dark:text-dark-primary" />
+                  <h3 className="ml-3 text-lg font-semibold text-white">
+                    Service professionnel
+                  </h3>
+                </div>
+              </div>
+              <div className="hidden rounded-xl bg-white/10 p-6 backdrop-blur-lg lg:block">
+                <div className="flex items-center justify-center">
+                  <Truck className="h-8 w-8 text-light-primary dark:text-dark-primary" />
+                  <h3 className="ml-3 text-lg font-semibold text-white">
+                    Tout type de véhicule
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+          <div className="h-16 w-8 rounded-full border-2 border-white p-2">
+            <div className="h-3 w-3 rounded-full bg-white" />
           </div>
         </div>
       </div>
 
-      {/* Expertise Section */}
+      {/* Rest of the content remains unchanged */}
       <div className="bg-white py-12 dark:bg-dark-card sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">

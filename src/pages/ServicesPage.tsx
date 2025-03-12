@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Car, Wrench, Truck, AlertTriangle, Phone, Shield, Clock, Euro, ChevronDown } from 'lucide-react';
+import { Car, Wrench, Truck, AlertTriangle, Phone, Shield, Clock, Euro, ChevronDown, Battery, PenTool as Tool, Key, Fuel, MapPin } from 'lucide-react';
 
 const emergencySteps = [
   {
@@ -19,6 +19,27 @@ const emergencySteps = [
     icon: <Shield className="h-8 w-8" />,
     title: 'Protéger',
     description: 'Placez le triangle de signalisation à 30m minimum'
+  }
+];
+
+const services = [
+  {
+    icon: <Tool className="h-6 w-6" />,
+    title: 'Panne mécanique',
+    description: 'Diagnostic et réparation rapide sur place si possible',
+    image: 'https://images.unsplash.com/photo-1632823471565-1ecdf0c6da77?auto=format&fit=crop&q=80&w=400'
+  },
+  {
+    icon: <Battery className="h-6 w-6" />,
+    title: 'Batterie déchargée',
+    description: 'Recharge ou remplacement immédiat',
+    image: 'https://images.unsplash.com/photo-1620714223084-8fcacc6dfd8d?auto=format&fit=crop&q=80&w=400'
+  },
+  {
+    icon: <Wrench className="h-6 w-6" />,
+    title: 'Pneu crevé',
+    description: 'Remplacement ou réparation sur place',
+    image: 'https://images.unsplash.com/photo-1578844251758-2f71da64c96f?auto=format&fit=crop&q=80&w=400'
   }
 ];
 
@@ -52,7 +73,7 @@ interface AccordionItemProps {
 
 const AccordionItem: React.FC<AccordionItemProps> = ({ title, children, isOpen, onToggle }) => {
   return (
-    <div className="rounded-lg border border-light-border bg-white transition-colors dark:border-dark-border dark:bg-dark-card">
+    <div className="overflow-hidden rounded-lg border border-light-border bg-white transition-all dark:border-dark-border dark:bg-dark-card">
       <button
         className="flex w-full items-center justify-between p-4 text-left"
         onClick={onToggle}
@@ -71,7 +92,6 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ title, children, isOpen, 
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="overflow-hidden"
           >
             <div className="border-t border-light-border p-4 dark:border-dark-border">
               {children}
@@ -98,25 +118,71 @@ export const ServicesPage = () => {
 
       <div className="bg-light-background py-12 transition-colors dark:bg-dark-background">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          {/* Hero Section */}
-          <div className="relative mb-16 rounded-2xl bg-gradient-to-r from-light-primary to-light-hover p-8 text-white shadow-xl dark:from-dark-primary dark:to-dark-hover">
-            <div className="max-w-3xl">
-              <h1 className="text-4xl font-bold">Services de Dépannage Auto</h1>
-              <p className="mt-4 text-lg">
-                Service professionnel de dépannage et remorquage disponible 24h/24 et 7j/7 sur Toulouse et sa région.
-              </p>
-              <Link
-                to="/contact"
-                className="mt-6 inline-flex items-center rounded-full bg-white px-6 py-3 text-light-primary shadow-lg transition-colors hover:bg-gray-100 dark:bg-dark-background dark:text-dark-primary dark:hover:bg-dark-card"
-              >
-                <Phone className="mr-2 h-5 w-5" />
-                Demander un dépannage
-              </Link>
+          {/* Hero Section - More compact */}
+          <div className="relative mb-16 overflow-hidden rounded-2xl bg-gradient-to-r from-light-primary to-light-hover text-white shadow-xl dark:from-dark-primary dark:to-dark-hover">
+            <div className="relative z-10 p-8">
+              <div className="max-w-3xl">
+                <h1 className="text-4xl font-bold">Services de Dépannage Auto</h1>
+                <p className="mt-4 text-lg">
+                  Intervention rapide 24h/24 et 7j/7 sur Toulouse et sa région
+                </p>
+                <div className="mt-8 flex flex-wrap gap-4">
+                  <a
+                    href="tel:+33500000000"
+                    className="inline-flex items-center rounded-full bg-white px-6 py-3 text-light-primary transition-colors hover:bg-gray-100 dark:text-dark-primary"
+                  >
+                    <Phone className="mr-2 h-5 w-5" />
+                    <span className="font-semibold">Appeler maintenant</span>
+                  </a>
+                  <Link
+                    to="/contact"
+                    className="inline-flex items-center rounded-full border-2 border-white px-6 py-3 text-white transition-colors hover:bg-white hover:text-light-primary"
+                  >
+                    Demander un devis
+                  </Link>
+                </div>
+              </div>
             </div>
-            <div className="absolute bottom-0 right-0 hidden opacity-20 lg:block">
-              <Car className="h-48 w-48" />
+            <div className="absolute -right-16 bottom-0 hidden opacity-10 lg:block">
+              <Car className="h-64 w-64" />
             </div>
           </div>
+
+          {/* Services Grid with Images */}
+          <section className="mb-16">
+            <h2 className="mb-8 text-2xl font-bold text-light-text dark:text-dark-text">
+              Nos services d'intervention
+            </h2>
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+              {services.map((service, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.2 }}
+                  className="group overflow-hidden rounded-lg bg-white shadow-lg transition-all hover:shadow-xl dark:bg-dark-card"
+                >
+                  <div className="relative h-48 overflow-hidden">
+                    <img
+                      src={service.image}
+                      alt={service.title}
+                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    <div className="absolute bottom-4 left-4 flex items-center text-white">
+                      <div className="rounded-full bg-light-primary/90 p-2 dark:bg-dark-primary/90">
+                        {service.icon}
+                      </div>
+                      <h3 className="ml-3 text-lg font-semibold">{service.title}</h3>
+                    </div>
+                  </div>
+                  <div className="p-4">
+                    <p className="text-gray-600 dark:text-gray-300">{service.description}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </section>
 
           {/* Emergency Steps */}
           <section className="mb-16">
@@ -130,7 +196,7 @@ export const ServicesPage = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.2 }}
-                  className="rounded-lg bg-white p-6 shadow-lg transition-colors dark:bg-dark-card"
+                  className="rounded-lg bg-white p-6 shadow-lg transition-all hover:shadow-xl dark:bg-dark-card"
                 >
                   <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-light-primary/10 text-light-primary dark:bg-dark-primary/10 dark:text-dark-primary">
                     {step.icon}
@@ -144,7 +210,7 @@ export const ServicesPage = () => {
             </div>
           </section>
 
-          {/* Services Accordion */}
+          {/* Accordion Section */}
           <section className="mb-16 space-y-4">
             <AccordionItem
               title="Dépannage sur place"
@@ -155,12 +221,23 @@ export const ServicesPage = () => {
                 <p className="text-gray-600 dark:text-gray-300">
                   Notre équipe de mécaniciens qualifiés intervient rapidement pour :
                 </p>
-                <ul className="list-inside list-disc space-y-2 text-gray-600 dark:text-gray-300">
-                  <li>Problèmes de batterie</li>
-                  <li>Pannes mécaniques simples</li>
-                  <li>Problèmes électriques</li>
-                  <li>Crevaisons</li>
-                  <li>Problèmes de démarrage</li>
+                <ul className="grid gap-4 sm:grid-cols-2">
+                  <li className="flex items-center space-x-2 text-gray-600 dark:text-gray-300">
+                    <Battery className="h-5 w-5 text-light-primary dark:text-dark-primary" />
+                    <span>Problèmes de batterie</span>
+                  </li>
+                  <li className="flex items-center space-x-2 text-gray-600 dark:text-gray-300">
+                    <Tool className="h-5 w-5 text-light-primary dark:text-dark-primary" />
+                    <span>Pannes mécaniques simples</span>
+                  </li>
+                  <li className="flex items-center space-x-2 text-gray-600 dark:text-gray-300">
+                    <Wrench className="h-5 w-5 text-light-primary dark:text-dark-primary" />
+                    <span>Problèmes électriques</span>
+                  </li>
+                  <li className="flex items-center space-x-2 text-gray-600 dark:text-gray-300">
+                    <Tool className="h-5 w-5 text-light-primary dark:text-dark-primary" />
+                    <span>Crevaisons</span>
+                  </li>
                 </ul>
               </div>
             </AccordionItem>
@@ -174,11 +251,23 @@ export const ServicesPage = () => {
                 <p className="text-gray-600 dark:text-gray-300">
                   Service de remorquage professionnel pour tous types de véhicules :
                 </p>
-                <ul className="list-inside list-disc space-y-2 text-gray-600 dark:text-gray-300">
-                  <li>Véhicules légers</li>
-                  <li>Utilitaires</li>
-                  <li>Motos</li>
-                  <li>Transport vers garage ou destination choisie</li>
+                <ul className="grid gap-4 sm:grid-cols-2">
+                  <li className="flex items-center space-x-2 text-gray-600 dark:text-gray-300">
+                    <Car className="h-5 w-5 text-light-primary dark:text-dark-primary" />
+                    <span>Véhicules légers</span>
+                  </li>
+                  <li className="flex items-center space-x-2 text-gray-600 dark:text-gray-300">
+                    <Truck className="h-5 w-5 text-light-primary dark:text-dark-primary" />
+                    <span>Utilitaires</span>
+                  </li>
+                  <li className="flex items-center space-x-2 text-gray-600 dark:text-gray-300">
+                    <Car className="h-5 w-5 text-light-primary dark:text-dark-primary" />
+                    <span>Motos</span>
+                  </li>
+                  <li className="flex items-center space-x-2 text-gray-600 dark:text-gray-300">
+                    <MapPin className="h-5 w-5 text-light-primary dark:text-dark-primary" />
+                    <span>Transport vers garage</span>
+                  </li>
                 </ul>
               </div>
             </AccordionItem>
