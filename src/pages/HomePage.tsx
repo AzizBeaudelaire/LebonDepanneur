@@ -23,24 +23,24 @@ export const HomePage = () => {
           }}
         />
         
-        <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
+        <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-24 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">
+            <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
               Dépannage d'urgence à Toulouse
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-xl text-white">
+            <p className="mx-auto mt-4 max-w-2xl text-lg text-white sm:mt-6 sm:text-xl">
               Service professionnel disponible 24h/24 et 7j/7. Intervention rapide garantie.
             </p>
-            <div className="mt-10 flex justify-center gap-4">
+            <div className="mt-6 flex flex-col items-center justify-center space-y-4 sm:mt-10 sm:flex-row sm:space-x-4 sm:space-y-0">
               <Link
                 to="/urgence"
-                className="rounded-md bg-light-primary px-8 py-3 text-lg font-semibold text-white shadow-sm transition-colors hover:bg-light-hover dark:bg-dark-primary dark:hover:bg-dark-hover"
+                className="w-full rounded-md bg-light-primary px-6 py-3 text-lg font-semibold text-white shadow-sm transition-colors hover:bg-light-hover dark:bg-dark-primary dark:hover:bg-dark-hover sm:w-auto"
               >
                 Urgence 24/7
               </Link>
               <Link
                 to="/services"
-                className="rounded-md bg-white px-8 py-3 text-lg font-semibold text-gray-900 shadow-sm transition-colors hover:bg-gray-100 dark:bg-dark-card dark:text-white dark:hover:bg-dark-hover"
+                className="w-full rounded-md bg-white px-6 py-3 text-lg font-semibold text-gray-900 shadow-sm transition-colors hover:bg-gray-100 dark:bg-dark-card dark:text-white dark:hover:bg-dark-hover sm:w-auto"
               >
                 Nos services
               </Link>
@@ -50,18 +50,18 @@ export const HomePage = () => {
       </div>
 
       {/* Expertise Section */}
-      <div className="bg-white py-16 dark:bg-dark-card">
+      <div className="bg-white py-12 dark:bg-dark-card sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-light-text dark:text-dark-text">
+            <h2 className="text-2xl font-bold tracking-tight text-light-text dark:text-dark-text sm:text-3xl">
               Notre expertise à votre service
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-600 dark:text-gray-300">
+            <p className="mx-auto mt-4 max-w-2xl text-base text-gray-600 dark:text-gray-300 sm:text-lg">
               Depuis toujours, notre équipe de professionnels qualifiés intervient sur Toulouse et sa région pour tous types de dépannages automobiles.
             </p>
           </div>
 
-          <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2">
+          <div className="mt-8 grid gap-6 sm:mt-12 sm:grid-cols-2">
             <div className="rounded-lg bg-gray-50 p-6 dark:bg-dark-background">
               <h3 className="text-xl font-semibold text-light-text dark:text-dark-text">
                 Dépannage sur place
@@ -83,20 +83,20 @@ export const HomePage = () => {
       </div>
 
       {/* Professional Advantages */}
-      <div className="bg-light-card py-24 transition-colors dark:bg-dark-background">
+      <div className="bg-light-card py-12 transition-colors dark:bg-dark-background sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-light-text dark:text-dark-text">
+            <h2 className="text-2xl font-bold tracking-tight text-light-text dark:text-dark-text sm:text-3xl">
               Pourquoi nous choisir ?
             </h2>
           </div>
 
-          <div className="mt-20 grid grid-cols-1 gap-8 md:grid-cols-3">
-            <div className="rounded-lg bg-white p-8 text-center shadow-lg transition-colors dark:bg-dark-card">
-              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-light-primary/10 dark:bg-dark-primary/10">
-                <Clock className="h-8 w-8 text-light-primary dark:text-dark-primary" />
+          <div className="mt-12 grid grid-cols-1 gap-8 sm:mt-20 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="rounded-lg bg-white p-6 text-center shadow-lg transition-colors dark:bg-dark-card sm:p-8">
+              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-light-primary/10 dark:bg-dark-primary/10 sm:h-16 sm:w-16">
+                <Clock className="h-6 w-6 text-light-primary dark:text-dark-primary sm:h-8 sm:w-8" />
               </div>
-              <h3 className="mt-6 text-lg font-semibold text-light-text dark:text-dark-text">
+              <h3 className="mt-4 text-lg font-semibold text-light-text dark:text-dark-text sm:mt-6">
                 Prise en charge immédiate
               </h3>
               <p className="mt-2 text-gray-600 dark:text-gray-300">
@@ -104,11 +104,11 @@ export const HomePage = () => {
               </p>
             </div>
 
-            <div className="rounded-lg bg-white p-8 text-center shadow-lg transition-colors dark:bg-dark-card">
-              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-light-primary/10 dark:bg-dark-primary/10">
-                <Wrench className="h-8 w-8 text-light-primary dark:text-dark-primary" />
+            <div className="rounded-lg bg-white p-6 text-center shadow-lg transition-colors dark:bg-dark-card sm:p-8">
+              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-light-primary/10 dark:bg-dark-primary/10 sm:h-16 sm:w-16">
+                <Wrench className="h-6 w-6 text-light-primary dark:text-dark-primary sm:h-8 sm:w-8" />
               </div>
-              <h3 className="mt-6 text-lg font-semibold text-light-text dark:text-dark-text">
+              <h3 className="mt-4 text-lg font-semibold text-light-text dark:text-dark-text sm:mt-6">
                 Matériel dernier cri
               </h3>
               <p className="mt-2 text-gray-600 dark:text-gray-300">
@@ -116,11 +116,11 @@ export const HomePage = () => {
               </p>
             </div>
 
-            <div className="rounded-lg bg-white p-8 text-center shadow-lg transition-colors dark:bg-dark-card">
-              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-light-primary/10 dark:bg-dark-primary/10">
-                <Truck className="h-8 w-8 text-light-primary dark:text-dark-primary" />
+            <div className="rounded-lg bg-white p-6 text-center shadow-lg transition-colors dark:bg-dark-card sm:p-8">
+              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-light-primary/10 dark:bg-dark-primary/10 sm:h-16 sm:w-16">
+                <Truck className="h-6 w-6 text-light-primary dark:text-dark-primary sm:h-8 sm:w-8" />
               </div>
-              <h3 className="mt-6 text-lg font-semibold text-light-text dark:text-dark-text">
+              <h3 className="mt-4 text-lg font-semibold text-light-text dark:text-dark-text sm:mt-6">
                 Dépannage - Remorquage
               </h3>
               <p className="mt-2 text-gray-600 dark:text-gray-300">
@@ -132,11 +132,11 @@ export const HomePage = () => {
       </div>
 
       {/* Additional Features */}
-      <div className="bg-white py-16 dark:bg-dark-card">
+      <div className="bg-white py-12 dark:bg-dark-card sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             <div>
-              <h2 className="text-2xl font-bold text-light-text dark:text-dark-text">
+              <h2 className="text-xl font-bold text-light-text dark:text-dark-text sm:text-2xl">
                 Un service complet et professionnel
               </h2>
               <div className="mt-6 space-y-4">
@@ -160,8 +160,8 @@ export const HomePage = () => {
                 </div>
               </div>
             </div>
-            <div>
-              <h2 className="text-2xl font-bold text-light-text dark:text-dark-text">
+            <div className="mt-8 sm:mt-0">
+              <h2 className="text-xl font-bold text-light-text dark:text-dark-text sm:text-2xl">
                 Zone d'intervention
               </h2>
               <p className="mt-4 text-gray-600 dark:text-gray-300">
