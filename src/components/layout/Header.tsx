@@ -47,6 +47,12 @@ export const Header = () => {
               Services
             </Link>
             <Link 
+              to="/gallerie" 
+              className="text-white transition-colors hover:text-light-primary dark:hover:text-dark-primary"
+            >
+              Gallerie
+            </Link>
+            <Link 
               to="/zone-intervention" 
               className="text-white transition-colors hover:text-light-primary dark:hover:text-dark-primary"
             >
@@ -84,6 +90,13 @@ export const Header = () => {
               onClick={() => setIsMenuOpen(false)}
             >
               Services
+            </Link>
+            <Link
+              to="/gallerie"
+              className="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-light-primary/10 dark:hover:bg-dark-primary/10"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Gallerie
             </Link>
             <Link
               to="/zone-intervention"

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 import { contactFormSchema, type ContactFormData, sendContactEmail } from '../services/contact';
+import { z } from 'zod';
 
 export const ContactPage = () => {
   const [formData, setFormData] = useState<ContactFormData>({
@@ -203,11 +204,11 @@ export const ContactPage = () => {
                     required
                   >
                     <option value="">Sélectionnez le type d'intervention</option>
-                    <option value="panne">Panne</option>
-                    <option value="accident">Accident</option>
-                    <option value="stationnement">Stationnement gênant</option>
-                    <option value="police">Mise en fourrière</option>
-                    <option value="autre">Autre</option>
+                    <option value="transport">Transport spécialisé Europe</option>
+                    <option value="depannage">Dépannage</option>
+                    <option value="accident">Véhicule accidenté</option>
+                    <option value="fourriere">Fourrière</option>
+                    <option value="batterie">Batterie déchargée</option>
                   </select>
                   {errors.service && (
                     <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.service}</p>

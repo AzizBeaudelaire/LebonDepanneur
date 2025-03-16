@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin } from 'lucide-react';
+import { Phone, Mail, MapPin, Instagram, MessageCircle, Send } from 'lucide-react';
 
 export const Footer = () => {
   return (
@@ -12,21 +12,51 @@ export const Footer = () => {
             <p className="mt-4 text-gray-300">
               Service de dépannage automobile professionnel disponible 24h/24 et 7j/7 sur Toulouse et sa région.
             </p>
+            {/* Social Media Links */}
+            <div className="mt-6 flex space-x-4">
+              <a
+                href="https://instagram.com/depannage_toulouse"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full bg-white/10 p-2 transition-colors hover:bg-light-primary dark:hover:bg-dark-primary"
+                aria-label="Suivez-nous sur Instagram"
+              >
+                <Instagram className="h-6 w-6" />
+              </a>
+              <a
+                href="https://wa.me/33500000000"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full bg-white/10 p-2 transition-colors hover:bg-light-primary dark:hover:bg-dark-primary"
+                aria-label="Contactez-nous sur WhatsApp"
+              >
+                <MessageCircle className="h-6 w-6" />
+              </a>
+              <a
+                href="https://snapchat.com/add/depannage_toulouse"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full bg-white/10 p-2 transition-colors hover:bg-light-primary dark:hover:bg-dark-primary"
+                aria-label="Ajoutez-nous sur Snapchat"
+              >
+                <Send className="h-6 w-6" />
+              </a>
+            </div>
           </div>
           <div>
             <h3 className="text-lg font-semibold">Contact</h3>
             <ul className="mt-4 space-y-2">
               <li className="flex items-center">
                 <Phone className="mr-2 h-5 w-5" />
-                <a href="tel:+33500000000" className="text-gray-300 transition-colors duration-200 hover:text-white">
+                <Link to="/contact" className="text-gray-300 transition-colors duration-200 hover:text-white">
                   05 00 00 00 00
-                </a>
+                </Link>
               </li>
               <li className="flex items-center">
                 <Mail className="mr-2 h-5 w-5" />
-                <a href="mailto:contact@depannage-toulouse.fr" className="text-gray-300 transition-colors duration-200 hover:text-white">
+                <Link to="/contact" className="text-gray-300 transition-colors duration-200 hover:text-white">
                   contact@depannage-toulouse.fr
-                </a>
+                </Link>
               </li>
               <li className="flex items-center">
                 <MapPin className="mr-2 h-5 w-5" />

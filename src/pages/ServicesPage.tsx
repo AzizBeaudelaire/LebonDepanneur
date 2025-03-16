@@ -4,24 +4,6 @@ import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Car, Wrench, Truck, AlertTriangle, Phone, Shield, Clock, Euro, ChevronDown, Battery, PenTool as Tool, Key, Fuel, MapPin } from 'lucide-react';
 
-const emergencySteps = [
-  {
-    icon: <AlertTriangle className="h-8 w-8" />,
-    title: 'Sécuriser',
-    description: 'Mettez-vous en sécurité et activez vos feux de détresse'
-  },
-  {
-    icon: <Phone className="h-8 w-8" />,
-    title: 'Contacter',
-    description: 'Appelez les secours si nécessaire et votre assurance'
-  },
-  {
-    icon: <Shield className="h-8 w-8" />,
-    title: 'Protéger',
-    description: 'Placez le triangle de signalisation à 30m minimum'
-  }
-];
-
 const services = [
   {
     icon: <Tool className="h-6 w-6" />,
@@ -40,6 +22,24 @@ const services = [
     title: 'Pneu crevé',
     description: 'Remplacement ou réparation sur place',
     image: 'https://images.unsplash.com/photo-1578844251758-2f71da64c96f?auto=format&fit=crop&q=80&w=400'
+  }
+];
+
+const emergencySteps = [
+  {
+    icon: <AlertTriangle className="h-8 w-8" />,
+    title: 'Sécuriser',
+    description: 'Mettez-vous en sécurité et activez vos feux de détresse'
+  },
+  {
+    icon: <Phone className="h-8 w-8" />,
+    title: 'Contacter',
+    description: 'Appelez les secours si nécessaire et votre assurance'
+  },
+  {
+    icon: <Shield className="h-8 w-8" />,
+    title: 'Protéger',
+    description: 'Placez le triangle de signalisation à 30m minimum'
   }
 ];
 
@@ -118,7 +118,7 @@ export const ServicesPage = () => {
 
       <div className="bg-light-background py-12 transition-colors dark:bg-dark-background">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          {/* Hero Section - More compact */}
+          {/* Hero Section */}
           <div className="relative mb-16 overflow-hidden rounded-2xl bg-gradient-to-r from-light-primary to-light-hover text-white shadow-xl dark:from-dark-primary dark:to-dark-hover">
             <div className="relative z-10 p-8">
               <div className="max-w-3xl">
@@ -127,13 +127,13 @@ export const ServicesPage = () => {
                   Intervention rapide 24h/24 et 7j/7 sur Toulouse et sa région
                 </p>
                 <div className="mt-8 flex flex-wrap gap-4">
-                  <a
-                    href="tel:+33500000000"
+                  <Link
+                    to="/contact"
                     className="inline-flex items-center rounded-full bg-white px-6 py-3 text-light-primary transition-colors hover:bg-gray-100 dark:text-dark-primary"
                   >
                     <Phone className="mr-2 h-5 w-5" />
-                    <span className="font-semibold">Appeler maintenant</span>
-                  </a>
+                    <span className="font-semibold">Nous contacter</span>
+                  </Link>
                   <Link
                     to="/contact"
                     className="inline-flex items-center rounded-full border-2 border-white px-6 py-3 text-white transition-colors hover:bg-white hover:text-light-primary"
@@ -179,32 +179,6 @@ export const ServicesPage = () => {
                   <div className="p-4">
                     <p className="text-gray-600 dark:text-gray-300">{service.description}</p>
                   </div>
-                </motion.div>
-              ))}
-            </div>
-          </section>
-
-          {/* Emergency Steps */}
-          <section className="mb-16">
-            <h2 className="mb-8 text-2xl font-bold text-light-text dark:text-dark-text">
-              En cas d'urgence
-            </h2>
-            <div className="grid gap-8 md:grid-cols-3">
-              {emergencySteps.map((step, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.2 }}
-                  className="rounded-lg bg-white p-6 shadow-lg transition-all hover:shadow-xl dark:bg-dark-card"
-                >
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-light-primary/10 text-light-primary dark:bg-dark-primary/10 dark:text-dark-primary">
-                    {step.icon}
-                  </div>
-                  <h3 className="mb-2 text-xl font-semibold text-light-text dark:text-dark-text">
-                    {step.title}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-300">{step.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -318,6 +292,32 @@ export const ServicesPage = () => {
             </AccordionItem>
           </section>
 
+          {/* Emergency Steps */}
+          <section className="mb-16">
+            <h2 className="mb-8 text-2xl font-bold text-light-text dark:text-dark-text">
+              En cas d'urgence
+            </h2>
+            <div className="grid gap-8 md:grid-cols-3">
+              {emergencySteps.map((step, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.2 }}
+                  className="rounded-lg bg-white p-6 shadow-lg transition-all hover:shadow-xl dark:bg-dark-card"
+                >
+                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-light-primary/10 text-light-primary dark:bg-dark-primary/10 dark:text-dark-primary">
+                    {step.icon}
+                  </div>
+                  <h3 className="mb-2 text-xl font-semibold text-light-text dark:text-dark-text">
+                    {step.title}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300">{step.description}</p>
+                </motion.div>
+              ))}
+            </div>
+          </section>
+
           {/* CTA Section */}
           <section className="rounded-lg bg-light-primary p-8 text-white dark:bg-dark-primary">
             <div className="text-center">
@@ -326,18 +326,18 @@ export const ServicesPage = () => {
                 Notre équipe est disponible 24h/24 et 7j/7 pour vous assister.
               </p>
               <div className="mt-6 flex justify-center space-x-4">
-                <a
-                  href="tel:+33500000000"
+                <Link
+                  to="/contact"
                   className="inline-flex items-center rounded-full bg-white px-6 py-3 text-light-primary shadow-lg transition-colors hover:bg-gray-100 dark:bg-dark-background dark:text-dark-primary dark:hover:bg-dark-card"
                 >
                   <Phone className="mr-2 h-5 w-5" />
-                  Appeler maintenant
-                </a>
+                  Nous contacter
+                </Link>
                 <Link
                   to="/contact"
                   className="inline-flex items-center rounded-full border-2 border-white px-6 py-3 text-white transition-colors hover:bg-white hover:text-light-primary dark:hover:text-dark-primary"
                 >
-                  Nous contacter
+                  Demander un devis
                 </Link>
               </div>
             </div>
