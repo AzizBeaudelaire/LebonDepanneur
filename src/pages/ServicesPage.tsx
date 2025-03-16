@@ -2,28 +2,7 @@ import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Car, Wrench, Truck, AlertTriangle, Phone, Shield, Clock, Euro, ChevronDown, Battery, PenTool as Tool, Key, Fuel, MapPin } from 'lucide-react';
-
-const services = [
-  {
-    icon: <Tool className="h-6 w-6" />,
-    title: 'Panne mécanique',
-    description: 'Diagnostic et réparation rapide sur place si possible',
-    image: 'https://images.unsplash.com/photo-1632823471565-1ecdf0c6da77?auto=format&fit=crop&q=80&w=400'
-  },
-  {
-    icon: <Battery className="h-6 w-6" />,
-    title: 'Batterie déchargée',
-    description: 'Recharge ou remplacement immédiat',
-    image: 'https://images.unsplash.com/photo-1620714223084-8fcacc6dfd8d?auto=format&fit=crop&q=80&w=400'
-  },
-  {
-    icon: <Wrench className="h-6 w-6" />,
-    title: 'Pneu crevé',
-    description: 'Remplacement ou réparation sur place',
-    image: 'https://images.unsplash.com/photo-1578844251758-2f71da64c96f?auto=format&fit=crop&q=80&w=400'
-  }
-];
+import { Car, Wrench, Truck, AlertTriangle, Phone, Shield, Clock, Euro, ChevronDown, Battery, PenTool as Tool, Key, Fuel, MapPin, Globe, Slice as Police } from 'lucide-react';
 
 const emergencySteps = [
   {
@@ -40,6 +19,39 @@ const emergencySteps = [
     icon: <Shield className="h-8 w-8" />,
     title: 'Protéger',
     description: 'Placez le triangle de signalisation à 30m minimum'
+  }
+];
+
+const services = [
+  {
+    icon: <Globe className="h-6 w-6" />,
+    title: 'Transport Europe',
+    description: 'Service de transport spécialisé dans toute l\'Europe. Transport sécurisé de véhicules de collection, de luxe ou accidentés. Devis personnalisé et suivi en temps réel de votre transport. Assurance tous risques et transport sous bâche disponible.',
+    image: 'https://images.unsplash.com/photo-1519666336592-e225a99dcd2f?auto=format&fit=crop&q=80&w=800'
+  },
+  {
+    icon: <Wrench className="h-6 w-6" />,
+    title: 'Dépannage sur place',
+    description: 'Intervention rapide pour tout type de panne : mécanique, électrique, électronique. Diagnostic professionnel et réparation sur place quand c\'est possible. Équipe expérimentée disponible 24h/24. Stock de pièces courantes pour réparation immédiate.',
+    image: 'https://images.unsplash.com/photo-1632823471565-1ecdf0c6da77?auto=format&fit=crop&q=80&w=800'
+  },
+  {
+    icon: <Truck className="h-6 w-6" />,
+    title: 'Remorquage',
+    description: 'Service de remorquage professionnel pour tous types de véhicules. Transport sécurisé vers le garage de votre choix. Équipement adapté pour véhicules bas, sportifs ou de collection. Intervention rapide sur autoroute et voies rapides.',
+    image: 'https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&q=80&w=800'
+  },
+  {
+    icon: <Police className="h-6 w-6" />,
+    title: 'Mise en Fourrière',
+    description: 'Service agréé pour la mise en fourrière de véhicules. Intervention sur demande des autorités ou des propriétaires privés. Procédure conforme à la réglementation en vigueur. Stockage sécurisé et surveillance 24h/24 de votre véhicule.',
+    image: 'https://images.unsplash.com/photo-1589754340618-28778ee0b404?auto=format&fit=crop&q=80&w=800'
+  },
+  {
+    icon: <Battery className="h-6 w-6" />,
+    title: 'Batterie déchargée',
+    description: 'Service de dépannage batterie avec diagnostic complet du système de charge. Remplacement sur place si nécessaire avec batteries de qualité premium. Garantie constructeur préservée. Test gratuit de l\'alternateur et du démarreur.',
+    image: 'https://images.unsplash.com/photo-1620714223084-8fcacc6dfd8d?auto=format&fit=crop&q=80&w=800'
   }
 ];
 
@@ -132,7 +144,7 @@ export const ServicesPage = () => {
                     className="inline-flex items-center rounded-full bg-white px-6 py-3 text-light-primary transition-colors hover:bg-gray-100 dark:text-dark-primary"
                   >
                     <Phone className="mr-2 h-5 w-5" />
-                    <span className="font-semibold">Nous contacter</span>
+                    <span className="font-semibold">Appeler maintenant</span>
                   </Link>
                   <Link
                     to="/contact"
@@ -179,6 +191,32 @@ export const ServicesPage = () => {
                   <div className="p-4">
                     <p className="text-gray-600 dark:text-gray-300">{service.description}</p>
                   </div>
+                </motion.div>
+              ))}
+            </div>
+          </section>
+
+          {/* Emergency Steps */}
+          <section className="mb-16">
+            <h2 className="mb-8 text-2xl font-bold text-light-text dark:text-dark-text">
+              En cas d'urgence
+            </h2>
+            <div className="grid gap-8 md:grid-cols-3">
+              {emergencySteps.map((step, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.2 }}
+                  className="rounded-lg bg-white p-6 shadow-lg transition-all hover:shadow-xl dark:bg-dark-card"
+                >
+                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-light-primary/10 text-light-primary dark:bg-dark-primary/10 dark:text-dark-primary">
+                    {step.icon}
+                  </div>
+                  <h3 className="mb-2 text-xl font-semibold text-light-text dark:text-dark-text">
+                    {step.title}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300">{step.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -292,32 +330,6 @@ export const ServicesPage = () => {
             </AccordionItem>
           </section>
 
-          {/* Emergency Steps */}
-          <section className="mb-16">
-            <h2 className="mb-8 text-2xl font-bold text-light-text dark:text-dark-text">
-              En cas d'urgence
-            </h2>
-            <div className="grid gap-8 md:grid-cols-3">
-              {emergencySteps.map((step, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.2 }}
-                  className="rounded-lg bg-white p-6 shadow-lg transition-all hover:shadow-xl dark:bg-dark-card"
-                >
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-light-primary/10 text-light-primary dark:bg-dark-primary/10 dark:text-dark-primary">
-                    {step.icon}
-                  </div>
-                  <h3 className="mb-2 text-xl font-semibold text-light-text dark:text-dark-text">
-                    {step.title}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-300">{step.description}</p>
-                </motion.div>
-              ))}
-            </div>
-          </section>
-
           {/* CTA Section */}
           <section className="rounded-lg bg-light-primary p-8 text-white dark:bg-dark-primary">
             <div className="text-center">
@@ -331,13 +343,13 @@ export const ServicesPage = () => {
                   className="inline-flex items-center rounded-full bg-white px-6 py-3 text-light-primary shadow-lg transition-colors hover:bg-gray-100 dark:bg-dark-background dark:text-dark-primary dark:hover:bg-dark-card"
                 >
                   <Phone className="mr-2 h-5 w-5" />
-                  Nous contacter
+                  Appeler maintenant
                 </Link>
                 <Link
                   to="/contact"
                   className="inline-flex items-center rounded-full border-2 border-white px-6 py-3 text-white transition-colors hover:bg-white hover:text-light-primary dark:hover:text-dark-primary"
                 >
-                  Demander un devis
+                  Nous contacter
                 </Link>
               </div>
             </div>
