@@ -5,7 +5,7 @@ import { Truck, Info } from 'lucide-react';
 
 const fleetVehicles = [
   {
-    image: 'https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&q=80&w=1000',
+    image: '/src/images/depannage.webp',
     name: 'Renault Master Dépanneuse',
     details: {
       brand: 'Renault',
@@ -23,7 +23,7 @@ const fleetVehicles = [
     }
   },
   {
-    image: 'https://images.unsplash.com/photo-1600661653561-629509216228?auto=format&fit=crop&q=80&w=1000',
+    image: '/src/images/Mercedes-Sprinter-Assistance.webp',
     name: 'Mercedes Sprinter Assistance',
     details: {
       brand: 'Mercedes-Benz',
@@ -41,7 +41,7 @@ const fleetVehicles = [
     }
   },
   {
-    image: 'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&q=80&w=1000',
+    image: '/src/images/ivecoDailyPlateau.webp',
     name: 'Iveco Daily Plateau',
     details: {
       brand: 'Iveco',
@@ -59,7 +59,7 @@ const fleetVehicles = [
     }
   },
   {
-    image: 'https://images.unsplash.com/photo-1616455579100-2ceaa4eb2d37?auto=format&fit=crop&q=80&w=1000',
+    image: '/src/images/MAN-TGL-Porte-Voitures.webp',
     name: 'MAN TGL Porte-Voitures',
     details: {
       brand: 'MAN',
@@ -77,7 +77,7 @@ const fleetVehicles = [
     }
   },
   {
-    image: 'https://images.unsplash.com/photo-1609520505218-7421df70121d?auto=format&fit=crop&q=80&w=1000',
+    image: '/src/images/FordTransit.webp',
     name: 'Ford Transit Custom Intervention',
     details: {
       brand: 'Ford',
@@ -98,27 +98,27 @@ const fleetVehicles = [
 
 const interventionPhotos = [
   {
-    image: 'https://images.unsplash.com/photo-1464219789935-c2d9d9aba644?auto=format&fit=crop&q=80&w=1000',
+    image: '/src/images/interventions/autoroute.jpg',
     title: 'Remorquage sur autoroute',
     description: 'Intervention rapide suite à une panne moteur sur l\'A62'
   },
   {
-    image: 'https://images.unsplash.com/photo-1617650728468-8581e439c864?auto=format&fit=crop&q=80&w=1000',
+    image: '/src/images/interventions/ville.jpg',
     title: 'Dépannage en ville',
     description: 'Réparation sur place d\'une batterie défectueuse en centre-ville'
   },
   {
-    image: 'https://images.unsplash.com/photo-1489824904134-891ab64532f1?auto=format&fit=crop&q=80&w=1000',
+    image: '/src/images/interventions/transport.jpg',
     title: 'Transport spécialisé',
     description: 'Transport sécurisé d\'un véhicule de collection'
   },
   {
-    image: 'https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&q=80&w=1000',
+    image: '/src/images/interventions/accident.jpg',
     title: 'Assistance accident',
     description: 'Intervention suite à un accident sur le périphérique'
   },
   {
-    image: 'https://images.unsplash.com/photo-1610647752706-3bb12232b3ab?auto=format&fit=crop&q=80&w=1000',
+    image: '/src/images/interventions/nuit.jpg',
     title: 'Dépannage nocturne',
     description: 'Intervention d\'urgence de nuit pour une panne mécanique'
   }

@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Car, Wrench, Truck, AlertTriangle, Phone, Shield, Clock, Euro, ChevronDown, Battery, PenTool as Tool, Key, Fuel, MapPin, Globe, Slice as Police } from 'lucide-react';
+import { Car, Wrench, Truck, PenTool as Tool, Phone, Shield, Clock, Euro, ChevronDown, Globe, Plane as Crane, Key, Settings, Warehouse } from 'lucide-react';
 
 const emergencySteps = [
   {
-    icon: <AlertTriangle className="h-8 w-8" />,
+    icon: <Shield className="h-8 w-8" />,
     title: 'Sécuriser',
     description: 'Mettez-vous en sécurité et activez vos feux de détresse'
   },
@@ -16,9 +16,9 @@ const emergencySteps = [
     description: 'Appelez les secours si nécessaire et votre assurance'
   },
   {
-    icon: <Shield className="h-8 w-8" />,
-    title: 'Protéger',
-    description: 'Placez le triangle de signalisation à 30m minimum'
+    icon: <Clock className="h-8 w-8" />,
+    title: 'Attendre',
+    description: 'Restez en sécurité en attendant notre arrivée'
   }
 ];
 
@@ -26,32 +26,50 @@ const services = [
   {
     icon: <Globe className="h-6 w-6" />,
     title: 'Transport Europe',
-    description: 'Service de transport spécialisé dans toute l\'Europe. Transport sécurisé de véhicules de collection, de luxe ou accidentés. Devis personnalisé et suivi en temps réel de votre transport. Assurance tous risques et transport sous bâche disponible.',
-    image: 'https://images.unsplash.com/photo-1519666336592-e225a99dcd2f?auto=format&fit=crop&q=80&w=800'
+    description: 'Service de transport spécialisé dans toute l\'Europe. Transport sécurisé de tous types de véhicules : particuliers, utilitaires, prestige, collection. Devis personnalisé et suivi en temps réel. Assurance tous risques incluse.',
+    image: '/src/images/professional-truck-driver-entering-his-truck-long-vehicle-holding-thumbs-up.webp'
+  },
+  {
+    icon: <Car className="h-6 w-6" />,
+    title: 'Assistance',
+    description: 'Service d\'assistance routière disponible 24h/24 et 7j/7. Intervention rapide pour tous types de pannes. Diagnostic sur place et solutions immédiates quand possible. Équipe expérimentée et professionnelle.',
+    image: '/src/images/man-standing-by-broken-vehicle-calling-tow-service.webp'
   },
   {
     icon: <Wrench className="h-6 w-6" />,
-    title: 'Dépannage sur place',
-    description: 'Intervention rapide pour tout type de panne : mécanique, électrique, électronique. Diagnostic professionnel et réparation sur place quand c\'est possible. Équipe expérimentée disponible 24h/24. Stock de pièces courantes pour réparation immédiate.',
-    image: 'https://images.unsplash.com/photo-1632823471565-1ecdf0c6da77?auto=format&fit=crop&q=80&w=800'
+    title: 'Dépannage',
+    description: 'Dépannage tous types de véhicules : voitures, motos, utilitaires, poids lourds. Intervention sur place pour pannes mécaniques, électriques, électroniques. Stock de pièces courantes pour réparation immédiate.',
+    image: '/src/images/long-shot-man-swapping-tire.webp'
   },
   {
     icon: <Truck className="h-6 w-6" />,
     title: 'Remorquage',
-    description: 'Service de remorquage professionnel pour tous types de véhicules. Transport sécurisé vers le garage de votre choix. Équipement adapté pour véhicules bas, sportifs ou de collection. Intervention rapide sur autoroute et voies rapides.',
-    image: 'https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&q=80&w=800'
+    description: 'Service de remorquage professionnel pour tous types de véhicules. Transport sécurisé vers le garage de votre choix. Équipement adapté pour véhicules bas, sportifs ou de collection. Intervention rapide sur autoroute.',
+    image: '/src/images/remorquage.webp'
   },
   {
-    icon: <Police className="h-6 w-6" />,
-    title: 'Mise en Fourrière',
-    description: 'Service agréé pour la mise en fourrière de véhicules. Intervention sur demande des autorités ou des propriétaires privés. Procédure conforme à la réglementation en vigueur. Stockage sécurisé et surveillance 24h/24 de votre véhicule.',
-    image: 'https://images.unsplash.com/photo-1589754340618-28778ee0b404?auto=format&fit=crop&q=80&w=800'
+    icon: <Crane className="h-6 w-6" />,
+    title: 'Levage, Grutage, Treuillage',
+    description: 'Services spécialisés de levage et grutage pour situations complexes. Équipement professionnel pour treuillage de véhicules. Intervention en conditions difficiles. Personnel qualifié et certifié.',
+    image: '/src/images/services/levage.jpg'
   },
   {
-    icon: <Battery className="h-6 w-6" />,
-    title: 'Batterie déchargée',
-    description: 'Service de dépannage batterie avec diagnostic complet du système de charge. Remplacement sur place si nécessaire avec batteries de qualité premium. Garantie constructeur préservée. Test gratuit de l\'alternateur et du démarreur.',
-    image: 'https://images.unsplash.com/photo-1620714223084-8fcacc6dfd8d?auto=format&fit=crop&q=80&w=800'
+    icon: <Key className="h-6 w-6" />,
+    title: 'Location',
+    description: 'Service de location de véhicules de remplacement. Large gamme disponible : citadines, berlines, utilitaires. Solutions flexibles adaptées à vos besoins. Tarifs compétitifs et transparents.',
+    image: '/src/images/services/location.jpg'
+  },
+  {
+    icon: <Warehouse className="h-6 w-6" />,
+    title: 'Fourrière',
+    description: 'Service agréé de mise en fourrière. Intervention sur demande des autorités ou des propriétaires. Procédure conforme à la réglementation. Stockage sécurisé et surveillance 24h/24.',
+    image: '/src/images/fourriere01.webp'
+  },
+  {
+    icon: <Settings className="h-6 w-6" />,
+    title: 'Atelier réparation rapide',
+    description: 'Atelier équipé pour réparations rapides et entretien. Diagnostic professionnel et devis transparent. Réparations courantes sans rendez-vous. Techniciens qualifiés multispécialistes.',
+    image: '/src/images/services/atelier.jpg'
   }
 ];
 
@@ -124,7 +142,7 @@ export const ServicesPage = () => {
         <title>Nos Services - Le Bon Dépanneur Toulouse</title>
         <meta 
           name="description" 
-          content="Découvrez nos services de dépannage automobile à Toulouse : remorquage, dépannage sur place, enlèvement de véhicules. Intervention rapide 24h/24 et 7j/7." 
+          content="Découvrez nos services complets : transport Europe, assistance, dépannage, remorquage, levage, location, fourrière et atelier de réparation rapide. Intervention 24h/24." 
         />
       </Helmet>
 
@@ -136,7 +154,7 @@ export const ServicesPage = () => {
               <div className="max-w-3xl">
                 <h1 className="text-4xl font-bold">Services de Dépannage Auto</h1>
                 <p className="mt-4 text-lg">
-                  Intervention rapide 24h/24 et 7j/7 sur Toulouse et sa région
+                  Solutions complètes de dépannage et transport dans toute l'Europe
                 </p>
                 <div className="mt-8 flex flex-wrap gap-4">
                   <Link
@@ -224,66 +242,6 @@ export const ServicesPage = () => {
 
           {/* Accordion Section */}
           <section className="mb-16 space-y-4">
-            <AccordionItem
-              title="Dépannage sur place"
-              isOpen={openSection === 'panne'}
-              onToggle={() => setOpenSection(openSection === 'panne' ? null : 'panne')}
-            >
-              <div className="space-y-4">
-                <p className="text-gray-600 dark:text-gray-300">
-                  Notre équipe de mécaniciens qualifiés intervient rapidement pour :
-                </p>
-                <ul className="grid gap-4 sm:grid-cols-2">
-                  <li className="flex items-center space-x-2 text-gray-600 dark:text-gray-300">
-                    <Battery className="h-5 w-5 text-light-primary dark:text-dark-primary" />
-                    <span>Problèmes de batterie</span>
-                  </li>
-                  <li className="flex items-center space-x-2 text-gray-600 dark:text-gray-300">
-                    <Tool className="h-5 w-5 text-light-primary dark:text-dark-primary" />
-                    <span>Pannes mécaniques simples</span>
-                  </li>
-                  <li className="flex items-center space-x-2 text-gray-600 dark:text-gray-300">
-                    <Wrench className="h-5 w-5 text-light-primary dark:text-dark-primary" />
-                    <span>Problèmes électriques</span>
-                  </li>
-                  <li className="flex items-center space-x-2 text-gray-600 dark:text-gray-300">
-                    <Tool className="h-5 w-5 text-light-primary dark:text-dark-primary" />
-                    <span>Crevaisons</span>
-                  </li>
-                </ul>
-              </div>
-            </AccordionItem>
-
-            <AccordionItem
-              title="Service de remorquage"
-              isOpen={openSection === 'remorquage'}
-              onToggle={() => setOpenSection(openSection === 'remorquage' ? null : 'remorquage')}
-            >
-              <div className="space-y-4">
-                <p className="text-gray-600 dark:text-gray-300">
-                  Service de remorquage professionnel pour tous types de véhicules :
-                </p>
-                <ul className="grid gap-4 sm:grid-cols-2">
-                  <li className="flex items-center space-x-2 text-gray-600 dark:text-gray-300">
-                    <Car className="h-5 w-5 text-light-primary dark:text-dark-primary" />
-                    <span>Véhicules légers</span>
-                  </li>
-                  <li className="flex items-center space-x-2 text-gray-600 dark:text-gray-300">
-                    <Truck className="h-5 w-5 text-light-primary dark:text-dark-primary" />
-                    <span>Utilitaires</span>
-                  </li>
-                  <li className="flex items-center space-x-2 text-gray-600 dark:text-gray-300">
-                    <Car className="h-5 w-5 text-light-primary dark:text-dark-primary" />
-                    <span>Motos</span>
-                  </li>
-                  <li className="flex items-center space-x-2 text-gray-600 dark:text-gray-300">
-                    <MapPin className="h-5 w-5 text-light-primary dark:text-dark-primary" />
-                    <span>Transport vers garage</span>
-                  </li>
-                </ul>
-              </div>
-            </AccordionItem>
-
             <AccordionItem
               title="Tarifs et zones d'intervention"
               isOpen={openSection === 'tarifs'}

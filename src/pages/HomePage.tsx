@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import { Shield, Clock, PenTool as Tool, Truck, Wrench, CheckCircle, Phone } from 'lucide-react';
+import { Globe, Clock, PenTool as Tool, Truck, Wrench, CheckCircle, Phone, Car, Plane as Crane, Key, Settings, Warehouse } from 'lucide-react';
 import { LazyImage } from '../components/LazyImage';
 import { useInView } from 'react-intersection-observer';
 
@@ -17,7 +17,7 @@ export const HomePage = () => {
         <title>Dépannage Auto Toulouse - Service de dépannage professionnel 24/7</title>
         <meta 
           name="description" 
-          content="Service de dépannage urgent à Toulouse. Intervention rapide 24h/24 et 7j/7. Dépannage automobile professionnel sur toute la région toulousaine." 
+          content="Service de dépannage automobile professionnel à Toulouse. Intervention rapide 24h/24 et 7j/7. Remorquage, assistance et réparation sur place." 
         />
       </Helmet>
 
@@ -25,21 +25,21 @@ export const HomePage = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40"
           style={{ 
-            backgroundImage: 'url("https://images.unsplash.com/photo-1581094794329-c8112c4e56a9?ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80")'
+            backgroundImage: 'url("/src/images/hero/hero-background.jpg")'
           }}
         />
 
         <div className="relative mx-auto flex min-h-[80vh] flex-col items-center justify-center px-4 py-12 text-center">
           <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">
-            Dépannage Auto
+            Dépannage Auto Toulouse
             <br />
-            <span className="text-light-primary dark:text-dark-primary">24h/24 - 7j/7</span>
+            <span className="text-light-primary dark:text-dark-primary">Intervention rapide 24/7</span>
           </h1>
           
           <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-300 sm:text-xl">
-            Service professionnel de dépannage et remorquage à Toulouse.
+            Service de dépannage professionnel disponible jour et nuit.
             <br className="hidden sm:block" />
-            Intervention rapide garantie en moins de 30 minutes.
+            Intervention en moins de 30 minutes sur Toulouse et sa région.
           </p>
 
           <div className="mt-8 flex w-full flex-col items-center gap-4 sm:flex-row sm:justify-center">
@@ -54,7 +54,7 @@ export const HomePage = () => {
               to="/contact"
               className="flex w-full items-center justify-center space-x-2 rounded-full border-2 border-white bg-transparent px-6 py-3 text-lg font-semibold text-white transition-all hover:bg-white hover:text-gray-900 sm:w-auto"
             >
-              <span>Nous contacter</span>
+              <span>Devis gratuit</span>
             </Link>
           </div>
 
@@ -62,15 +62,15 @@ export const HomePage = () => {
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
               <div className="flex items-center justify-center space-x-3 rounded-xl bg-white/10 p-4 backdrop-blur-sm">
                 <Clock className="h-6 w-6 text-light-primary dark:text-dark-primary" />
-                <span className="text-sm font-medium text-white">Intervention &lt; 30min</span>
+                <span className="text-sm font-medium text-white">Intervention &lt;30min</span>
               </div>
               <div className="flex items-center justify-center space-x-3 rounded-xl bg-white/10 p-4 backdrop-blur-sm">
-                <Shield className="h-6 w-6 text-light-primary dark:text-dark-primary" />
-                <span className="text-sm font-medium text-white">Service professionnel</span>
+                <Wrench className="h-6 w-6 text-light-primary dark:text-dark-primary" />
+                <span className="text-sm font-medium text-white">Dépannage sur place</span>
               </div>
               <div className="flex items-center justify-center space-x-3 rounded-xl bg-white/10 p-4 backdrop-blur-sm">
                 <Truck className="h-6 w-6 text-light-primary dark:text-dark-primary" />
-                <span className="text-sm font-medium text-white">Tout type de véhicule</span>
+                <span className="text-sm font-medium text-white">Tous véhicules</span>
               </div>
             </div>
           </div>
@@ -81,41 +81,60 @@ export const HomePage = () => {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-2xl font-bold tracking-tight text-light-text dark:text-dark-text sm:text-3xl">
-              Notre expertise à votre service
+              Nos services de dépannage
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-base text-gray-600 dark:text-gray-300 sm:text-lg">
-              Depuis toujours, notre équipe de professionnels qualifiés intervient sur Toulouse et sa région pour tous types de dépannages automobiles.
+              Une équipe de professionnels qualifiés pour tous vos besoins de dépannage et assistance.
             </p>
           </div>
 
-          <div className="mt-8 grid gap-6 sm:mt-12 sm:grid-cols-2">
+          <div className="mt-8 grid gap-6 sm:mt-12 sm:grid-cols-2 lg:grid-cols-4">
             <div className="rounded-lg bg-gray-50 p-6 dark:bg-dark-background">
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-light-primary/10 dark:bg-dark-primary/10">
+                <Wrench className="h-6 w-6 text-light-primary dark:text-dark-primary" />
+              </div>
               <h3 className="text-xl font-semibold text-light-text dark:text-dark-text">
                 Dépannage sur place
               </h3>
               <p className="mt-4 text-gray-600 dark:text-gray-300">
-                Notre équipe intervient rapidement pour résoudre les pannes courantes : batterie, démarrage, crevaison, etc. Nous disposons de tout l'équipement nécessaire pour vous dépanner efficacement.
+                Intervention rapide pour pannes mécaniques et électriques.
               </p>
-              <Link
-                to="/contact"
-                className="mt-4 inline-block text-light-primary hover:text-light-hover dark:text-dark-primary dark:hover:text-dark-hover"
-              >
-                Demander une intervention →
-              </Link>
             </div>
+
             <div className="rounded-lg bg-gray-50 p-6 dark:bg-dark-background">
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-light-primary/10 dark:bg-dark-primary/10">
+                <Truck className="h-6 w-6 text-light-primary dark:text-dark-primary" />
+              </div>
               <h3 className="text-xl font-semibold text-light-text dark:text-dark-text">
-                Remorquage professionnel
+                Remorquage
               </h3>
               <p className="mt-4 text-gray-600 dark:text-gray-300">
-                Si la réparation sur place n'est pas possible, nous assurons le remorquage de votre véhicule vers le garage de votre choix, en toute sécurité et dans les meilleurs délais.
+                Transport sécurisé vers le garage de votre choix.
               </p>
-              <Link
-                to="/contact"
-                className="mt-4 inline-block text-light-primary hover:text-light-hover dark:text-dark-primary dark:hover:text-dark-hover"
-              >
-                Demander un remorquage →
-              </Link>
+            </div>
+
+            <div className="rounded-lg bg-gray-50 p-6 dark:bg-dark-background">
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-light-primary/10 dark:bg-dark-primary/10">
+                <Settings className="h-6 w-6 text-light-primary dark:text-dark-primary" />
+              </div>
+              <h3 className="text-xl font-semibold text-light-text dark:text-dark-text">
+                Réparation rapide
+              </h3>
+              <p className="mt-4 text-gray-600 dark:text-gray-300">
+                Atelier équipé pour interventions sans rendez-vous.
+              </p>
+            </div>
+
+            <div className="rounded-lg bg-gray-50 p-6 dark:bg-dark-background">
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-light-primary/10 dark:bg-dark-primary/10">
+                <Globe className="h-6 w-6 text-light-primary dark:text-dark-primary" />
+              </div>
+              <h3 className="text-xl font-semibold text-light-text dark:text-dark-text">
+                Transport Europe
+              </h3>
+              <p className="mt-4 text-gray-600 dark:text-gray-300">
+                Service de transport spécialisé longue distance.
+              </p>
             </div>
           </div>
         </div>
@@ -135,34 +154,34 @@ export const HomePage = () => {
                 <Clock className="h-6 w-6 text-light-primary dark:text-dark-primary sm:h-8 sm:w-8" />
               </div>
               <h3 className="mt-4 text-lg font-semibold text-light-text dark:text-dark-text sm:mt-6">
-                Prise en charge immédiate
+                Intervention rapide
               </h3>
               <p className="mt-2 text-gray-600 dark:text-gray-300">
-                Intervention rapide en moins de 30 minutes sur Toulouse et sa périphérie.
+                Arrivée en moins de 30 minutes sur Toulouse.
               </p>
             </div>
 
             <div className="rounded-lg bg-white p-6 text-center shadow-lg transition-colors dark:bg-dark-card sm:p-8">
               <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-light-primary/10 dark:bg-dark-primary/10 sm:h-16 sm:w-16">
-                <Wrench className="h-6 w-6 text-light-primary dark:text-dark-primary sm:h-8 sm:w-8" />
+                <Tool className="h-6 w-6 text-light-primary dark:text-dark-primary sm:h-8 sm:w-8" />
               </div>
               <h3 className="mt-4 text-lg font-semibold text-light-text dark:text-dark-text sm:mt-6">
-                Matériel dernier cri
+                Expertise technique
               </h3>
               <p className="mt-2 text-gray-600 dark:text-gray-300">
-                Équipement professionnel moderne pour tous types d'interventions.
+                Techniciens qualifiés et matériel professionnel.
               </p>
             </div>
 
             <div className="rounded-lg bg-white p-6 text-center shadow-lg transition-colors dark:bg-dark-card sm:p-8">
               <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-light-primary/10 dark:bg-dark-primary/10 sm:h-16 sm:w-16">
-                <Truck className="h-6 w-6 text-light-primary dark:text-dark-primary sm:h-8 sm:w-8" />
+                <Car className="h-6 w-6 text-light-primary dark:text-dark-primary sm:h-8 sm:w-8" />
               </div>
               <h3 className="mt-4 text-lg font-semibold text-light-text dark:text-dark-text sm:mt-6">
-                Dépannage - Remorquage
+                Tous véhicules
               </h3>
               <p className="mt-2 text-gray-600 dark:text-gray-300">
-                Solutions complètes pour tous types de véhicules et de situations.
+                De la citadine au poids lourd.
               </p>
             </div>
           </div>
@@ -174,25 +193,25 @@ export const HomePage = () => {
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             <div>
               <h2 className="text-xl font-bold text-light-text dark:text-dark-text sm:text-2xl">
-                Un service complet et professionnel
+                Services professionnels
               </h2>
               <div className="mt-6 space-y-4">
                 <div className="flex items-start">
                   <CheckCircle className="mr-3 h-6 w-6 flex-shrink-0 text-light-primary dark:text-dark-primary" />
                   <p className="text-gray-600 dark:text-gray-300">
-                    Techniciens qualifiés et expérimentés pour tous types d'interventions
+                    Dépannage et réparation sur place
                   </p>
                 </div>
                 <div className="flex items-start">
                   <CheckCircle className="mr-3 h-6 w-6 flex-shrink-0 text-light-primary dark:text-dark-primary" />
                   <p className="text-gray-600 dark:text-gray-300">
-                    Devis transparent et sans surprise avant toute intervention
+                    Remorquage tous véhicules
                   </p>
                 </div>
                 <div className="flex items-start">
                   <CheckCircle className="mr-3 h-6 w-6 flex-shrink-0 text-light-primary dark:text-dark-primary" />
                   <p className="text-gray-600 dark:text-gray-300">
-                    Service client disponible 24h/24 pour répondre à vos questions
+                    Services complémentaires : transport, levage, location
                   </p>
                 </div>
               </div>
@@ -202,13 +221,13 @@ export const HomePage = () => {
                 Zone d'intervention
               </h2>
               <p className="mt-4 text-gray-600 dark:text-gray-300">
-                Nous intervenons sur Toulouse et sa périphérie dans un rayon de 30 km. Notre position stratégique nous permet d'intervenir rapidement sur l'ensemble de notre zone de couverture, incluant les communes de Blagnac, Colomiers, Tournefeuille, Balma, et bien d'autres.
+                Intervention rapide sur Toulouse et sa périphérie dans un rayon de 50 km. Service de transport disponible dans toute l'Europe pour vos besoins de déplacement longue distance.
               </p>
               <Link
                 to="/contact"
                 className="mt-6 inline-flex items-center text-light-primary hover:text-light-hover dark:text-dark-primary dark:hover:text-dark-hover"
               >
-                Demander une intervention
+                Contactez-nous
                 <svg className="ml-2 h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
                 </svg>
