@@ -5,7 +5,7 @@ import { Truck, Info } from 'lucide-react';
 
 const fleetVehicles = [
   {
-    image: '/src/images/depannage.webp',
+    image: '/images/depannage.webp',
     name: 'Renault Master Dépanneuse',
     details: {
       brand: 'Renault',
@@ -23,7 +23,7 @@ const fleetVehicles = [
     }
   },
   {
-    image: '/src/images/Mercedes-Sprinter-Assistance.webp',
+    image: '/images/Mercedes-Sprinter-Assistance.webp',
     name: 'Mercedes Sprinter Assistance',
     details: {
       brand: 'Mercedes-Benz',
@@ -41,7 +41,7 @@ const fleetVehicles = [
     }
   },
   {
-    image: '/src/images/ivecoDailyPlateau.webp',
+    image: '/images/ivecoDailyPlateau.webp',
     name: 'Iveco Daily Plateau',
     details: {
       brand: 'Iveco',
@@ -59,7 +59,7 @@ const fleetVehicles = [
     }
   },
   {
-    image: '/src/images/MAN-TGL-Porte-Voitures.webp',
+    image: '/images/MAN-TGL-Porte-Voitures.webp',
     name: 'MAN TGL Porte-Voitures',
     details: {
       brand: 'MAN',
@@ -77,7 +77,7 @@ const fleetVehicles = [
     }
   },
   {
-    image: '/src/images/FordTransit.webp',
+    image: '/images/FordTransit.webp',
     name: 'Ford Transit Custom Intervention',
     details: {
       brand: 'Ford',
@@ -98,33 +98,33 @@ const fleetVehicles = [
 
 const interventionPhotos = [
   {
-    image: '/src/images/interventions/autoroute.jpg',
+    image: '/images/autoroute.jpg',
     title: 'Remorquage sur autoroute',
     description: 'Intervention rapide suite à une panne moteur sur l\'A62'
   },
   {
-    image: '/src/images/interventions/ville.jpg',
+    image: '/images/ville.jpg',
     title: 'Dépannage en ville',
     description: 'Réparation sur place d\'une batterie défectueuse en centre-ville'
   },
   {
-    image: '/src/images/interventions/transport.jpg',
+    image: '/images/transport.jpg',
     title: 'Transport spécialisé',
     description: 'Transport sécurisé d\'un véhicule de collection'
   },
   {
-    image: '/src/images/interventions/accident.jpg',
+    image: '/images/accident.jpg',
     title: 'Assistance accident',
     description: 'Intervention suite à un accident sur le périphérique'
   },
   {
-    image: '/src/images/interventions/nuit.jpg',
+    image: '/images/nuit.jpg',
     title: 'Dépannage nocturne',
     description: 'Intervention d\'urgence de nuit pour une panne mécanique'
   }
 ];
 
-export const GalleryPage = () => {
+const GalleryPage = () => {
   return (
     <>
       <Helmet>
@@ -242,3 +242,5 @@ export const GalleryPage = () => {
     </>
   );
 };
+
+export default GalleryPage;

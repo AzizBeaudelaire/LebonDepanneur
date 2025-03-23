@@ -25,7 +25,7 @@ export const HomePage = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40"
           style={{ 
-            backgroundImage: 'url("/src/images/hero/hero-background.jpg")'
+            backgroundImage: 'url("/images/hero/hero-background.jpg")'
           }}
         />
 

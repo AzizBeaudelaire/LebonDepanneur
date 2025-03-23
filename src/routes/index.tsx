@@ -1,12 +1,12 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { HomePage } from '../pages/HomePage';
-import { ServicesPage } from '../pages/ServicesPage';
+import ServicesPage from '../pages/ServicesPage';
 import { ContactPage } from '../pages/ContactPage';
 import { EmergencyPage } from '../pages/EmergencyPage';
 import { NotFoundPage } from '../pages/NotFoundPage';
 import { ZoneInterventionPage } from '../pages/ZoneInterventionPage';
-import { GalleryPage } from '../pages/GalleryPage';
+import GalleryPage from '../pages/GalleryPage';
 
 export const AppRoutes = () => {
   return (

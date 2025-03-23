@@ -4,6 +4,57 @@ import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Car, Wrench, Truck, PenTool as Tool, Phone, Shield, Clock, Euro, ChevronDown, Globe, Plane as Crane, Key, Settings, Warehouse } from 'lucide-react';
 
+const services = [
+  {
+    icon: <Globe className="h-6 w-6" />,
+    title: 'Transport Europe',
+    description: 'Service de transport spécialisé dans toute l\'Europe. Transport sécurisé de tous types de véhicules : particuliers, utilitaires, prestige, collection. Devis personnalisé et suivi en temps réel. Assurance tous risques incluse.',
+    image: '/images/professional-truck-driver-entering-his-truck-long-vehicle-holding-thumbs-up.webp'
+  },
+  {
+    icon: <Car className="h-6 w-6" />,
+    title: 'Assistance',
+    description: 'Service d\'assistance routière disponible 24h/24 et 7j/7. Intervention rapide pour tous types de pannes. Diagnostic sur place et solutions immédiates quand possible. Équipe expérimentée et professionnelle.',
+    image: '/images/man-standing-by-broken-vehicle-calling-tow-service.webp'
+  },
+  {
+    icon: <Wrench className="h-6 w-6" />,
+    title: 'Dépannage',
+    description: 'Dépannage tous types de véhicules : voitures, motos, utilitaires, poids lourds. Intervention sur place pour pannes mécaniques, électriques, électroniques. Stock de pièces courantes pour réparation immédiate.',
+    image: '/images/long-shot-man-swapping-tire.webp'
+  },
+  {
+    icon: <Truck className="h-6 w-6" />,
+    title: 'Remorquage',
+    description: 'Service de remorquage professionnel pour tous types de véhicules. Transport sécurisé vers le garage de votre choix. Équipement adapté pour véhicules bas, sportifs ou de collection. Intervention rapide sur autoroute.',
+    image: '/images/remorquage.webp'
+  },
+  {
+    icon: <Crane className="h-6 w-6" />,
+    title: 'Levage, Grutage, Treuillage',
+    description: 'Services spécialisés de levage et grutage pour situations complexes. Équipement professionnel pour treuillage de véhicules. Intervention en conditions difficiles. Personnel qualifié et certifié.',
+    image: '/images/levage.jpg'
+  },
+  {
+    icon: <Key className="h-6 w-6" />,
+    title: 'Location',
+    description: 'Service de location de véhicules de remplacement. Large gamme disponible : citadines, berlines, utilitaires. Solutions flexibles adaptées à vos besoins. Tarifs compétitifs et transparents.',
+    image: '/images/location.jpg'
+  },
+  {
+    icon: <Warehouse className="h-6 w-6" />,
+    title: 'Fourrière',
+    description: 'Service agréé de mise en fourrière. Intervention sur demande des autorités ou des propriétaires. Procédure conforme à la réglementation. Stockage sécurisé et surveillance 24h/24.',
+    image: '/images/fourriere01.webp'
+  },
+  {
+    icon: <Settings className="h-6 w-6" />,
+    title: 'Atelier réparation rapide',
+    description: 'Atelier équipé pour réparations rapides et entretien. Diagnostic professionnel et devis transparent. Réparations courantes sans rendez-vous. Techniciens qualifiés multispécialistes.',
+    image: '/images/atelier.jpg'
+  }
+];
+
 const emergencySteps = [
   {
     icon: <Shield className="h-8 w-8" />,
@@ -19,57 +70,6 @@ const emergencySteps = [
     icon: <Clock className="h-8 w-8" />,
     title: 'Attendre',
     description: 'Restez en sécurité en attendant notre arrivée'
-  }
-];
-
-const services = [
-  {
-    icon: <Globe className="h-6 w-6" />,
-    title: 'Transport Europe',
-    description: 'Service de transport spécialisé dans toute l\'Europe. Transport sécurisé de tous types de véhicules : particuliers, utilitaires, prestige, collection. Devis personnalisé et suivi en temps réel. Assurance tous risques incluse.',
-    image: '/src/images/professional-truck-driver-entering-his-truck-long-vehicle-holding-thumbs-up.webp'
-  },
-  {
-    icon: <Car className="h-6 w-6" />,
-    title: 'Assistance',
-    description: 'Service d\'assistance routière disponible 24h/24 et 7j/7. Intervention rapide pour tous types de pannes. Diagnostic sur place et solutions immédiates quand possible. Équipe expérimentée et professionnelle.',
-    image: '/src/images/man-standing-by-broken-vehicle-calling-tow-service.webp'
-  },
-  {
-    icon: <Wrench className="h-6 w-6" />,
-    title: 'Dépannage',
-    description: 'Dépannage tous types de véhicules : voitures, motos, utilitaires, poids lourds. Intervention sur place pour pannes mécaniques, électriques, électroniques. Stock de pièces courantes pour réparation immédiate.',
-    image: '/src/images/long-shot-man-swapping-tire.webp'
-  },
-  {
-    icon: <Truck className="h-6 w-6" />,
-    title: 'Remorquage',
-    description: 'Service de remorquage professionnel pour tous types de véhicules. Transport sécurisé vers le garage de votre choix. Équipement adapté pour véhicules bas, sportifs ou de collection. Intervention rapide sur autoroute.',
-    image: '/src/images/remorquage.webp'
-  },
-  {
-    icon: <Crane className="h-6 w-6" />,
-    title: 'Levage, Grutage, Treuillage',
-    description: 'Services spécialisés de levage et grutage pour situations complexes. Équipement professionnel pour treuillage de véhicules. Intervention en conditions difficiles. Personnel qualifié et certifié.',
-    image: '/src/images/services/levage.jpg'
-  },
-  {
-    icon: <Key className="h-6 w-6" />,
-    title: 'Location',
-    description: 'Service de location de véhicules de remplacement. Large gamme disponible : citadines, berlines, utilitaires. Solutions flexibles adaptées à vos besoins. Tarifs compétitifs et transparents.',
-    image: '/src/images/services/location.jpg'
-  },
-  {
-    icon: <Warehouse className="h-6 w-6" />,
-    title: 'Fourrière',
-    description: 'Service agréé de mise en fourrière. Intervention sur demande des autorités ou des propriétaires. Procédure conforme à la réglementation. Stockage sécurisé et surveillance 24h/24.',
-    image: '/src/images/fourriere01.webp'
-  },
-  {
-    icon: <Settings className="h-6 w-6" />,
-    title: 'Atelier réparation rapide',
-    description: 'Atelier équipé pour réparations rapides et entretien. Diagnostic professionnel et devis transparent. Réparations courantes sans rendez-vous. Techniciens qualifiés multispécialistes.',
-    image: '/src/images/services/atelier.jpg'
   }
 ];
 
@@ -133,8 +133,8 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ title, children, isOpen, 
   );
 };
 
-export const ServicesPage = () => {
-  const [openSection, setOpenSection] = useState<string | null>('panne');
+const ServicesPage = () => {
+  const [openSection, setOpenSection] = useState<string | null>('tarifs');
 
   return (
     <>
@@ -317,3 +317,5 @@ export const ServicesPage = () => {
     </>
   );
 };
+
+export default ServicesPage;
