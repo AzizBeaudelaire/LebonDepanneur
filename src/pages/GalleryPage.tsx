@@ -98,29 +98,29 @@ const fleetVehicles = [
 
 const interventionPhotos = [
   {
-    image: '/images/autoroute.jpg',
-    title: 'Remorquage sur autoroute',
-    description: 'Intervention rapide suite à une panne moteur sur l\'A62'
+    image: '/images/IMG_0810.webp',
+    title: 'Remorquage de moto',
+    description: 'Intervention rapide suite à un accident'
   },
   {
-    image: '/images/ville.jpg',
-    title: 'Dépannage en ville',
-    description: 'Réparation sur place d\'une batterie défectueuse en centre-ville'
+    image: '/images/IMG_0793.webp',
+    title: 'Remorquage en ville',
+    description: 'Intervention apres une panne moteur en ville'
   },
   {
-    image: '/images/transport.jpg',
+    image: '/images/IMG_0808.webp',
     title: 'Transport spécialisé',
-    description: 'Transport sécurisé d\'un véhicule de collection'
+    description: 'Transport sécurisé d\'un canapé gigantesque'
   },
   {
-    image: '/images/accident.jpg',
+    image: '/images/IMG_0804.webp',
     title: 'Assistance accident',
     description: 'Intervention suite à un accident sur le périphérique'
   },
   {
-    image: '/images/nuit.jpg',
+    image: '/images/IMG_0796.webp',
     title: 'Dépannage nocturne',
-    description: 'Intervention d\'urgence de nuit pour une panne mécanique'
+    description: 'Intervention d\'urgence de nuit pour un accident sur la voie rapide'
   }
 ];
 
