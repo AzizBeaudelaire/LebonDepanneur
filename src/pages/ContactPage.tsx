@@ -10,6 +10,7 @@ export const ContactPage = () => {
     email: '',
     phone: '',
     service: '',
+    vehicleModel: '',
     message: ''
   });
 
@@ -35,6 +36,7 @@ export const ContactPage = () => {
         email: '',
         phone: '',
         service: '',
+        vehicleModel: '',
         message: ''
       });
       setSubmitStatus('success');
@@ -89,16 +91,24 @@ export const ContactPage = () => {
               </h1>
               <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
                 Notre équipe est disponible 24h/24 et 7j/7 pour répondre à vos urgences.
+                
               </p>
-
+              <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
+                Remplissez le formulaire ci-dessous pour nous contacter, sinon vous pouvez nous contacter sur nos réseaux sociaux.
+              </p>
               <div className="mt-8 space-y-6">
                 <div className="flex items-center">
                   <Phone className="h-6 w-6 text-light-primary dark:text-dark-primary" />
-                  <span className="ml-4 text-lg text-gray-600 dark:text-gray-300">05 00 00 00 00</span>
+                  <a 
+                    href="tel:0770103429" 
+                    className="ml-4 flex items-center space-x-2 text-xl font-semibold text-light-primary transition-colors hover:text-light-hover dark:text-dark-primary dark:hover:text-dark-hover"
+                  >
+                    07 70 10 34 29
+                  </a>
                 </div>
                 <div className="flex items-center">
                   <Mail className="h-6 w-6 text-light-primary dark:text-dark-primary" />
-                  <span className="ml-4 text-lg text-gray-600 dark:text-gray-300">contact@depannage-toulouse.fr</span>
+                  <span className="ml-4 text-lg text-gray-600 dark:text-gray-300">hugo.mehdi197@gmail.com</span>
                 </div>
                 <div className="flex items-center">
                   <MapPin className="h-6 w-6 text-light-primary dark:text-dark-primary" />
@@ -204,14 +214,40 @@ export const ContactPage = () => {
                     required
                   >
                     <option value="">Sélectionnez le type d'intervention</option>
-                    <option value="transport">Transport spécialisé Europe</option>
+                    <option value="transport">Transport Europe</option>
+                    <option value="assistance">Assistance</option>
                     <option value="depannage">Dépannage</option>
-                    <option value="accident">Véhicule accidenté</option>
+                    <option value="remorquage">Remorquage</option>
+                    <option value="levage">Levage, Grutage, Treuillage</option>
                     <option value="fourriere">Fourrière</option>
-                    <option value="batterie">Batterie déchargée</option>
+                    <option value="atelier">Atelier réparation rapide</option>
+                    <option value="clefs">Perte de cléfs</option>
+                    <option value="nettoyage">Nettoyage de véhicule</option>
+                    <option value="achat-revente">Achat-Revente de véhicules</option>
                   </select>
                   {errors.service && (
                     <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.service}</p>
+                  )}
+                </div>
+
+                <div>
+                  <label htmlFor="vehicleModel" className="block text-sm font-medium text-light-text dark:text-dark-text">
+                    Modèle du véhicule
+                  </label>
+                  <input
+                    type="text"
+                    name="vehicleModel"
+                    id="vehicleModel"
+                    value={formData.vehicleModel}
+                    onChange={handleChange}
+                    placeholder="Ex: Renault Clio 4"
+                    className={`mt-1 block w-full rounded-md border ${
+                      errors.vehicleModel ? 'border-red-500' : 'border-light-border dark:border-dark-border'
+                    } bg-white px-3 py-2 text-light-text shadow-sm transition-colors focus:border-light-primary focus:outline-none focus:ring-light-primary dark:bg-dark-background dark:text-dark-text dark:focus:border-dark-primary dark:focus:ring-dark-primary`}
+                    required
+                  />
+                  {errors.vehicleModel && (
+                    <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.vehicleModel}</p>
                   )}
                 </div>
 

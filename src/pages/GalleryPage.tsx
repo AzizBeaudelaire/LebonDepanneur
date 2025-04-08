@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Truck, Info } from 'lucide-react';
@@ -10,34 +10,16 @@ const fleetVehicles = [
     details: {
       brand: 'Renault',
       model: 'Master',
-      year: 2023,
       capacity: '3.5 tonnes',
       features: [
         'Plateau basculant hydraulique',
-        'Treuil électrique 4.5 tonnes',
+        'Treuil hydraulique 4.5 tonnes',
         'Rampes d\'accès aluminium',
-        'Feux de signalisation LED',
-        'GPS intégré'
+        'Panier de récupération',
+        'Rampe d\'accès',
+        'Gyrophare',
       ],
-      quantity: 2
-    }
-  },
-  {
-    image: '/images/Mercedes-Sprinter-Assistance.webp',
-    name: 'Mercedes Sprinter Assistance',
-    details: {
-      brand: 'Mercedes-Benz',
-      model: 'Sprinter',
-      year: 2022,
-      capacity: '2.5 tonnes',
-      features: [
-        'Équipement complet de dépannage',
-        'Diagnostic électronique multimarque',
-        'Compresseur haute performance',
-        'Outillage spécialisé',
-        'Station de charge mobile'
-      ],
-      quantity: 1
+      quantity: 3
     }
   },
   {
@@ -46,7 +28,6 @@ const fleetVehicles = [
     details: {
       brand: 'Iveco',
       model: 'Daily',
-      year: 2023,
       capacity: '4.5 tonnes',
       features: [
         'Plateau extra-long (6m)',
@@ -59,30 +40,11 @@ const fleetVehicles = [
     }
   },
   {
-    image: '/images/MAN-TGL-Porte-Voitures.webp',
-    name: 'MAN TGL Porte-Voitures',
-    details: {
-      brand: 'MAN',
-      model: 'TGL',
-      year: 2022,
-      capacity: '7.5 tonnes',
-      features: [
-        'Double plateau hydraulique',
-        'Capacité 2 véhicules',
-        'Treuil 8 tonnes',
-        'Stabilisateurs hydrauliques',
-        'Système anti-recul'
-      ],
-      quantity: 1
-    }
-  },
-  {
     image: '/images/FordTransit.webp',
     name: 'Ford Transit Custom Intervention',
     details: {
       brand: 'Ford',
       model: 'Transit Custom',
-      year: 2023,
       capacity: '1 tonne',
       features: [
         'Véhicule d\'intervention rapide',
@@ -98,31 +60,120 @@ const fleetVehicles = [
 
 const interventionPhotos = [
   {
-    image: '/images/IMG_0810.webp',
-    title: 'Remorquage de moto',
-    description: 'Intervention rapide suite à un accident'
+    title: 'Dépannage en ville',
+    description: 'Réparation sur place d\'une batterie défectueuse en centre-ville',
+    images: [
+      '/images/Ville_car.webp',
+      '/images/Ville_car2.webp',
+      '/images/Ville_car3.webp',
+      '/images/Ville_car4.webp',
+      '/images/Ville_car5.webp'
+    ]
   },
   {
-    image: '/images/IMG_0793.webp',
-    title: 'Remorquage en ville',
-    description: 'Intervention apres une panne moteur en ville'
+    title: 'Véhicule Atypique',
+    description: 'Intervention sur des véhicules atypiques',
+    images: [
+      '/images/Atypique_car.webp',
+      '/images/Atypique_car2.webp',
+      '/images/Atypique_car3.webp',
+      '/images/Atypique_car4.webp',
+      '/images/Atypique_car5.webp'
+    ]
   },
   {
-    image: '/images/IMG_0808.webp',
     title: 'Transport spécialisé',
-    description: 'Transport sécurisé d\'un canapé gigantesque'
+    description: 'Transport sécurisé d\'un véhicule de collection',
+    images: [
+      '/images/Transport.webp',
+      '/images/Transport2.webp',
+      '/images/Transport3.webp',
+      '/images/Transport4.webp',
+      '/images/Transport5.webp'
+    ]
   },
   {
-    image: '/images/IMG_0804.webp',
     title: 'Assistance accident',
-    description: 'Intervention suite à un accident sur le périphérique'
+    description: 'Intervention suite à un accident sur le périphérique',
+    images: [
+      '/images/Accident_car.webp',
+      '/images/Accident_car2.webp',
+      '/images/Accident_car3.webp',
+      '/images/Accident_car4.webp',
+      '/images/Accident_car5.webp'
+    ]
   },
   {
-    image: '/images/IMG_0796.webp',
     title: 'Dépannage nocturne',
-    description: 'Intervention d\'urgence de nuit pour un accident sur la voie rapide'
+    description: 'Intervention d\'urgence de nuit pour une panne mécanique',
+    images: [
+      '/images/nuit.jpg',
+      '/images/nuit2.jpg',
+      '/images/nuit3.jpg',
+      '/images/nuit4.jpg',
+      '/images/nuit5.jpg'
+    ]
+  },
+  {
+    title: 'Intervention sur véhicule de luxe',
+    description: 'Prise en charge spécialisée d\'une Ferrari 488 GTB',
+    images: [
+      '/images/Luxe_car.webp',
+      '/images/Luxe_car2.webp',
+      '/images/Luxe_car3.webp',
+      '/images/Luxe_car4.webp',
+      '/images/Luxe_car5.webp'
+    ]
   }
 ];
+
+const ImageCarousel = ({ images, title, description }: { images: string[], title: string, description: string }) => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [images.length]);
+
+  return (
+    <div className="relative h-48 overflow-hidden">
+      {images.map((image, index) => (
+        <div
+          key={index}
+          className={`absolute inset-0 transition-opacity duration-1000 ${
+            index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+          }`}
+        >
+          <img
+            src={image}
+            alt={`${title} - Image ${index + 1}`}
+            className="h-full w-full object-cover"
+          />
+        </div>
+      ))}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+      <div className="absolute bottom-4 left-4 right-4">
+        <h3 className="text-lg font-semibold text-white">{title}</h3>
+        <p className="mt-1 text-sm text-gray-200">{description}</p>
+      </div>
+      <div className="absolute bottom-2 right-2 flex space-x-1">
+        {images.map((_, index) => (
+          <div
+            key={index}
+            className={`h-1.5 w-1.5 rounded-full transition-all ${
+              index === currentImageIndex
+                ? 'bg-light-primary dark:bg-dark-primary'
+                : 'bg-white/50'
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
 
 const GalleryPage = () => {
   return (
@@ -180,7 +231,7 @@ const GalleryPage = () => {
                   <div className="p-4">
                     <div className="mb-4 flex items-center justify-between">
                       <span className="text-sm text-gray-600 dark:text-gray-400">
-                        {vehicle.details.brand} {vehicle.details.model} ({vehicle.details.year})
+                        {vehicle.details.brand} {vehicle.details.model}
                       </span>
                       <span className="rounded-full bg-light-primary/10 px-3 py-1 text-sm font-medium text-light-primary dark:bg-dark-primary/10 dark:text-dark-primary">
                         {vehicle.details.capacity}
@@ -221,18 +272,11 @@ const GalleryPage = () => {
                   transition={{ delay: index * 0.1 }}
                   className="group overflow-hidden rounded-lg bg-white shadow-lg transition-all hover:shadow-xl dark:bg-dark-card"
                 >
-                  <div className="relative h-48 overflow-hidden">
-                    <img
-                      src={photo.image}
-                      alt={photo.title}
-                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <h3 className="text-lg font-semibold text-white">{photo.title}</h3>
-                      <p className="mt-1 text-sm text-gray-200">{photo.description}</p>
-                    </div>
-                  </div>
+                  <ImageCarousel
+                    images={photo.images}
+                    title={photo.title}
+                    description={photo.description}
+                  />
                 </motion.div>
               ))}
             </div>

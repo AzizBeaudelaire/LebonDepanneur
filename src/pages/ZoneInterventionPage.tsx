@@ -1,139 +1,103 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { MapPin, Clock, Phone, Car, Euro } from 'lucide-react';
+import { MapPin, Clock, Phone, Car, Shield, FormInput, CheckCircle } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const cities = [
   {
     name: 'Toulouse',
     distance: '0 km',
     time: '15-30 min',
-    zone: 'Centre-ville',
-    pricing: {
-      jour: '80€',
-      nuit: '100€',
-      weekend: '120€'
-    }
+    zone: 'Centre-ville'
   },
   {
     name: 'Blagnac',
     distance: '12 km',
     time: '20-35 min',
-    zone: 'Périphérie',
-    pricing: {
-      jour: '100€',
-      nuit: '120€',
-      weekend: '140€'
-    }
+    zone: 'Périphérie'
   },
   {
     name: 'Colomiers',
     distance: '13 km',
     time: '20-35 min',
-    zone: 'Périphérie',
-    pricing: {
-      jour: '100€',
-      nuit: '120€',
-      weekend: '140€'
-    }
+    zone: 'Périphérie'
   },
   {
     name: 'Tournefeuille',
     distance: '12 km',
     time: '20-35 min',
-    zone: 'Périphérie',
-    pricing: {
-      jour: '100€',
-      nuit: '120€',
-      weekend: '140€'
-    }
+    zone: 'Périphérie'
   },
   {
     name: 'Muret',
     distance: '27 km',
     time: '30-45 min',
-    zone: 'Périphérie',
-    pricing: {
-      jour: '100€',
-      nuit: '120€',
-      weekend: '140€'
-    }
+    zone: 'Périphérie'
   },
   {
     name: 'Saint-Orens-de-Gameville',
     distance: '10 km',
     time: '20-35 min',
-    zone: 'Périphérie',
-    pricing: {
-      jour: '100€',
-      nuit: '120€',
-      weekend: '140€'
-    }
+    zone: 'Périphérie'
   },
   {
     name: 'Balma',
     distance: '8 km',
     time: '15-30 min',
-    zone: 'Périphérie',
-    pricing: {
-      jour: '100€',
-      nuit: '120€',
-      weekend: '140€'
-    }
+    zone: 'Périphérie'
   },
   {
     name: "L'Union",
     distance: '9 km',
     time: '15-30 min',
-    zone: 'Périphérie',
-    pricing: {
-      jour: '100€',
-      nuit: '120€',
-      weekend: '140€'
-    }
+    zone: 'Périphérie'
   },
   {
     name: "Castelnau-d'Estrétefonds",
     distance: '24 km',
     time: '25-40 min',
-    zone: 'Autoroute',
-    pricing: {
-      jour: '120€',
-      nuit: '140€',
-      weekend: '160€'
-    }
+    zone: 'Autoroute'
   },
   {
     name: 'Montastruc-la-Conseillère',
     distance: '21 km',
     time: '25-40 min',
-    zone: 'Autoroute',
-    pricing: {
-      jour: '120€',
-      nuit: '140€',
-      weekend: '160€'
-    }
+    zone: 'Autoroute'
   },
   {
     name: 'Villefranche-de-Lauragais',
     distance: '35 km',
     time: '35-50 min',
-    zone: 'Autoroute',
-    pricing: {
-      jour: '120€',
-      nuit: '140€',
-      weekend: '160€'
-    }
+    zone: 'Autoroute'
   },
   {
     name: 'Carbonne',
     distance: '43 km',
     time: '40-55 min',
-    zone: 'Autoroute',
-    pricing: {
-      jour: '120€',
-      nuit: '140€',
-      weekend: '160€'
-    }
+    zone: 'Autoroute'
+  }
+];
+
+const requestSteps = [
+  {
+    icon: Shield,
+    title: 'Sécurisez-vous',
+    description: 'Mettez-vous en sécurité, allumez vos feux de détresse et placez votre triangle de signalisation'
+  },
+  {
+    icon: FormInput,
+    title: 'Contactez-nous',
+    description: 'Remplissez notre formulaire de contact en ligne avec tous les détails nécessaires'
+  },
+  {
+    icon: CheckCircle,
+    title: 'Confirmation',
+    description: 'Votre demande est immédiatement prise en compte par notre équipe'
+  },
+  {
+    icon: Car,
+    title: 'Intervention',
+    description: 'Un dépanneur professionnel arrive à votre position dans les plus brefs délais'
   }
 ];
 
@@ -175,7 +139,6 @@ export const ZoneInterventionPage = () => {
                   className="h-full w-full"
                 />
               </div>
-              {/* Overlay with key information */}
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 text-white">
                 <div className="flex items-center space-x-4">
                   <Clock className="h-6 w-6 text-light-primary dark:text-dark-primary" />
@@ -186,46 +149,61 @@ export const ZoneInterventionPage = () => {
 
             {/* Coverage Information */}
             <div className="space-y-6">
+              {/* Steps to Request Service */}
               <div className="rounded-lg bg-light-card p-8 shadow-lg dark:bg-dark-card">
                 <h2 className="text-2xl font-semibold text-light-text dark:text-dark-text">
+                  Comment faire appel à nos services
+                </h2>
+                <div className="mt-6 space-y-6">
+                  {requestSteps.map((step, index) => {
+                    const Icon = step.icon;
+                    return (
+                      <div key={index} className="flex items-start space-x-4">
+                        <div className="rounded-full bg-light-primary/10 p-3 dark:bg-dark-primary/10">
+                          <Icon className="h-6 w-6 text-light-primary dark:text-dark-primary" />
+                        </div>
+                        <div>
+                          <h3 className="font-semibold text-light-text dark:text-dark-text">
+                            Étape {index + 1} : {step.title}
+                          </h3>
+                          <p className="mt-1 text-gray-600 dark:text-gray-300">
+                            {step.description}
+                          </p>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+                <div className="mt-8 flex justify-center">
+                  <Link
+                    to="/contact"
+                    className="inline-flex items-center rounded-full bg-light-primary px-6 py-3 text-white transition-colors hover:bg-light-hover dark:bg-dark-primary dark:hover:bg-dark-hover"
+                  >
+                    <FormInput className="mr-2 h-5 w-5" />
+                    Faire une demande
+                  </Link>
+                </div>
+              </div>
+
+              {/* Cities Grid */}
+              <div className="rounded-lg bg-light-card p-8 shadow-lg dark:bg-dark-card">
+                <h2 className="mb-6 text-xl font-semibold text-light-text dark:text-dark-text">
                   Notre secteur d'intervention
                 </h2>
-                
-                <p className="mt-4 text-gray-600 dark:text-gray-300">
-                  Le Bon Dépanneur intervient sur un large périmètre autour de Toulouse, couvrant un rayon de 50 km. Notre position stratégique nous permet d'intervenir rapidement sur l'ensemble de la région toulousaine.
-                </p>
-
-                <div className="mt-8 grid gap-4">
+                <div className="grid gap-4 sm:grid-cols-2">
                   {cities.map((city, index) => (
                     <div 
                       key={index}
-                      className="rounded-lg border border-light-border p-4 transition-all hover:border-light-primary dark:border-dark-border dark:hover:border-dark-primary"
+                      className="flex items-center space-x-3 rounded-lg border border-light-border p-3 transition-all hover:border-light-primary dark:border-dark-border dark:hover:border-dark-primary"
                     >
-                      <div className="flex items-start justify-between">
-                        <div className="flex items-center space-x-3">
-                          <MapPin className="h-5 w-5 flex-shrink-0 text-light-primary dark:text-dark-primary" />
-                          <div>
-                            <h3 className="font-semibold text-light-text dark:text-dark-text">
-                              {city.name}
-                            </h3>
-                            <p className="text-sm text-gray-500 dark:text-gray-400">
-                              {city.distance} • {city.time} • Zone {city.zone}
-                            </p>
-                          </div>
-                        </div>
-                        <div className="text-right">
-                          <div className="flex items-center space-x-1 text-sm text-gray-500 dark:text-gray-400">
-                            <Euro className="h-4 w-4" />
-                            <span>À partir de {city.pricing.jour}</span>
-                          </div>
-                          <div className="mt-1 text-xs">
-                            <span className="text-light-primary dark:text-dark-primary">Nuit : </span>
-                            <span className="text-gray-600 dark:text-gray-300">{city.pricing.nuit}</span>
-                            <span className="mx-1">•</span>
-                            <span className="text-light-primary dark:text-dark-primary">Week-end : </span>
-                            <span className="text-gray-600 dark:text-gray-300">{city.pricing.weekend}</span>
-                          </div>
-                        </div>
+                      <MapPin className="h-5 w-5 flex-shrink-0 text-light-primary dark:text-dark-primary" />
+                      <div>
+                        <h3 className="font-medium text-light-text dark:text-dark-text">
+                          {city.name}
+                        </h3>
+                        <p className="text-sm text-gray-500 dark:text-gray-400">
+                          {city.distance} • {city.time}
+                        </p>
                       </div>
                     </div>
                   ))}
@@ -239,37 +217,16 @@ export const ZoneInterventionPage = () => {
                     <h3 className="text-xl font-semibold">Besoin d'assistance ?</h3>
                     <p className="mt-1">Disponible 24h/24 - 7j/7</p>
                   </div>
-                  <a
-                    href="tel:+33500000000"
+                  <Link
+                    to="/contact"
                     className="rounded-full bg-white px-6 py-3 text-light-primary transition-colors hover:bg-gray-100 dark:text-dark-primary"
                   >
                     <div className="flex items-center space-x-2">
                       <Phone className="h-5 w-5" />
-                      <span className="font-semibold">Appeler maintenant</span>
+                      <span className="font-semibold">Demander une intervention</span>
                     </div>
-                  </a>
+                  </Link>
                 </div>
-              </div>
-
-              {/* Additional Information */}
-              <div className="rounded-lg bg-light-card p-6 shadow-lg dark:bg-dark-card">
-                <h3 className="text-lg font-semibold text-light-text dark:text-dark-text">
-                  Informations importantes
-                </h3>
-                <ul className="mt-4 space-y-3 text-gray-600 dark:text-gray-300">
-                  <li className="flex items-center space-x-2">
-                    <Car className="h-5 w-5 text-light-primary dark:text-dark-primary" />
-                    <span>Tous types de véhicules : voitures, motos, utilitaires</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <Clock className="h-5 w-5 text-light-primary dark:text-dark-primary" />
-                    <span>Service disponible 24h/24 et 7j/7</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <MapPin className="h-5 w-5 text-light-primary dark:text-dark-primary" />
-                    <span>Intervention sur autoroutes et voies rapides</span>
-                  </li>
-                </ul>
               </div>
             </div>
           </div>

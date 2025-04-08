@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { AlertTriangle, Phone, Clock, MapPin } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export const EmergencyPage = () => {
   return (
@@ -76,12 +77,12 @@ export const EmergencyPage = () => {
                 </div>
 
                 <div className="mt-8">
-                  <a
-                    href="tel:+33500000000"
+                  <Link
+                    to="/contact"
                     className="block w-full rounded-md bg-blue-600 px-4 py-3 text-center text-lg font-semibold text-white hover:bg-blue-500"
                   >
-                    Appeler maintenant
-                  </a>
+                    Demander une intervention
+                  </Link>
                 </div>
               </div>
             </div>

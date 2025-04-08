@@ -1,9 +1,59 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import { Globe, Clock, PenTool as Tool, Truck, Wrench, CheckCircle, Phone, Car, Plane as Crane, Key, Settings, Warehouse } from 'lucide-react';
+import { Globe, Clock, PenTool as Tool, Truck, Wrench, CheckCircle, Phone, Car, Plane as Crane, Key, Settings, Warehouse, Award, Shield, Star, MapPin, Umbrella } from 'lucide-react';
 import { LazyImage } from '../components/LazyImage';
 import { useInView } from 'react-intersection-observer';
+
+const garagesPartenaires = [
+  {
+    nom: "Garage Central Auto",
+    ville: "Toulouse Centre",
+    specialites: ["Mécanique générale", "Diagnostic électronique"]
+  },
+  {
+    nom: "Auto Service Premium",
+    ville: "Blagnac",
+    specialites: ["Véhicules premium", "Carrosserie"]
+  },
+  {
+    nom: "Rapid'Auto Services",
+    ville: "Colomiers",
+    specialites: ["Réparation rapide", "Pneumatiques"]
+  },
+  {
+    nom: "Garage de la Gare",
+    ville: "Toulouse Sud",
+    specialites: ["Toutes marques", "Climatisation"]
+  }
+];
+
+const whyChooseUs = [
+  {
+    icon: Clock,
+    title: "Intervention rapide",
+    description: "Arrivée en moins de 30 minutes sur Toulouse.",
+    image: "/images/Inter_rapide.webp"
+  },
+  {
+    icon: Tool,
+    title: "Expertise technique",
+    description: "Techniciens qualifiés et matériel professionnel.",
+    image: "/images/Expert_tech.webp"
+  },
+  {
+    icon: Car,
+    title: "Tous véhicules",
+    description: "De la citadine au poids lourd.",
+    image: "/images/All_car.webp"
+  },
+  {
+    icon: Umbrella,
+    title: "Assurance complète",
+    description: "Véhicules et clients entièrement assurés pendant l'intervention.",
+    image: "/images/Assurance.webp"
+  }
+];
 
 export const HomePage = () => {
   const { ref, inView } = useInView({
@@ -59,7 +109,7 @@ export const HomePage = () => {
           </div>
 
           <div className="mt-12 w-full max-w-4xl px-4">
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-4">
               <div className="flex items-center justify-center space-x-3 rounded-xl bg-white/10 p-4 backdrop-blur-sm">
                 <Clock className="h-6 w-6 text-light-primary dark:text-dark-primary" />
                 <span className="text-sm font-medium text-white">Intervention &lt;30min</span>
@@ -72,75 +122,103 @@ export const HomePage = () => {
                 <Truck className="h-6 w-6 text-light-primary dark:text-dark-primary" />
                 <span className="text-sm font-medium text-white">Tous véhicules</span>
               </div>
+              <div className="flex items-center justify-center space-x-3 rounded-xl bg-white/10 p-4 backdrop-blur-sm">
+                <Globe className="h-6 w-6 text-light-primary dark:text-dark-primary" />
+                <span className="text-sm font-medium text-white">Transport Europe</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-gray-50 py-8 dark:bg-dark-background/50">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h2 className="text-2xl font-bold tracking-tight text-light-text dark:text-dark-text">
+              Un réseau de garages agréés
+            </h2>
+            <p className="mx-auto mt-2 max-w-2xl text-base text-gray-600 dark:text-gray-300">
+              Notre réseau de partenaires certifiés garantit une qualité de service optimale
+            </p>
+          </div>
+
+          <div className="mt-8 grid gap-6 sm:grid-cols-3">
+            <div className="rounded-lg bg-white p-4 text-center shadow-md transition-all hover:shadow-lg dark:bg-dark-card">
+              <div className="mx-auto mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-light-primary/10 dark:bg-dark-primary/10">
+                <Award className="h-6 w-6 text-light-primary dark:text-dark-primary" />
+              </div>
+              <h3 className="text-lg font-semibold text-light-text dark:text-dark-text">
+                Garages certifiés
+              </h3>
+              <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">
+                Partenaires audités et certifiés
+              </p>
+            </div>
+
+            <div className="rounded-lg bg-white p-4 text-center shadow-md transition-all hover:shadow-lg dark:bg-dark-card">
+              <div className="mx-auto mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-light-primary/10 dark:bg-dark-primary/10">
+                <Shield className="h-6 w-6 text-light-primary dark:text-dark-primary" />
+              </div>
+              <h3 className="text-lg font-semibold text-light-text dark:text-dark-text">
+                Garantie constructeur
+              </h3>
+              <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">
+                Respect des normes constructeurs
+              </p>
+            </div>
+
+            <div className="rounded-lg bg-white p-4 text-center shadow-md transition-all hover:shadow-lg dark:bg-dark-card">
+              <div className="mx-auto mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-light-primary/10 dark:bg-dark-primary/10">
+                <Star className="h-6 w-6 text-light-primary dark:text-dark-primary" />
+              </div>
+              <h3 className="text-lg font-semibold text-light-text dark:text-dark-text">
+                Service premium
+              </h3>
+              <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">
+                Expertise et professionnalisme
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-8">
+            <h3 className="mb-4 text-center text-lg font-semibold text-light-text dark:text-dark-text">
+              Nos garages partenaires
+            </h3>
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              {garagesPartenaires.map((garage, index) => (
+                <div 
+                  key={index}
+                  className="rounded-lg border border-light-border bg-white p-3 text-sm shadow-sm transition-all hover:shadow-md dark:border-dark-border dark:bg-dark-card"
+                >
+                  <div className="flex items-center gap-2">
+                    <MapPin className="h-4 w-4 text-light-primary dark:text-dark-primary" />
+                    <div>
+                      <h4 className="font-medium text-light-text dark:text-dark-text">
+                        {garage.nom}
+                      </h4>
+                      <p className="text-xs text-gray-600 dark:text-gray-400">
+                        {garage.ville}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="mt-2 flex flex-wrap gap-1">
+                    {garage.specialites.map((spec, idx) => (
+                      <span 
+                        key={idx}
+                        className="rounded-full bg-light-primary/5 px-2 py-0.5 text-xs text-light-primary dark:bg-dark-primary/5 dark:text-dark-primary"
+                      >
+                        {spec}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </div>
 
       <div className="bg-white py-12 dark:bg-dark-card sm:py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-2xl font-bold tracking-tight text-light-text dark:text-dark-text sm:text-3xl">
-              Nos services de dépannage
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-base text-gray-600 dark:text-gray-300 sm:text-lg">
-              Une équipe de professionnels qualifiés pour tous vos besoins de dépannage et assistance.
-            </p>
-          </div>
-
-          <div className="mt-8 grid gap-6 sm:mt-12 sm:grid-cols-2 lg:grid-cols-4">
-            <div className="rounded-lg bg-gray-50 p-6 dark:bg-dark-background">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-light-primary/10 dark:bg-dark-primary/10">
-                <Wrench className="h-6 w-6 text-light-primary dark:text-dark-primary" />
-              </div>
-              <h3 className="text-xl font-semibold text-light-text dark:text-dark-text">
-                Dépannage sur place
-              </h3>
-              <p className="mt-4 text-gray-600 dark:text-gray-300">
-                Intervention rapide pour pannes mécaniques et électriques.
-              </p>
-            </div>
-
-            <div className="rounded-lg bg-gray-50 p-6 dark:bg-dark-background">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-light-primary/10 dark:bg-dark-primary/10">
-                <Truck className="h-6 w-6 text-light-primary dark:text-dark-primary" />
-              </div>
-              <h3 className="text-xl font-semibold text-light-text dark:text-dark-text">
-                Remorquage
-              </h3>
-              <p className="mt-4 text-gray-600 dark:text-gray-300">
-                Transport sécurisé vers le garage de votre choix.
-              </p>
-            </div>
-
-            <div className="rounded-lg bg-gray-50 p-6 dark:bg-dark-background">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-light-primary/10 dark:bg-dark-primary/10">
-                <Settings className="h-6 w-6 text-light-primary dark:text-dark-primary" />
-              </div>
-              <h3 className="text-xl font-semibold text-light-text dark:text-dark-text">
-                Réparation rapide
-              </h3>
-              <p className="mt-4 text-gray-600 dark:text-gray-300">
-                Atelier équipé pour interventions sans rendez-vous.
-              </p>
-            </div>
-
-            <div className="rounded-lg bg-gray-50 p-6 dark:bg-dark-background">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-light-primary/10 dark:bg-dark-primary/10">
-                <Globe className="h-6 w-6 text-light-primary dark:text-dark-primary" />
-              </div>
-              <h3 className="text-xl font-semibold text-light-text dark:text-dark-text">
-                Transport Europe
-              </h3>
-              <p className="mt-4 text-gray-600 dark:text-gray-300">
-                Service de transport spécialisé longue distance.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="bg-light-card py-12 transition-colors dark:bg-dark-background sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-2xl font-bold tracking-tight text-light-text dark:text-dark-text sm:text-3xl">
@@ -148,47 +226,45 @@ export const HomePage = () => {
             </h2>
           </div>
 
-          <div className="mt-12 grid grid-cols-1 gap-8 sm:mt-20 sm:grid-cols-2 lg:grid-cols-3">
-            <div className="rounded-lg bg-white p-6 text-center shadow-lg transition-colors dark:bg-dark-card sm:p-8">
-              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-light-primary/10 dark:bg-dark-primary/10 sm:h-16 sm:w-16">
-                <Clock className="h-6 w-6 text-light-primary dark:text-dark-primary sm:h-8 sm:w-8" />
-              </div>
-              <h3 className="mt-4 text-lg font-semibold text-light-text dark:text-dark-text sm:mt-6">
-                Intervention rapide
-              </h3>
-              <p className="mt-2 text-gray-600 dark:text-gray-300">
-                Arrivée en moins de 30 minutes sur Toulouse.
-              </p>
-            </div>
-
-            <div className="rounded-lg bg-white p-6 text-center shadow-lg transition-colors dark:bg-dark-card sm:p-8">
-              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-light-primary/10 dark:bg-dark-primary/10 sm:h-16 sm:w-16">
-                <Tool className="h-6 w-6 text-light-primary dark:text-dark-primary sm:h-8 sm:w-8" />
-              </div>
-              <h3 className="mt-4 text-lg font-semibold text-light-text dark:text-dark-text sm:mt-6">
-                Expertise technique
-              </h3>
-              <p className="mt-2 text-gray-600 dark:text-gray-300">
-                Techniciens qualifiés et matériel professionnel.
-              </p>
-            </div>
-
-            <div className="rounded-lg bg-white p-6 text-center shadow-lg transition-colors dark:bg-dark-card sm:p-8">
-              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-light-primary/10 dark:bg-dark-primary/10 sm:h-16 sm:w-16">
-                <Car className="h-6 w-6 text-light-primary dark:text-dark-primary sm:h-8 sm:w-8" />
-              </div>
-              <h3 className="mt-4 text-lg font-semibold text-light-text dark:text-dark-text sm:mt-6">
-                Tous véhicules
-              </h3>
-              <p className="mt-2 text-gray-600 dark:text-gray-300">
-                De la citadine au poids lourd.
-              </p>
-            </div>
+          <div className="mt-12 grid grid-cols-1 gap-8 sm:mt-20 sm:grid-cols-2 lg:grid-cols-4">
+            {whyChooseUs.map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <div 
+                  key={index}
+                  className="group relative overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl"
+                  style={{
+                    height: '300px'
+                  }}
+                >
+                  <div 
+                    className="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-110"
+                    style={{
+                      backgroundImage: `url(${item.image})`
+                    }}
+                  />
+                  
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30" />
+                  
+                  <div className="relative flex h-full flex-col items-center justify-end p-6 text-center text-white">
+                    <div className="mb-4 rounded-full bg-light-primary/90 p-3 dark:bg-dark-primary/90">
+                      <Icon className="h-8 w-8" />
+                    </div>
+                    <h3 className="mb-2 text-xl font-bold">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm font-medium text-gray-200">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
 
-      <div className="bg-white py-12 dark:bg-dark-card sm:py-16">
+      <div className="bg-light-card py-12 transition-colors dark:bg-dark-background sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             <div>

@@ -6,6 +6,7 @@ import { Phone } from 'lucide-react';
 import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
 import { AppRoutes } from './routes';
+import { Link } from 'react-router-dom';
 
 const queryClient = new QueryClient();
 
@@ -21,13 +22,13 @@ function App() {
             </main>
             <Footer />
             {/* Fixed Emergency Button */}
-            <a
-              href="tel:+33500000000"
+            <Link
+              to="/contact"
               className="fixed bottom-6 right-6 flex items-center space-x-2 rounded-full bg-light-primary px-6 py-3 text-white shadow-lg transition-all hover:bg-light-hover dark:bg-dark-primary dark:hover:bg-dark-hover"
             >
               <Phone className="h-5 w-5" />
               <span className="font-semibold">Urgence 24/7</span>
-            </a>
+            </Link>
           </div>
         </Router>
       </QueryClientProvider>
