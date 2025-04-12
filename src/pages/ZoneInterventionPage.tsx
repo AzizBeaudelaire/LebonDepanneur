@@ -215,7 +215,7 @@ export const ZoneInterventionPage = () => {
                 <div className="flex items-center justify-between">
                   <div>
                     <h3 className="text-xl font-semibold">Besoin d'assistance ?</h3>
-                    <p className="mt-1">Disponible 24h/24 - 7j/7</p>
+                    <p className="mt-1 font-bold">Disponible 24h/24 - 7j/7</p>
                   </div>
                   <Link
                     to="/contact"

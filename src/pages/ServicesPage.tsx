@@ -8,61 +8,61 @@ const services = [
   {
     icon: <Globe className="h-6 w-6" />,
     title: 'Transport Europe',
-    description: 'Service de transport spécialisé dans toute l\'Europe. Transport sécurisé de tous types de véhicules : particuliers, utilitaires, prestige, collection. Devis personnalisé et suivi en temps réel. Assurance tous risques incluse.',
+    description: 'Service de transport spécialisé dans toute l\'Europe\nTransport sécurisé de tous types de véhicules : particuliers, utilitaires, prestige, collection\nDevis personnalisé et suivi en temps réel.\nAssurance tous risques incluse',
     image: '/images/professional-truck-driver-entering-his-truck-long-vehicle-holding-thumbs-up.webp'
   },
   {
     icon: <Car className="h-6 w-6" />,
     title: 'Assistance',
-    description: 'Service d\'assistance routière disponible 24h/24 et 7j/7. Intervention rapide pour tous types de pannes. Diagnostic sur place et solutions immédiates quand possible. Équipe expérimentée et professionnelle.',
+    description: `Service d'assistance routière disponible 24h/24 et 7j/7\nIntervention rapide pour tous types de pannes\nDiagnostic sur place et solutions immédiates quand possible\nÉquipe expérimentée et professionnelle`,
     image: '/images/man-standing-by-broken-vehicle-calling-tow-service.webp'
-  },
+  },  
   {
     icon: <Wrench className="h-6 w-6" />,
     title: 'Dépannage',
-    description: 'Dépannage tous types de véhicules : voitures, motos, utilitaires, poids lourds. Intervention sur place pour pannes mécaniques, électriques, électroniques. Stock de pièces courantes pour réparation immédiate.',
+    description: 'Dépannage tous types de véhicules : voitures, motos, utilitaires, poids lourds\nIntervention sur place pour pannes mécaniques, électriques, électroniques\nStock de pièces courantes pour réparation immédiate',
     image: '/images/long-shot-man-swapping-tire.webp'
   },
   {
     icon: <Truck className="h-6 w-6" />,
     title: 'Remorquage',
-    description: 'Service de remorquage professionnel pour tous types de véhicules. Transport sécurisé vers le garage de votre choix. Équipement adapté pour véhicules bas, sportifs ou de collection. Intervention rapide sur autoroute.',
+    description: 'Service de remorquage professionnel pour tous types de véhicules\nTransport sécurisé vers le garage de votre choix\nÉquipement adapté pour véhicules bas, sportifs ou de collection\nIntervention rapide sur autoroute',
     image: '/images/remorquage.webp'
   },
   {
     icon: <Crane className="h-6 w-6" />,
     title: 'Levage, Grutage, Treuillage',
-    description: 'Services spécialisés de levage et grutage pour situations complexes. Équipement professionnel pour treuillage de véhicules. Intervention en conditions difficiles. Personnel qualifié et certifié.',
+    description: 'Services spécialisés de levage et grutage pour situations complexes\nÉquipement professionnel pour treuillage de véhicules\nIntervention en conditions difficiles\nPersonnel qualifié et certifié.',
     image: '/images/levage_grutage.webp'
   },
   {
     icon: <Key className="h-6 w-6" />,
     title: 'Perte de clés',
-    description: 'Service d\'intervention rapide en cas de perte ou de casse de clés. Reproduction de clés toutes marques, programmation de clés électroniques et télécommandes. Ouverture de véhicule sans dommage. Intervention sur site ou dépannage.',
+    description: 'Service d\'intervention rapide en cas de perte ou de casse de clés\nReproduction de clés toutes marques, programmation de clés électroniques et télécommandes\nOuverture de véhicule sans dommage.\nIntervention sur site ou dépannage.',
     image: '/images/lose_key.webp'
   },
   {
     icon: <Warehouse className="h-6 w-6" />,
     title: 'Fourrière',
-    description: 'Service agréé de mise en fourrière. Intervention sur demande des autorités ou des propriétaires. Procédure conforme à la réglementation. Stockage sécurisé et surveillance 24h/24.',
+    description: 'Service agréé de mise en fourrière\nIntervention sur demande des autorités ou des propriétaires\nProcédure conforme à la réglementation\nStockage sécurisé et surveillance 24h/24',
     image: '/images/fourriere01.webp'
   },
   {
     icon: <Settings className="h-6 w-6" />,
     title: 'Atelier réparation rapide',
-    description: 'Atelier équipé pour réparations rapides et entretien. Diagnostic professionnel et devis transparent. Réparations courantes sans rendez-vous. Techniciens qualifiés multispécialistes.',
+    description: 'Atelier équipé pour réparations rapides et entretien\nDiagnostic professionnel et devis transparent\nRéparations courantes sans rendez-vous\nTechniciens qualifiés multispécialistes',
     image: '/images/atelier_repa.webp'
   },
   {
     icon: <Spray className="h-6 w-6" />,
     title: 'Nettoyage de véhicule',
-    description: 'Service complet de nettoyage et détailing automobile. Nettoyage intérieur et extérieur professionnel. Traitement céramique et protection carrosserie. Rénovation des surfaces.',
+    description: 'Service complet de nettoyage et détailing automobile\nNettoyage intérieur et extérieur professionnel\nTraitement céramique et protection carrosserie\nRénovation des surfaces',
     image: '/images/nettoyage_car.webp'
   },
   {
     icon: <ShoppingBag className="h-6 w-6" />,
     title: 'Achat-Revente de véhicules',
-    description: 'Service d\'achat et de vente de véhicules toutes marques. Expertise professionnelle et transparente. Accompagnement dans les démarches administratives. Garantie satisfaction.',
+    description: 'Service d\'achat et de vente de véhicules toutes marques\nExpertise professionnelle et transparente\nAccompagnement dans les démarches administratives\nGarantie satisfaction',
     image: '/images/achat_revente.webp'
   }
 ];
@@ -124,7 +124,7 @@ const ServicesPage = () => {
           {/* Hero Section */}
           <div className="relative mb-16 overflow-hidden rounded-2xl bg-gradient-to-r from-light-primary to-light-hover text-white shadow-xl dark:from-dark-primary dark:to-dark-hover">
             <div className="relative z-10 p-8">
-              <div className="max-w-3xl">
+              <div className="max-w-6xl">
                 <h1 className="text-4xl font-bold">Services de Dépannage Auto</h1>
                 <p className="mt-4 text-lg font-bold">
                 Nous intervenons 24h/24 et 7j/7 pour le dépannage, remorquage et transport de tous types de véhicules, de la citadine au poids lourd.
@@ -183,7 +183,9 @@ const ServicesPage = () => {
                     </div>
                   </div>
                   <div className="p-4">
-                    <p className="text-gray-600 dark:text-gray-300">{service.description}</p>
+                  <p className="text-gray-600 dark:text-gray-300" style={{ whiteSpace: 'pre-line' }}>
+                    {service.description}
+                  </p>
                   </div>
                 </motion.div>
               ))}
@@ -219,7 +221,7 @@ const ServicesPage = () => {
           <section className="rounded-lg bg-light-primary p-8 text-white dark:bg-dark-primary">
             <div className="text-center">
               <h2 className="text-2xl font-bold">Besoin d'une intervention urgente ?</h2>
-              <p className="mt-4">
+              <p className="mt-4 font-bold">
                 Notre équipe est disponible 24h/24 et 7j/7 pour vous assister.
               </p>
               <div className="mt-6 flex justify-center space-x-4">

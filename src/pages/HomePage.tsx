@@ -71,7 +71,7 @@ export const HomePage = () => {
         />
       </Helmet>
 
-      <div className="relative min-h-[80vh] bg-gray-800">
+      <div className="relative min-h-[90vh] bg-gray-800">
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40"
           style={{ 

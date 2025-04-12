@@ -193,8 +193,8 @@ const GalleryPage = () => {
             <div className="relative z-10 p-8 sm:p-12">
               <div className="max-w-3xl">
                 <h1 className="text-4xl font-bold sm:text-5xl">Notre Flotte</h1>
-                <p className="mt-4 text-lg sm:text-xl">
-                  Une flotte moderne et adaptée à tous types d'interventions
+                <p className="mt-4 text-lg sm:text-xl font-bold">
+                Véhicules récents et bien équipés, adaptés à tous types d'interventions, du dépannage local au transport longue distance.
                 </p>
               </div>
             </div>

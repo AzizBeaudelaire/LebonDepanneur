@@ -1,6 +1,4 @@
 import { z } from 'zod';
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
-import { db } from '../lib/firebase';
 
 // Contact form validation schema
 export const contactFormSchema = z.object({
@@ -14,14 +12,20 @@ export const contactFormSchema = z.object({
 
 export type ContactFormData = z.infer<typeof contactFormSchema>;
 
-// Function to send contact form data to Firebase
+// Function to send email
 export const sendContactEmail = async (formData: ContactFormData): Promise<void> => {
   try {
-    // Add document to Firestore
-    await addDoc(collection(db, 'contacts'), {
-      ...formData,
-      createdAt: serverTimestamp()
+    const response = await fetch('/api/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
     });
+
+    if (!response.ok) {
+      throw new Error('Erreur lors de l\'envoi du formulaire');
+    }
   } catch (error) {
     console.error('Erreur:', error);
     throw new Error('Erreur lors de l\'envoi du formulaire');
