@@ -6,6 +6,7 @@ import { z } from 'zod';
 
 export const ContactPage = () => {
   const [formData, setFormData] = useState<ContactFormData>({
+    date: '',
     name: '',
     email: '',
     phone: '',
@@ -27,6 +28,7 @@ export const ContactPage = () => {
       const validatedData = contactFormSchema.parse(formData);
       await sendContactEmail(validatedData);
       setFormData({
+        date: '',
         name: '',
         email: '',
         phone: '',
@@ -166,6 +168,26 @@ export const ContactPage = () => {
               )}
 
               <div className="space-y-6">
+                <div>
+                  <label htmlFor="date" className="block text-sm font-medium text-light-text dark:text-dark-text">
+                    Date souhaitée
+                  </label>
+                  <input
+                    type="date"
+                    name="date"
+                    id="date"
+                    value={formData.date}
+                    onChange={handleChange}
+                    className={`mt-1 block w-full rounded-md border ${
+                      errors.date ? 'border-red-500' : 'border-light-border dark:border-dark-border'
+                    } bg-white px-3 py-2 text-light-text shadow-sm transition-colors focus:border-light-primary focus:outline-none focus:ring-light-primary dark:bg-dark-background dark:text-dark-text dark:focus:border-dark-primary dark:focus:ring-dark-primary`}
+                    required
+                  />
+                  {errors.date && (
+                    <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.date}</p>
+                  )}
+                </div>
+
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-light-text dark:text-dark-text">
                     Nom complet

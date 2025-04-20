@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Car, Sun, Moon, Menu, X } from 'lucide-react';
+import { Sun, Moon, Menu, X } from 'lucide-react';
 import { useTheme } from '../../hooks/useTheme';
 
 export const Header = () => {
@@ -10,10 +10,13 @@ export const Header = () => {
   return (
     <header className="sticky top-0 z-50 bg-light-header text-white transition-colors duration-300 dark:bg-dark-header">
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
-          <Link to="/" className="flex items-center space-x-2">
-            <Car className="h-8 w-8 text-light-primary dark:text-dark-primary" />
-            <span className="text-xl font-bold">Le Bon Dépanneur</span>
+        <div className="flex h-16 sm:h-20 md:h-24 items-center justify-between">
+          <Link to="/" className="flex items-center">
+            <img 
+              src="/images/LogoDépannage.webp" 
+              alt="Le Bon Dépanneur Logo" 
+              className="h-12 sm:h-16 md:h-20 w-auto"
+            />
           </Link>
 
           {/* Mobile menu button */}
@@ -33,34 +36,34 @@ export const Header = () => {
           </div>
 
           {/* Desktop menu */}
-          <div className="hidden items-center space-x-8 md:flex">
+          <div className="hidden items-center space-x-4 lg:space-x-8 md:flex">
             <Link 
               to="/" 
-              className="rounded-md px-3 py-2 text-white transition-colors hover:bg-light-primary/10 dark:hover:bg-dark-primary/10"
+              className="rounded-md px-2 lg:px-3 py-2 text-sm lg:text-base text-white transition-colors hover:bg-light-primary/10 dark:hover:bg-dark-primary/10"
             >
               Accueil
             </Link>
             <Link 
               to="/services" 
-              className="text-white transition-colors hover:text-light-primary dark:hover:text-dark-primary"
+              className="text-sm lg:text-base text-white transition-colors hover:text-light-primary dark:hover:text-dark-primary"
             >
               Services
             </Link>
             <Link 
               to="/gallerie" 
-              className="text-white transition-colors hover:text-light-primary dark:hover:text-dark-primary"
+              className="text-sm lg:text-base text-white transition-colors hover:text-light-primary dark:hover:text-dark-primary"
             >
               Gallerie
             </Link>
             <Link 
               to="/zone-intervention" 
-              className="text-white transition-colors hover:text-light-primary dark:hover:text-dark-primary"
+              className="text-sm lg:text-base text-white transition-colors hover:text-light-primary dark:hover:text-dark-primary"
             >
               Zone d'intervention
             </Link>
             <Link 
               to="/contact" 
-              className="text-white transition-colors hover:text-light-primary dark:hover:text-dark-primary"
+              className="text-sm lg:text-base text-white transition-colors hover:text-light-primary dark:hover:text-dark-primary"
             >
               Contact
             </Link>
@@ -75,8 +78,10 @@ export const Header = () => {
         </div>
 
         {/* Mobile menu */}
-        <div className={`${isMenuOpen ? 'block' : 'hidden'} md:hidden`}>
-          <div className="space-y-1 px-2 pb-3 pt-2">
+        <div 
+          className={`${isMenuOpen ? 'block' : 'hidden'} md:hidden fixed inset-0 top-16 sm:top-20 bg-light-header dark:bg-dark-header z-50`}
+        >
+          <div className="flex flex-col space-y-2 px-4 py-6">
             <Link
               to="/"
               className="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-light-primary/10 dark:hover:bg-dark-primary/10"
