@@ -365,14 +365,14 @@ var require_main = __commonJS({
   }
 });
 
-// netlify/functions/contact.ts
+// netlify/functions/contact.js
 var contact_exports = {};
 __export(contact_exports, {
   handler: () => handler
 });
 module.exports = __toCommonJS(contact_exports);
 
-// src/lib/db.ts
+// src/lib/db.js
 var import_mongoose = __toESM(require("mongoose"));
 var import_dotenv = __toESM(require_main());
 import_dotenv.default.config();
@@ -429,7 +429,7 @@ var contactSchema = new import_mongoose.default.Schema({
 });
 var Contact = import_mongoose.default.models.Contact || import_mongoose.default.model("Contact", contactSchema);
 
-// netlify/functions/contact.ts
+// netlify/functions/contact.js
 var corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers": "Content-Type",

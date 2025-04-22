@@ -365,14 +365,14 @@ var require_main = __commonJS({
   }
 });
 
-// netlify/functions/sendFormData.ts
+// netlify/functions/sendFormData.js
 var sendFormData_exports = {};
 __export(sendFormData_exports, {
   handler: () => handler
 });
 module.exports = __toCommonJS(sendFormData_exports);
 
-// src/lib/db.ts
+// src/lib/db.js
 var import_mongoose = __toESM(require("mongoose"));
 var import_dotenv = __toESM(require_main());
 import_dotenv.default.config();
@@ -429,7 +429,7 @@ var contactSchema = new import_mongoose.default.Schema({
 });
 var Contact = import_mongoose.default.models.Contact || import_mongoose.default.model("Contact", contactSchema);
 
-// netlify/functions/sendFormData.ts
+// netlify/functions/sendFormData.js
 var import_nodemailer = __toESM(require("nodemailer"));
 var import_dotenv2 = __toESM(require_main());
 import_dotenv2.default.config();
