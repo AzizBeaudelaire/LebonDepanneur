@@ -11,9 +11,9 @@
   to = "/index.html"
   status = 200
 
-[functions]
-  node_bundler = "esbuild"
+[functions."*"]
   external_node_modules = ["mongoose", "nodemailer"]
+  node_bundler = "esbuild"
 
 [build.environment]
   NODE_VERSION = "20"

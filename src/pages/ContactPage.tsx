@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { ReCAPTCHA } from 'react-google-recaptcha';
 import { Phone, Mail, MapPin, Clock, Instagram } from 'lucide-react';
 import { contactFormSchema, type ContactFormData, sendContactEmail } from '../services/contact';
 import { z } from 'zod';
