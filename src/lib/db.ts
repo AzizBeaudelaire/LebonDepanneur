@@ -1,4 +1,6 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
+dotenv.config();
 
 const MONGODB_URI = process.env.MONGODB_URI;
 
@@ -59,4 +61,4 @@ const contactSchema = new mongoose.Schema({
 });
 
 // Modèle Mongoose
-export const Contact = mongoose.models.Contact || mongoose.model("Contact", contactSchema);
+export const Contact = mongoose.models.Contact || mongoose.model("Contact", contactSchema); 

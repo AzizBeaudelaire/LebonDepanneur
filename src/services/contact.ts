@@ -16,6 +16,8 @@ export type ContactFormData = z.infer<typeof contactFormSchema>;
 // Function to send contact form data
 export const sendContactEmail = async (formData: ContactFormData): Promise<void> => {
   try {
+    console.log('Envoi des données:', formData);
+    
     const response = await fetch('/.netlify/functions/contact', {
       method: 'POST',
       headers: {
@@ -24,15 +26,17 @@ export const sendContactEmail = async (formData: ContactFormData): Promise<void>
       body: JSON.stringify(formData),
     });
 
+    const data = await response.json();
+    
     if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.error || 'Erreur lors de l\'envoi du formulaire');
+      console.error('Erreur serveur:', data);
+      throw new Error(data.error || 'Erreur lors de l\'envoi du formulaire');
     }
 
-    const data = await response.json();
-    console.log('Formulaire envoyé avec succès:', data);
+    console.log('Réponse du serveur:', data);
+    return data;
   } catch (error) {
-    console.error('Erreur:', error);
+    console.error('Erreur lors de l\'envoi:', error);
     throw error;
   }
 };

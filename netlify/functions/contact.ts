@@ -1,33 +1,32 @@
 import { Handler } from "@netlify/functions";
 import { connectToDatabase, Contact } from "../../src/lib/db";
 
-export const handler: Handler = async (event) => {
-  // Enable CORS
-  const headers = {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Headers': 'Content-Type',
-    'Access-Control-Allow-Methods': 'POST, OPTIONS'
-  };
+const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': 'Content-Type',
+  'Access-Control-Allow-Methods': 'POST, OPTIONS'
+};
 
+export const handler: Handler = async (event) => {
   // Handle preflight requests
   if (event.httpMethod === 'OPTIONS') {
     return {
       statusCode: 204,
-      headers
+      headers: corsHeaders
     };
   }
 
   if (event.httpMethod !== "POST") {
     return {
       statusCode: 405,
-      headers,
+      headers: corsHeaders,
       body: JSON.stringify({ error: "Méthode non autorisée" })
     };
   }
 
   try {
     await connectToDatabase();
-
+    
     const data = JSON.parse(event.body || "{}");
 
     // Validate required fields
@@ -36,7 +35,7 @@ export const handler: Handler = async (event) => {
       if (!data[field]) {
         return {
           statusCode: 400,
-          headers,
+          headers: corsHeaders,
           body: JSON.stringify({ error: `Le champ ${field} est requis` })
         };
       }
@@ -47,7 +46,7 @@ export const handler: Handler = async (event) => {
 
     return {
       statusCode: 200,
-      headers,
+      headers: corsHeaders,
       body: JSON.stringify({ 
         message: "Formulaire envoyé avec succès !",
         contact: newContact
@@ -57,7 +56,7 @@ export const handler: Handler = async (event) => {
     console.error("Erreur serveur :", error);
     return {
       statusCode: 500,
-      headers,
+      headers: corsHeaders,
       body: JSON.stringify({ 
         error: "Une erreur est survenue lors de l'enregistrement du formulaire" 
       })
