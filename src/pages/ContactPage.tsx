@@ -1,11 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { ReCAPTCHA } from 'react-google-recaptcha';
 import { Phone, Mail, MapPin, Clock, Instagram } from 'lucide-react';
-import { contactFormSchema, type ContactFormData, sendContactEmail } from '../services/contact';
+import { contactFormSchema, type ContactFormData, sendContactEmail, EmailSendError } from '../services/contact';
 import { z } from 'zod';
 
+const serviceOptions = {
+  transport: "Transport Europe",
+  assistance: "Assistance",
+  depannage: "Dépannage",
+  remorquage: "Remorquage",
+  levage: "Levage, Grutage, Treuillage",
+  fourriere: "Fourrière",
+  atelier: "Atelier réparation rapide",
+  clefs: "Perte de clés",
+  nettoyage: "Nettoyage de véhicule",
+  "achat-revente": "Achat-Revente de véhicules"
+};
+
 export const ContactPage = () => {
+  const formRef = useRef<HTMLFormElement>(null);
   const [formData, setFormData] = useState<ContactFormData>({
     date: '',
     name: '',
@@ -19,14 +32,19 @@ export const ContactPage = () => {
   const [errors, setErrors] = useState<Partial<ContactFormData>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setErrors({});
+    setErrorMessage('');
 
     try {
-      const validatedData = contactFormSchema.parse(formData);
+      const validatedData = contactFormSchema.parse({
+        ...formData,
+        service: serviceOptions[formData.service as keyof typeof serviceOptions] || formData.service
+      });
       await sendContactEmail(validatedData);
       setFormData({
         date: '',
@@ -39,6 +57,8 @@ export const ContactPage = () => {
       });
       setSubmitStatus('success');
     } catch (error) {
+      console.error('Erreur lors de la soumission:', error);
+      
       if (error instanceof z.ZodError) {
         const fieldErrors: Partial<ContactFormData> = {};
         error.errors.forEach((err) => {
@@ -47,11 +67,20 @@ export const ContactPage = () => {
           }
         });
         setErrors(fieldErrors);
+        setErrorMessage('Veuillez corriger les erreurs dans le formulaire.');
+      } else if (error instanceof EmailSendError) {
+        setErrorMessage(error.message);
+      } else {
+        setErrorMessage('Une erreur inattendue est survenue. Veuillez réessayer.');
       }
+      
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
-      setTimeout(() => setSubmitStatus('idle'), 5000);
+      setTimeout(() => {
+        setSubmitStatus('idle');
+        setErrorMessage('');
+      }, 5000);
     }
   };
 
@@ -99,10 +128,10 @@ export const ContactPage = () => {
                     <div>
                       <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Téléphone</p>
                       <a 
-                        href="tel:0770103429" 
+                        href="tel:0768261050" 
                         className="mt-1 block text-lg font-semibold text-light-primary transition-colors hover:text-light-hover dark:text-dark-primary dark:hover:text-dark-hover sm:text-xl"
                       >
-                        07 70 10 34 29
+                        07 68 26 10 50
                       </a>
                     </div>
                   </div>
@@ -114,10 +143,10 @@ export const ContactPage = () => {
                     <div>
                       <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Email</p>
                       <a 
-                        href="mailto:hugo.mehdi197@gmail.com"
+                        href="mailto:contactlebondepannage@gmail.com"
                         className="mt-1 block text-base text-gray-600 transition-colors hover:text-light-primary dark:text-gray-300 dark:hover:text-dark-primary sm:text-lg"
                       >
-                        hugo.mehdi197@gmail.com
+                        contactlebondepannage@gmail.com
                       </a>
                     </div>
                   </div>
@@ -159,7 +188,7 @@ export const ContactPage = () => {
                     <span className="text-sm text-gray-600 dark:text-gray-300">@depannage_toulouse</span>
                   </a>
                   <a
-                    href="https://wa.me/33770103429"
+                    href="https://wa.me/33768261050"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center space-x-2 rounded-lg bg-light-primary/10 px-4 py-2 transition-colors hover:bg-light-primary/20 dark:bg-dark-primary/10 dark:hover:bg-dark-primary/20"
@@ -186,23 +215,7 @@ export const ContactPage = () => {
 
             {/* Contact Form */}
             <div className="order-2">
-              <form onSubmit={handleSubmit} className="rounded-lg bg-white p-6 shadow-lg transition-colors dark:bg-dark-card sm:p-8">
-                {submitStatus === 'success' && (
-                  <div className="mb-6 rounded-md bg-green-50 p-4 dark:bg-green-900">
-                    <p className="text-green-800 dark:text-green-200">
-                      Votre message a été envoyé avec succès. Nous vous contacterons dans les plus brefs délais.
-                    </p>
-                  </div>
-                )}
-
-                {submitStatus === 'error' && (
-                  <div className="mb-6 rounded-md bg-red-50 p-4 dark:bg-red-900">
-                    <p className="text-red-800 dark:text-red-200">
-                      Une erreur est survenue lors de l'envoi du message. Veuillez réessayer.
-                    </p>
-                  </div>
-                )}
-
+              <form ref={formRef} onSubmit={handleSubmit} className="rounded-lg bg-white p-6 shadow-lg transition-colors dark:bg-dark-card sm:p-8">
                 <div className="space-y-6">
                   <div>
                     <label htmlFor="date" className="block text-sm font-medium text-light-text dark:text-dark-text">
@@ -299,16 +312,11 @@ export const ContactPage = () => {
                       required
                     >
                       <option value="">Sélectionnez le type d'intervention</option>
-                      <option value="transport">Transport Europe</option>
-                      <option value="assistance">Assistance</option>
-                      <option value="depannage">Dépannage</option>
-                      <option value="remorquage">Remorquage</option>
-                      <option value="levage">Levage, Grutage, Treuillage</option>
-                      <option value="fourriere">Fourrière</option>
-                      <option value="atelier">Atelier réparation rapide</option>
-                      <option value="clefs">Perte de cléfs</option>
-                      <option value="nettoyage">Nettoyage de véhicule</option>
-                      <option value="achat-revente">Achat-Revente de véhicules</option>
+                      {Object.entries(serviceOptions).map(([value, label]) => (
+                        <option key={value} value={value}>
+                          {label}
+                        </option>
+                      ))}
                     </select>
                     {errors.service && (
                       <p className="mt-2 text-sm text-red-600 dark:text-red-400">{errors.service}</p>
@@ -365,6 +373,23 @@ export const ContactPage = () => {
                   >
                     {isSubmitting ? 'Envoi en cours...' : 'Envoyer'}
                   </button>
+
+                  {/* Status Messages */}
+                  {submitStatus === 'success' && (
+                    <div className="mt-4 rounded-md bg-green-50 p-4 dark:bg-green-900">
+                      <p className="text-green-800 dark:text-green-200">
+                        Votre message a été envoyé avec succès. Nous vous contacterons dans les plus brefs délais.
+                      </p>
+                    </div>
+                  )}
+
+                  {submitStatus === 'error' && (
+                    <div className="mt-4 rounded-md bg-red-50 p-4 dark:bg-red-900">
+                      <p className="text-red-800 dark:text-red-200">
+                        {errorMessage || 'Une erreur est survenue lors de l\'envoi du message. Veuillez réessayer.'}
+                      </p>
+                    </div>
+                  )}
                 </div>
               </form>
             </div>

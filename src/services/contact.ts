@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import emailjs from '@emailjs/browser';
 
 // Contact form validation schema
 export const contactFormSchema = z.object({
@@ -13,30 +14,48 @@ export const contactFormSchema = z.object({
 
 export type ContactFormData = z.infer<typeof contactFormSchema>;
 
-// Function to send contact form data
+// Initialize EmailJS with your public key
+emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
+
+export class EmailSendError extends Error {
+  constructor(message: string, public details?: any) {
+    super(message);
+    this.name = 'EmailSendError';
+  }
+}
+
+// Function to send contact form data using EmailJS
 export const sendContactEmail = async (formData: ContactFormData): Promise<void> => {
   try {
-    console.log('Envoi des données:', formData);
-    
-    const response = await fetch('/.netlify/functions/contact', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    });
+    const templateParams = {
+      date: formData.date,
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      service: formData.service,
+      vehicleModel: formData.vehicleModel,
+      message: formData.message,
+    };
 
-    const data = await response.json();
+    const response = await emailjs.send(
+      import.meta.env.VITE_EMAILJS_SERVICE_ID,
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+      templateParams,
+      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+    );
+
+    if (response.status !== 200) {
+      throw new EmailSendError('Erreur lors de l&apos;envoi du message');
+    }
+  } catch (error) {
+    console.error('Erreur lors de l&apos;envoi:', error);
     
-    if (!response.ok) {
-      console.error('Erreur serveur:', data);
-      throw new Error(data.error || 'Erreur lors de l\'envoi du formulaire');
+    if (error instanceof EmailSendError) {
+      throw error;
     }
 
-    console.log('Réponse du serveur:', data);
-    return data;
-  } catch (error) {
-    console.error('Erreur lors de l\'envoi:', error);
-    throw error;
+    throw new EmailSendError(
+      'Une erreur est survenue lors de l&apos;envoi du message. Veuillez réessayer plus tard.'
+    );
   }
 };
