@@ -59,7 +59,7 @@ export const Footer = () => {
               <li className="flex items-center">
                 <Phone className="mr-2 h-5 w-5" />
                 <Link to="/contact" className="text-gray-300 transition-colors duration-200 hover:text-white">
-                  07 70 10 34 29
+                  7 68 26 10 50
                 </Link>
               </li>
               <li className="flex items-center">
