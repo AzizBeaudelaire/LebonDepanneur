@@ -21,7 +21,7 @@ export const Footer = () => {
             {/* Social Media Links */}
             <div className="mt-6 flex space-x-4">
               <a
-                href="https://instagram.com/depannage_toulouse"
+                href="https://instagram.com/lebon_remorquage"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-full bg-white/10 p-2 transition-colors hover:bg-light-primary dark:hover:bg-dark-primary"
@@ -59,7 +59,7 @@ export const Footer = () => {
               <li className="flex items-center">
                 <Phone className="mr-2 h-5 w-5" />
                 <Link to="/contact" className="text-gray-300 transition-colors duration-200 hover:text-white">
-                  7 68 26 10 50
+                  07 68 26 10 50
                 </Link>
               </li>
               <li className="flex items-center">
