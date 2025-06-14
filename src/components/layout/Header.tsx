@@ -14,7 +14,7 @@ export const Header = () => {
           <Link to="/" className="flex items-center">
             <img 
               src="/images/LogoDépannage.webp" 
-              alt="Le Bon Dépanneur Logo" 
+              alt="Le Bon Remorquage Logo" 
               className="h-12 sm:h-16 md:h-20 w-auto"
             />
           </Link>

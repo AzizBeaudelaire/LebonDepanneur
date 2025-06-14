@@ -11,17 +11,17 @@ export const Footer = () => {
             <div className="flex items-center">
               <img 
                 src="/images/LogoDépannage.webp" 
-                alt="Le Bon Dépanneur Logo" 
+                alt="Le Bon Remorquage Logo" 
                 className="h-12 w-auto"
               />
             </div>
             <p className="mt-4 text-gray-300">
-              Service de dépannage automobile professionnel disponible 24h/24 et 7j/7 sur Toulouse et sa région.
+              Service de remorquage automobile professionnel disponible 24h/24 et 7j/7 sur Toulouse et sa région.
             </p>
             {/* Social Media Links */}
             <div className="mt-6 flex space-x-4">
               <a
-                href="https://instagram.com/lebon_remorquage"
+                href="https://instagram.com/depannage_toulouse"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-full bg-white/10 p-2 transition-colors hover:bg-light-primary dark:hover:bg-dark-primary"
@@ -65,7 +65,7 @@ export const Footer = () => {
               <li className="flex items-center">
                 <Mail className="mr-2 h-5 w-5" />
                 <Link to="/contact" className="text-gray-300 transition-colors duration-200 hover:text-white">
-                  contactlebondepannage@gmail.com
+                  contactlebonremorquage@gmail.com
                 </Link>
               </li>
               <li className="flex items-center">
@@ -92,7 +92,7 @@ export const Footer = () => {
         </div>
         <div className="mt-8 border-t border-gray-800 pt-8 text-center">
           <p className="text-gray-300">
-            © {new Date().getFullYear()} Le Bon Dépanneur. Tous droits réservés.
+            © {new Date().getFullYear()} Le Bon Remorquage. Tous droits réservés.
           </p>
         </div>
       </div>

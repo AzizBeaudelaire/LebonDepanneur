@@ -30,5 +30,3 @@ yarn-error.log*
 
 # Scripts directory
 scripts/
-# Local Netlify folder
-.netlify
