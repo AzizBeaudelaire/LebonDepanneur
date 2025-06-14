@@ -9,7 +9,7 @@ export const Header = () => {
         React.createElement("nav", { className: "mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" },
             React.createElement("div", { className: "flex h-16 sm:h-20 md:h-24 items-center justify-between" },
                 React.createElement(Link, { to: "/", className: "flex items-center" },
-                    React.createElement("img", { src: "/images/LogoD\u00E9pannage.webp", alt: "Le Bon D\u00E9panneur Logo", className: "h-12 sm:h-16 md:h-20 w-auto" })),
+                    React.createElement("img", { src: "/images/LogoD\u00E9pannage.webp", alt: "Le Bon Remorquage Logo", className: "h-12 sm:h-16 md:h-20 w-auto" })),
                 React.createElement("div", { className: "flex md:hidden" },
                     React.createElement("button", { onClick: () => setIsMenuOpen(!isMenuOpen), className: "inline-flex items-center justify-center rounded-md p-2 text-white hover:bg-light-primary/10 dark:hover:bg-dark-primary/10", "aria-expanded": "false" },
                         React.createElement("span", { className: "sr-only" }, "Open main menu"),

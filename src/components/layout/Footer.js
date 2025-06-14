@@ -7,10 +7,10 @@ export const Footer = () => {
             React.createElement("div", { className: "grid grid-cols-1 gap-8 md:grid-cols-3" },
                 React.createElement("div", null,
                     React.createElement("div", { className: "flex items-center" },
-                        React.createElement("img", { src: "/images/LogoD\u00E9pannage.webp", alt: "Le Bon D\u00E9panneur Logo", className: "h-12 w-auto" })),
-                    React.createElement("p", { className: "mt-4 text-gray-300" }, "Service de d\u00E9pannage automobile professionnel disponible 24h/24 et 7j/7 sur Toulouse et sa r\u00E9gion."),
+                        React.createElement("img", { src: "/images/LogoD\u00E9pannage.webp", alt: "Le Bon Remorquage Logo", className: "h-12 w-auto" })),
+                    React.createElement("p", { className: "mt-4 text-gray-300" }, "Service de remorquage automobile professionnel disponible 24h/24 et 7j/7 sur Toulouse et sa r\u00E9gion."),
                     React.createElement("div", { className: "mt-6 flex space-x-4" },
-                        React.createElement("a", { href: "https://instagram.com/lebon_remorquage", target: "_blank", rel: "noopener noreferrer", className: "rounded-full bg-white/10 p-2 transition-colors hover:bg-light-primary dark:hover:bg-dark-primary", "aria-label": "Suivez-nous sur Instagram" },
+                        React.createElement("a", { href: "https://instagram.com/depannage_toulouse", target: "_blank", rel: "noopener noreferrer", className: "rounded-full bg-white/10 p-2 transition-colors hover:bg-light-primary dark:hover:bg-dark-primary", "aria-label": "Suivez-nous sur Instagram" },
                             React.createElement(Instagram, { className: "h-6 w-6" })),
                         React.createElement("a", { href: "https://wa.me/33768261050", target: "_blank", rel: "noopener noreferrer", className: "rounded-full bg-white/10 p-2 transition-colors hover:bg-light-primary dark:hover:bg-dark-primary", "aria-label": "Contactez-nous sur WhatsApp" },
                             React.createElement("svg", { className: "h-6 w-6", viewBox: "0 0 24 24", fill: "currentColor" },
@@ -26,7 +26,7 @@ export const Footer = () => {
                             React.createElement(Link, { to: "/contact", className: "text-gray-300 transition-colors duration-200 hover:text-white" }, "07 68 26 10 50")),
                         React.createElement("li", { className: "flex items-center" },
                             React.createElement(Mail, { className: "mr-2 h-5 w-5" }),
-                            React.createElement(Link, { to: "/contact", className: "text-gray-300 transition-colors duration-200 hover:text-white" }, "contactlebondepannage@gmail.com")),
+                            React.createElement(Link, { to: "/contact", className: "text-gray-300 transition-colors duration-200 hover:text-white" }, "contactlebonremorquage@gmail.com")),
                         React.createElement("li", { className: "flex items-center" },
                             React.createElement(MapPin, { className: "mr-2 h-5 w-5" }),
                             React.createElement("span", { className: "text-gray-300" }, "Toulouse, France")))),
@@ -41,5 +41,5 @@ export const Footer = () => {
                 React.createElement("p", { className: "text-gray-300" },
                     "\u00A9 ",
                     new Date().getFullYear(),
-                    " Le Bon D\u00E9panneur. Tous droits r\u00E9serv\u00E9s.")))));
+                    " Le Bon Remorquage. Tous droits r\u00E9serv\u00E9s.")))));
 };
