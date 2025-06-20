@@ -44,6 +44,15 @@ export class EmailSendError extends Error {
   }
 }
 
+// Type guard functions to check error properties safely
+const hasResponse = (error: unknown): error is { response: any } => {
+  return typeof error === 'object' && error !== null && 'response' in error;
+};
+
+const hasText = (error: unknown): error is { text: any } => {
+  return typeof error === 'object' && error !== null && 'text' in error;
+};
+
 // Function to send SMS notifications via ClickSend API
 // This is called after successful email submission to notify the service provider
 const sendSMS = async (formData: ContactFormData): Promise<void> => {
@@ -99,6 +108,14 @@ Message : ${formData.message}`;
 // This sends both an email via EmailJS and an SMS via ClickSend
 export const sendContactEmail = async (formData: ContactFormData): Promise<void> => {
   try {
+    // DEBUG: Log the form data being sent to EmailJS
+    console.log('=== DEBUG: Données envoyées à EmailJS ===');
+    console.log('FormData:', formData);
+    console.log('Service ID:', import.meta.env.VITE_EMAILJS_SERVICE_ID);
+    console.log('Template ID:', import.meta.env.VITE_EMAILJS_TEMPLATE_ID);
+    console.log('Public Key:', import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
+    console.log('==========================================');
+
     // Send email using EmailJS
     // This uses the service ID, template ID, and public key from environment variables
     const emailResponse = await emailjs.send(
@@ -107,6 +124,8 @@ export const sendContactEmail = async (formData: ContactFormData): Promise<void>
       formData,
       import.meta.env.VITE_EMAILJS_PUBLIC_KEY
     );
+
+    console.log('EmailJS Response:', emailResponse);
 
     // Check if email was sent successfully
     if (emailResponse.status !== 200) {
@@ -118,6 +137,14 @@ export const sendContactEmail = async (formData: ContactFormData): Promise<void>
   } catch (error) {
     console.error('Erreur lors de l\'envoi:', error);
     
+    // Log more detailed error information using type guards
+    if (hasResponse(error)) {
+      console.error('Error response:', error.response);
+    }
+    if (hasText(error)) {
+      console.error('Error text:', error.text);
+    }
+    
     // Handle specific EmailSendError separately
     if (error instanceof EmailSendError) {
       throw error;
@@ -125,7 +152,8 @@ export const sendContactEmail = async (formData: ContactFormData): Promise<void>
 
     // Handle all other errors with a generic message
     throw new EmailSendError(
-      'Une erreur est survenue lors de l\'envoi du message. Veuillez réessayer plus tard.'
+      'Une erreur est survenue lors de l\'envoi du message. Veuillez réessayer plus tard.',
+      error
     );
   }
 };

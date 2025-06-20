@@ -105,11 +105,11 @@ const interventionPhotos = [
         title: 'Dépannage nocturne',
         description: 'Intervention d\'urgence de nuit pour une panne mécanique',
         images: [
-            '/images/nuit.jpg',
-            '/images/nuit2.jpg',
-            '/images/nuit3.jpg',
-            '/images/nuit4.jpg',
-            '/images/nuit5.jpg'
+            '/images/Nuit.webp',
+            '/images/Nuit2.webp',
+            '/images/Nuit3.webp',
+            '/images/Nuit4.webp',
+            '/images/Nuit5.webp'
         ]
     },
     {
