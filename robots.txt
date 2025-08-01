@@ -1,4 +1,23 @@
+# robots.txt pour Le Bon Remorquage
+
+# Autorise tous les robots à explorer le site
 User-agent: *
 Allow: /
 
-Sitemap: https://depannage-auto-toulouse.netlify.app/sitemap.xml
+# Interdit l'accès à certains dossiers ou fichiers techniques (optionnel si non existants)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /cgi-bin/
+Disallow: /404
+Disallow: /*.ts$
+Disallow: /*.tsx$
+Disallow: /netlify/functions/
+
+# Temps de crawl entre chaque requête (utile si tu as un petit hébergement)
+Crawl-delay: 10
+
+# Sitemap XML pour aider à l’indexation
+Sitemap: https://www.lebonremorquage.com/sitemap.xml
+
+# Informations de contact (optionnel, mais bon pour la transparence)
+# Contact: contactlebondepannage@gmail.com
