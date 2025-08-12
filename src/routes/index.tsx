@@ -7,6 +7,7 @@ import { EmergencyPage } from '../pages/EmergencyPage';
 import { NotFoundPage } from '../pages/NotFoundPage';
 import { ZoneInterventionPage } from '../pages/ZoneInterventionPage';
 import GalleryPage from '../pages/GalleryPage';
+import { MentionsLegalesPage } from '../pages/MentionsLegalesPage';
 
 export const AppRoutes = () => {
   return (
@@ -17,6 +18,7 @@ export const AppRoutes = () => {
       <Route path="/urgence" element={<EmergencyPage />} />
       <Route path="/zone-intervention" element={<ZoneInterventionPage />} />
       <Route path="/gallerie" element={<GalleryPage />} />
+      <Route path="/mentions-legales" element={<MentionsLegalesPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
