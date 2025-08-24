@@ -2,31 +2,23 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    
-    <!-- Favicon personnalisée -->
+
+    <!-- Favicon -->
     <link rel="icon" type="image/webp" href="/images/LogoDépannage.webp" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- SEO Title + Description -->
-    <title>Remorquage Auto Toulouse | Le Bon Remorquage 24h/24</title>
-    <meta name="description" content="Le Bon Remorquage à Toulouse intervient 24h/24 pour tous vos dépannages auto, moto, utilitaires et poids-lourds. Remorqueuse rapide, fiable et professionnelle." />
-
-    <!-- Keywords (facultatif) -->
-    <meta name="keywords" content="remorquage auto Toulouse, dépannage voiture, remorqueuse, dépanneuse, crevaison, batterie, assistance routière, remorquage poids-lourds, moto, utilitaire, Purpan, Colomiers" />
-
-    <!-- Local SEO -->
-    <meta name="geo.region" content="FR-31" />
-    <meta name="geo.placename" content="Toulouse" />
-    <meta name="geo.position" content="43.6045;1.4440" />
-    <meta name="ICBM" content="43.6045, 1.4440" />
+    <!-- Fallback SEO -->
+    <title>Le Bon Remorquage Toulouse – Dépannage & remorquage 24/7</title>
+    <meta name="description" content="Remorquage et dépannage 24h/24 et 7j/7 à Toulouse et alentours. Intervention rapide. Téléphone : 07 68 26 10 50." />
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Le Bon Remorquage - Dépannage auto 24h/24 à Toulouse" />
-    <meta property="og:description" content="Remorquage voiture, moto, poids-lourd. Intervention rapide à Toulouse et alentours. Disponible 7j/7. Appelez-nous !" />
-    <meta property="og:url" content="https://www.lebonremorquage.com" />
+    <meta property="og:title" content="Le Bon Remorquage Toulouse – 24/7" />
+    <meta property="og:description" content="Remorquage voiture, moto, utilitaires et poids-lourds. Intervention rapide à Toulouse et alentours." />
+    <meta property="og:url" content="https://www.lebonremorquage.com/" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://www.lebonremorquage.com/og-image.jpg" />
+    <meta property="og:site_name" content="Le Bon Remorquage" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -36,9 +28,29 @@
 
     <!-- Canonical -->
     <link rel="canonical" href="https://www.lebonremorquage.com/" />
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Le Bon Remorquage",
+      "url": "https://www.lebonremorquage.com/",
+      "logo": "https://www.lebonremorquage.com/og-image.jpg",
+      "telephone": "+33768261050",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Toulouse",
+        "postalCode": "31000",
+        "addressCountry": "FR"
+      }
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
+
+    <!-- IMPORTANT pour Vite en DEV : on charge l'entrée TS/TSX -->
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
