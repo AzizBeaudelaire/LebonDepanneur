@@ -10,7 +10,7 @@ export const Footer = () => {
                         React.createElement("img", { src: "/images/LogoD\u00E9pannage.webp", alt: "Le Bon Remorquage Logo", className: "h-12 w-auto" })),
                     React.createElement("p", { className: "mt-4 text-gray-300" }, "Service de remorquage automobile professionnel disponible 24h/24 et 7j/7 sur Toulouse et sa r\u00E9gion."),
                     React.createElement("div", { className: "mt-6 flex space-x-4" },
-                        React.createElement("a", { href: "https://instagram.com/depannage_toulouse", target: "_blank", rel: "noopener noreferrer", className: "rounded-full bg-white/10 p-2 transition-colors hover:bg-light-primary dark:hover:bg-dark-primary", "aria-label": "Suivez-nous sur Instagram" },
+                        React.createElement("a", { href: "https://www.instagram.com/lebon_remorquage/", target: "_blank", rel: "noopener noreferrer", className: "rounded-full bg-white/10 p-2 transition-colors hover:bg-light-primary dark:hover:bg-dark-primary", "aria-label": "Suivez-nous sur Instagram" },
                             React.createElement(Instagram, { className: "h-6 w-6" })),
                         React.createElement("a", { href: "https://wa.me/33768261050", target: "_blank", rel: "noopener noreferrer", className: "rounded-full bg-white/10 p-2 transition-colors hover:bg-light-primary dark:hover:bg-dark-primary", "aria-label": "Contactez-nous sur WhatsApp" },
                             React.createElement("svg", { className: "h-6 w-6", viewBox: "0 0 24 24", fill: "currentColor" },

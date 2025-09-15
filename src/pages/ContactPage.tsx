@@ -219,7 +219,8 @@ export const ContactPage = () => {
                     className="flex items-center space-x-2 rounded-lg bg-light-primary/10 px-4 py-2 transition-colors hover:bg-light-primary/20 dark:bg-dark-primary/10 dark:hover:bg-dark-primary/20"
                   >
                     <Instagram className="h-5 w-5 text-light-primary dark:text-dark-primary" />
-                    <span className="text-sm text-gray-600 dark:text-gray-300">@depannage_toulouse</span>
+                    <span className="text-sm text-gray-600 dark:text-gray-300">@lebon_remorquage
+</span>
                   </a>
                   <a
                     href="https://wa.me/33768261050"
