@@ -213,7 +213,7 @@ export const ContactPage = () => {
                 {/* Social Media Links */}
                 <div className="mt-8 flex flex-wrap gap-4">
                   <a
-                    href="https://instagram.com/depannage_toulouse"
+                    href="https://www.instagram.com/lebon_remorquage/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center space-x-2 rounded-lg bg-light-primary/10 px-4 py-2 transition-colors hover:bg-light-primary/20 dark:bg-dark-primary/10 dark:hover:bg-dark-primary/20"

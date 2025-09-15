@@ -21,7 +21,7 @@ export const Footer = () => {
             {/* Social Media Links */}
             <div className="mt-6 flex space-x-4">
               <a
-                href="https://instagram.com/depannage_toulouse"
+                href="https://www.instagram.com/lebon_remorquage/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-full bg-white/10 p-2 transition-colors hover:bg-light-primary dark:hover:bg-dark-primary"
