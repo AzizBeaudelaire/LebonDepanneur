@@ -4,78 +4,18 @@ import { MapPin, Clock, Phone, Car, Shield, FormInput, CheckCircle } from 'lucid
 import { Link } from 'react-router-dom';
 
 const cities = [
-  {
-    name: 'Toulouse',
-    distance: '0 km',
-    time: '15-30 min',
-    zone: 'Centre-ville'
-  },
-  {
-    name: 'Blagnac',
-    distance: '12 km',
-    time: '20-35 min',
-    zone: 'Périphérie'
-  },
-  {
-    name: 'Colomiers',
-    distance: '13 km',
-    time: '20-35 min',
-    zone: 'Périphérie'
-  },
-  {
-    name: 'Tournefeuille',
-    distance: '12 km',
-    time: '20-35 min',
-    zone: 'Périphérie'
-  },
-  {
-    name: 'Muret',
-    distance: '27 km',
-    time: '30-45 min',
-    zone: 'Périphérie'
-  },
-  {
-    name: 'Saint-Orens-de-Gameville',
-    distance: '10 km',
-    time: '20-35 min',
-    zone: 'Périphérie'
-  },
-  {
-    name: 'Balma',
-    distance: '8 km',
-    time: '15-30 min',
-    zone: 'Périphérie'
-  },
-  {
-    name: "L'Union",
-    distance: '9 km',
-    time: '15-30 min',
-    zone: 'Périphérie'
-  },
-  {
-    name: "Castelnau-d'Estrétefonds",
-    distance: '24 km',
-    time: '25-40 min',
-    zone: 'Autoroute'
-  },
-  {
-    name: 'Montastruc-la-Conseillère',
-    distance: '21 km',
-    time: '25-40 min',
-    zone: 'Autoroute'
-  },
-  {
-    name: 'Villefranche-de-Lauragais',
-    distance: '35 km',
-    time: '35-50 min',
-    zone: 'Autoroute'
-  },
-  {
-    name: 'Carbonne',
-    distance: '43 km',
-    time: '40-55 min',
-    zone: 'Autoroute'
-  }
+  { name: 'Toulouse Centre', distance: '0 km', time: '15-30 min', zone: 'Dépannage Urgent' },
+  { name: 'Blagnac (Aéroport)', distance: '12 km', time: '20-35 min', zone: 'Assistance Routière' },
+  { name: 'Colomiers', distance: '13 km', time: '20-35 min', zone: 'Périphérie 31' },
+  { name: 'Tournefeuille', distance: '12 km', time: '20-35 min', zone: 'Périphérie 31' },
+  { name: 'Muret', distance: '27 km', time: '30-45 min', zone: 'Auto Secours Sud' },
+  { name: 'Montauban (82)', distance: '50 km', time: '45-55 min', zone: 'Auto Secours 82' }, // Niche Stratégique
+  { name: 'Balma', distance: '8 km', time: '15-30 min', zone: 'Est Toulousain' },
+  { name: "L'Union", distance: '9 km', time: '15-30 min', zone: 'Nord Toulousain' },
+  { name: "Castelnau-d'Estrétefonds", distance: '24 km', time: '25-40 min', zone: 'Accès Autoroute' },
+  { name: 'Fronton', distance: '30 km', time: '30-45 min', zone: 'Secteur Nord' },
+  { name: 'Villefranche-de-Lauragais', distance: '35 km', time: '35-50 min', zone: 'Autoroute A61' },
+  { name: 'Carbonne', distance: '43 km', time: '40-55 min', zone: 'Autoroute A64' }
 ];
 
 const requestSteps = [
@@ -105,10 +45,10 @@ export const ZoneInterventionPage = () => {
   return (
     <>
       <Helmet>
-        <title>Zone d'intervention - Le Bon Dépanneur Toulouse</title>
-        <meta 
-          name="description" 
-          content="Découvrez notre zone d'intervention étendue jusqu'à 50km autour de Toulouse. Service rapide et efficace dans toute la région toulousaine." 
+        <title>Zone d'Intervention Auto Secours 31 & 82 | Dépannage Toulouse 50km</title>
+        <meta
+          name="description"
+          content="Besoin d'une dépanneuse autour de Toulouse ? Le Bon Remorquage intervient sous 30 min dans tout le 31 et le 82 : Blagnac, Muret, Colomiers, Montauban. Assistance 24h/24."
         />
       </Helmet>
 
@@ -116,10 +56,10 @@ export const ZoneInterventionPage = () => {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight text-light-text dark:text-dark-text">
-              Zone d'intervention
+              Zone d'Intervention & Auto Secours
             </h1>
             <p className="mt-4 text-xl text-gray-600 dark:text-gray-300">
-              Intervention rapide dans un rayon de 50 km autour de Toulouse
+              Dépanneuse disponible 24h/24 pour une assistance rapide dans un rayon de 50 km autour de Toulouse.
             </p>
           </div>
 
@@ -152,7 +92,7 @@ export const ZoneInterventionPage = () => {
               {/* Steps to Request Service */}
               <div className="rounded-lg bg-light-card p-8 shadow-lg dark:bg-dark-card">
                 <h2 className="text-2xl font-semibold text-light-text dark:text-dark-text">
-                  Comment faire appel à nos services
+                  Demander un Dépannage Voiture ou Moto
                 </h2>
                 <div className="mt-6 space-y-6">
                   {requestSteps.map((step, index) => {
@@ -188,11 +128,11 @@ export const ZoneInterventionPage = () => {
               {/* Cities Grid */}
               <div className="rounded-lg bg-light-card p-8 shadow-lg dark:bg-dark-card">
                 <h2 className="mb-6 text-xl font-semibold text-light-text dark:text-dark-text">
-                  Notre secteur d'intervention
+                  Notre secteur d'Auto Secours (Toulouse 31 et ses environs )
                 </h2>
                 <div className="grid gap-4 sm:grid-cols-2">
                   {cities.map((city, index) => (
-                    <div 
+                    <div
                       key={index}
                       className="flex items-center space-x-3 rounded-lg border border-light-border p-3 transition-all hover:border-light-primary dark:border-dark-border dark:hover:border-dark-primary"
                     >

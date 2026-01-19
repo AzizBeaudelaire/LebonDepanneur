@@ -5,16 +5,16 @@ import { contactFormSchema, sendContactEmail, EmailSendError } from '../services
 import { z } from 'zod';
 const COOLDOWN_TIME = 100; // Temps d'attente en secondes
 const serviceOptions = {
-    transport: "Transport Europe",
-    assistance: "Assistance",
-    depannage: "Dépannage",
-    remorquage: "Remorquage",
-    levage: "Levage, Grutage, Treuillage",
-    fourriere: "Fourrière",
-    atelier: "Atelier réparation rapide",
-    clefs: "Perte de clés",
-    nettoyage: "Nettoyage de véhicule",
-    "achat-revente": "Achat-Revente de véhicules"
+    transport: "Transport de véhicule Europe",
+    assistance: "Assistance routière urgente",
+    depannage: "Dépannage mécanique Toulouse",
+    remorquage: "Remorquage voiture / moto",
+    levage: "Levage, Grutage & Treuillage",
+    fourriere: "Enlèvement fourrière / épave",
+    atelier: "Réparation rapide en atelier",
+    clefs: "Ouverture de porte & Perte de clés",
+    nettoyage: "Nettoyage & Detailing complet",
+    "achat-revente": "Estimation Achat-Revente"
 };
 export const ContactPage = () => {
     const formRef = useRef(null);
@@ -31,7 +31,6 @@ export const ContactPage = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitStatus, setSubmitStatus] = useState('idle');
     const [errorMessage, setErrorMessage] = useState('');
-    // États pour le minuteur
     const [cooldownTime, setCooldownTime] = useState(0);
     const [isFormEnabled, setIsFormEnabled] = useState(true);
     useEffect(() => {
@@ -122,21 +121,21 @@ export const ContactPage = () => {
     };
     return (React.createElement(React.Fragment, null,
         React.createElement(Helmet, null,
-            React.createElement("title", null, "Contactez-nous - Le Bon D\u00E9panneur Toulouse"),
-            React.createElement("meta", { name: "description", content: "Contactez notre service de d\u00E9pannage automobile \u00E0 Toulouse. Disponible 24h/24 et 7j/7 pour toutes vos urgences." })),
+            React.createElement("title", null, "Contact D\u00E9pannage Auto Toulouse | Assistance & Remorquage Urgent 31"),
+            React.createElement("meta", { name: "description", content: "Besoin d'un d\u00E9pannage voiture imm\u00E9diat \u00E0 Toulouse ? Contactez Le Bon Remorquage 24h/24 et 7j/7 pour toute assistance routi\u00E8re, erreur carburant ou batterie HS." })),
         React.createElement("div", { className: "min-h-screen bg-light-background py-12 transition-colors dark:bg-dark-background sm:py-16 lg:py-24" },
             React.createElement("div", { className: "mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" },
                 React.createElement("div", { className: "grid gap-8 lg:grid-cols-2" },
                     React.createElement("div", { className: "order-1" },
                         React.createElement("div", { className: "rounded-lg bg-white p-6 shadow-lg transition-colors dark:bg-dark-card sm:p-8" },
-                            React.createElement("h1", { className: "text-2xl font-bold tracking-tight text-light-text dark:text-dark-text sm:text-3xl lg:text-4xl" }, "Contactez-nous"),
-                            React.createElement("p", { className: "mt-4 text-base text-gray-600 dark:text-gray-300 sm:text-lg" }, "Notre \u00E9quipe est disponible 24h/24 et 7j/7 pour r\u00E9pondre \u00E0 vos urgences."),
+                            React.createElement("h1", { className: "text-2xl font-bold tracking-tight text-light-text dark:text-dark-text sm:text-3xl lg:text-4xl" }, "Assistance & D\u00E9pannage Urgent \u00E0 Toulouse"),
+                            React.createElement("p", { className: "mt-4 text-base text-gray-600 dark:text-gray-300 sm:text-lg" }, "Notre service d'auto secours est disponible 24h/24 et 7j/7 pour intervenir rapidement sur votre v\u00E9hicule en panne ou accident\u00E9."),
                             React.createElement("div", { className: "mt-8 space-y-6" },
                                 React.createElement("div", { className: "flex items-center space-x-4" },
                                     React.createElement("div", { className: "flex h-12 w-12 items-center justify-center rounded-full bg-light-primary/10 dark:bg-dark-primary/10" },
                                         React.createElement(Phone, { className: "h-6 w-6 text-light-primary dark:text-dark-primary" })),
                                     React.createElement("div", null,
-                                        React.createElement("p", { className: "text-sm font-medium text-gray-500 dark:text-gray-400" }, "T\u00E9l\u00E9phone"),
+                                        React.createElement("p", { className: "text-sm font-medium text-gray-500 dark:text-gray-400" }, "Ligne d'urgence 24/7"),
                                         React.createElement("a", { href: "tel:0768261050", className: "mt-1 block text-lg font-semibold text-light-primary transition-colors hover:text-light-hover dark:text-dark-primary dark:hover:text-dark-hover sm:text-xl" }, "07 68 26 10 50"))),
                                 React.createElement("div", { className: "flex items-center space-x-4" },
                                     React.createElement("div", { className: "flex h-12 w-12 items-center justify-center rounded-full bg-light-primary/10 dark:bg-dark-primary/10" },
@@ -148,14 +147,14 @@ export const ContactPage = () => {
                                     React.createElement("div", { className: "flex h-12 w-12 items-center justify-center rounded-full bg-light-primary/10 dark:bg-dark-primary/10" },
                                         React.createElement(MapPin, { className: "h-6 w-6 text-light-primary dark:text-dark-primary" })),
                                     React.createElement("div", null,
-                                        React.createElement("p", { className: "text-sm font-medium text-gray-500 dark:text-gray-400" }, "Adresse"),
-                                        React.createElement("p", { className: "mt-1 text-base text-gray-600 dark:text-gray-300 sm:text-lg" }, "Toulouse, France"))),
+                                        React.createElement("p", { className: "text-sm font-medium text-gray-500 dark:text-gray-400" }, "Secteur d'intervention"),
+                                        React.createElement("p", { className: "mt-1 text-base text-gray-600 dark:text-gray-300 sm:text-lg" }, "Toulouse, Blagnac et p\u00E9riph\u00E9rie 31"))),
                                 React.createElement("div", { className: "flex items-center space-x-4" },
                                     React.createElement("div", { className: "flex h-12 w-12 items-center justify-center rounded-full bg-light-primary/10 dark:bg-dark-primary/10" },
                                         React.createElement(Clock, { className: "h-6 w-6 text-light-primary dark:text-dark-primary" })),
                                     React.createElement("div", null,
                                         React.createElement("p", { className: "text-sm font-medium text-gray-500 dark:text-gray-400" }, "Disponibilit\u00E9"),
-                                        React.createElement("p", { className: "mt-1 text-base text-gray-600 dark:text-gray-300 sm:text-lg" }, "24h/24 - 7j/7")))),
+                                        React.createElement("p", { className: "mt-1 text-base text-gray-600 dark:text-gray-300 sm:text-lg" }, "Assistance routi\u00E8re 24h/24 - 7j/7")))),
                             React.createElement("div", { className: "mt-8 flex flex-wrap gap-4" },
                                 React.createElement("a", { href: "https://www.instagram.com/lebon_remorquage/", target: "_blank", rel: "noopener noreferrer", className: "flex items-center space-x-2 rounded-lg bg-light-primary/10 px-4 py-2 transition-colors hover:bg-light-primary/20 dark:bg-dark-primary/10 dark:hover:bg-dark-primary/20" },
                                     React.createElement(Instagram, { className: "h-5 w-5 text-light-primary dark:text-dark-primary" }),
@@ -163,12 +162,19 @@ export const ContactPage = () => {
                                 React.createElement("a", { href: "https://wa.me/33768261050", target: "_blank", rel: "noopener noreferrer", className: "flex items-center space-x-2 rounded-lg bg-light-primary/10 px-4 py-2 transition-colors hover:bg-light-primary/20 dark:bg-dark-primary/10 dark:hover:bg-dark-primary/20" },
                                     React.createElement("svg", { className: "h-5 w-5 text-light-primary dark:text-dark-primary", viewBox: "0 0 24 24", fill: "currentColor" },
                                         React.createElement("path", { d: "M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" })),
-                                    React.createElement("span", { className: "text-sm text-gray-600 dark:text-gray-300" }, "0768261050")),
-                                React.createElement("a", { href: "https://snapchat.com/t/4NlfPTuX", target: "_blank", rel: "noopener noreferrer", className: "flex items-center space-x-2 rounded-lg bg-light-primary/10 px-4 py-2 transition-colors hover:bg-light-primary/20 dark:bg-dark-primary/10 dark:hover:bg-dark-primary/20" },
-                                    React.createElement("svg", { className: "h-5 w-5 text-light-primary dark:text-dark-primary", viewBox: "0 0 24 24", fill: "currentColor" },
-                                        React.createElement("path", { d: "M12.206.793c.99 0 4.347.276 5.93 3.821.529 1.193.403 3.219.299 4.847l-.003.06c-.012.18-.022.345-.03.51.075.045.203.09.401.09.3-.016.659-.12 1.033-.301.165-.088.344-.104.464-.104.182 0 .359.029.509.09.45.149.734.479.734.838.015.449-.39.839-1.213 1.168-.089.029-.209.075-.344.119-.45.135-1.139.36-1.333.81-.09.224-.061.524.12.868l.015.015c.06.136 1.526 3.475 4.791 4.014.255.044.435.27.42.509 0 .075-.015.149-.045.225-.24.569-1.273.988-3.146 1.271-.059.091-.12.375-.164.57-.029.179-.074.36-.134.553-.076.271-.27.405-.555.405h-.03c-.135 0-.313-.031-.538-.074-.36-.075-.765-.135-1.273-.135-.3 0-.599.015-.913.074-.6.104-1.123.448-1.679.809-.766.495-1.429.92-2.684.92-.015 0-.039 0-.054 0h-.031c-1.29 0-1.953-.42-2.744-.93-.57-.361-1.094-.704-1.694-.809-.314-.06-.612-.074-.912-.074-.54 0-.937.064-1.272.135-.211.039-.391.074-.54.074-.299 0-.494-.134-.554-.405-.061-.193-.09-.376-.135-.554-.045-.195-.105-.48-.164-.57-1.873-.284-2.905-.703-3.145-1.271-.03-.075-.045-.149-.045-.225-.015-.239.165-.465.42-.509 3.264-.54 4.73-3.879 4.791-4.02l.016-.029c.18-.345.224-.645.119-.869-.195-.45-.884-.674-1.333-.809-.12-.045-.24-.09-.334-.119-.93-.375-1.319-.765-1.319-1.183 0-.374.324-.689.764-.923.145-.061.314-.091.494-.091.12 0 .299.015.449.104.359.18.719.285 1.019.285.201 0 .33-.044.406-.089-.012-.165-.022-.329-.034-.509l-.003-.06c-.104-1.628-.23-3.654.299-4.847 1.584-3.545 4.939-3.821 5.93-3.821z" })),
-                                    React.createElement("span", { className: "text-sm text-gray-600 dark:text-gray-300" }, "l.bdepannage31"))))),
+                                    React.createElement("span", { className: "text-sm text-gray-600 dark:text-gray-300" }, "07 68 26 10 50"))))),
                     React.createElement("div", { className: "order-2" },
+                        React.createElement("div", { className: "mb-8 rounded-lg bg-light-primary/5 p-6 border border-light-primary/10 dark:bg-dark-primary/5 dark:border-dark-primary/10" },
+                            React.createElement("h2", { className: "text-lg font-bold text-light-text dark:text-dark-text mb-4" }, "Nos interventions Auto Secours 31 :"),
+                            React.createElement("ul", { className: "grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 text-sm text-gray-600 dark:text-gray-300" },
+                                React.createElement("li", null, "\u2022 D\u00E9pannage batterie Toulouse & Booster"),
+                                React.createElement("li", null, "\u2022 Remorquage voiture, moto et utilitaire"),
+                                React.createElement("li", null, "\u2022 D\u00E9panneuse disponible 24h/24 et 7j/7"),
+                                React.createElement("li", null, "\u2022 Remorquage parking sous-sol (acc\u00E8s bas)"),
+                                React.createElement("li", null, "\u2022 Erreur de carburant & Vidange r\u00E9servoir"),
+                                React.createElement("li", null, "\u2022 Ouverture de porte voiture (cl\u00E9s oubli\u00E9es)"),
+                                React.createElement("li", null, "\u2022 Assistance d\u00E9pannage autoroute et rocade"),
+                                React.createElement("li", null, "\u2022 Transport de v\u00E9hicule longue distance & Europe"))),
                         React.createElement("form", { ref: formRef, onSubmit: handleSubmit, className: "rounded-lg bg-white p-6 shadow-lg transition-colors dark:bg-dark-card sm:p-8" },
                             cooldownTime > 0 && (React.createElement("div", { className: "mb-6 rounded-lg bg-blue-50 p-4 dark:bg-blue-900/20" },
                                 React.createElement("p", { className: "text-blue-800 dark:text-blue-200" },

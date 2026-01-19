@@ -64,32 +64,32 @@ export const HomePage = () => {
   return (
     <>
       <Helmet>
-        <title>Dépannage Auto Toulouse - Service de dépannage professionnel 24/7</title>
-        <meta 
-          name="description" 
-          content="Service de dépannage automobile professionnel à Toulouse. Intervention rapide 24h/24 et 7j/7. Remorquage, assistance et réparation sur place." 
+        <title>Dépannage & Remorquage Auto Toulouse 24h/24 | Auto Secours 31</title>
+        <meta
+          name="description"
+          content="Besoin d'un dépannage auto à Toulouse ? Le Bon Remorquage intervient 24j/7 pour remorquage voiture, moto et utilitaire. Assistance rapide < 30 min. Appelez le 07 68 26 10 50."
         />
       </Helmet>
 
       <div className="relative min-h-[90vh] bg-gray-800">
-        <div 
+        <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40"
-          style={{ 
+          style={{
             backgroundImage: 'url("/images/hero/hero-background.jpg")'
           }}
         />
 
         <div className="relative mx-auto flex min-h-[80vh] flex-col items-center justify-center px-4 py-12 text-center">
           <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">
-            Dépannage Auto Toulouse
+            Dépannage & Remorquage Toulouse
             <br />
-            <span className="text-light-primary dark:text-dark-primary">Intervention rapide 24/7</span>
+            <span className="text-light-primary dark:text-dark-primary">Auto Secours & Assistance 24/7</span>
           </h1>
-          
+
           <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-300 sm:text-xl">
-            Service de dépannage professionnel disponible jour et nuit.
+            Service de dépannage auto professionnel à Toulouse disponible jour et nuit.
             <br className="hidden sm:block" />
-            Intervention en moins de 30 minutes sur Toulouse et sa région.
+            Arrivée d'une dépanneuse en moins de 30 minutes pour tout remorquage voiture ou moto.
           </p>
 
           <div className="mt-8 flex w-full flex-col items-center gap-4 sm:flex-row sm:justify-center">
@@ -186,7 +186,7 @@ export const HomePage = () => {
             </h3>
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
               {garagesPartenaires.map((garage, index) => (
-                <div 
+                <div
                   key={index}
                   className="rounded-lg border border-light-border bg-white p-3 text-sm shadow-sm transition-all hover:shadow-md dark:border-dark-border dark:bg-dark-card"
                 >
@@ -203,7 +203,7 @@ export const HomePage = () => {
                   </div>
                   <div className="mt-2 flex flex-wrap gap-1">
                     {garage.specialites.map((spec, idx) => (
-                      <span 
+                      <span
                         key={idx}
                         className="rounded-full bg-light-primary/5 px-2 py-0.5 text-xs text-light-primary dark:bg-dark-primary/5 dark:text-dark-primary"
                       >
@@ -230,22 +230,22 @@ export const HomePage = () => {
             {whyChooseUs.map((item, index) => {
               const Icon = item.icon;
               return (
-                <div 
+                <div
                   key={index}
                   className="group relative overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl"
                   style={{
                     height: '300px'
                   }}
                 >
-                  <div 
+                  <div
                     className="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-110"
                     style={{
                       backgroundImage: `url(${item.image})`
                     }}
                   />
-                  
+
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30" />
-                  
+
                   <div className="relative flex h-full flex-col items-center justify-end p-6 text-center text-white">
                     <div className="mb-4 rounded-full bg-light-primary/90 p-3 dark:bg-dark-primary/90">
                       <Icon className="h-8 w-8" />
@@ -275,19 +275,19 @@ export const HomePage = () => {
                 <div className="flex items-start">
                   <CheckCircle className="mr-3 h-6 w-6 flex-shrink-0 text-light-primary dark:text-dark-primary" />
                   <p className="text-gray-600 dark:text-gray-300">
-                    Dépannage et réparation sur place
+                    Dépannage batterie, panne d'essence et réparation sur place à Toulouse.
                   </p>
                 </div>
                 <div className="flex items-start">
                   <CheckCircle className="mr-3 h-6 w-6 flex-shrink-0 text-light-primary dark:text-dark-primary" />
                   <p className="text-gray-600 dark:text-gray-300">
-                    Remorquage tous véhicules
+                    Remorquage voiture, moto, utilitaire et remorquage parking sous-sol.
                   </p>
                 </div>
                 <div className="flex items-start">
                   <CheckCircle className="mr-3 h-6 w-6 flex-shrink-0 text-light-primary dark:text-dark-primary" />
                   <p className="text-gray-600 dark:text-gray-300">
-                    Services complémentaires : transport, levage, location
+                    Assistance technique, levage, treuillage et transport de véhicules Europe.
                   </p>
                 </div>
               </div>
@@ -297,7 +297,8 @@ export const HomePage = () => {
                 Zone d'intervention
               </h2>
               <p className="mt-4 text-gray-600 dark:text-gray-300">
-                Intervention rapide sur Toulouse et sa périphérie dans un rayon de 50 km. Service de transport disponible dans toute l'Europe pour vos besoins de déplacement longue distance.
+                Votre service d'auto secours 31 intervient rapidement sur Toulouse et sa périphérie (Blagnac, Colomiers, Muret, Tournefeuille) 24h/24h.
+                Nous couvrons un rayon de 50 km pour tout dépannage / remorquage urgent ou transport longue distance.
               </p>
               <Link
                 to="/contact"

@@ -7,62 +7,62 @@ import { Car, Wrench, Truck, PenTool as Tool, Phone, Shield, Clock, Euro, Chevro
 const services = [
   {
     icon: <Globe className="h-6 w-6" />,
-    title: 'Transport Europe',
-    description: 'Service de transport spécialisé dans toute l\'Europe\nTransport sécurisé de tous types de véhicules : particuliers, utilitaires, prestige, collection\nDevis personnalisé et suivi en temps réel.\nAssurance tous risques incluse',
+    title: 'Transport Voiture Europe',
+    description: 'Service de transport de véhicules spécialisé toute l\'Europe.\nConvoyage sécurisé de voitures de luxe, collection ou utilitaires.\nAssurance tous risques et transport longue distance avec suivi.',
     image: '/images/professional-truck-driver-entering-his-truck-long-vehicle-holding-thumbs-up.webp'
   },
   {
     icon: <Car className="h-6 w-6" />,
-    title: 'Assistance',
-    description: `Service d'assistance routière disponible 24h/24 et 7j/7\nIntervention rapide pour tous types de pannes\nDiagnostic sur place et solutions immédiates quand possible\nÉquipe expérimentée et professionnelle`,
+    title: 'Assistance Dépannage 24/24',
+    description: `Assistance routière disponible 24h/24 et 7j/7 à Toulouse.\nIntervention rapide pour batterie HS, panne d'essence ou erreur carburant.\nDiagnostic électronique sur place pour redémarrage immédiat.`,
     image: '/images/man-standing-by-broken-vehicle-calling-tow-service.webp'
-  },  
+  },
   {
     icon: <Wrench className="h-6 w-6" />,
-    title: 'Dépannage',
-    description: 'Dépannage tous types de véhicules : voitures, motos, utilitaires, poids lourds\nIntervention sur place pour pannes mécaniques, électriques, électroniques\nStock de pièces courantes pour réparation immédiate',
+    title: 'Dépannage Auto & Moto',
+    description: 'Dépannage mécanique à Toulouse : voitures, motos, scooters et utilitaires.\nRéparation sur place pour pannes légères ou crevaison.\nExpertise technique pour tout auto secours de proximité.',
     image: '/images/long-shot-man-swapping-tire.webp'
   },
   {
     icon: <Truck className="h-6 w-6" />,
-    title: 'Remorquage',
-    description: 'Service de remorquage professionnel pour tous types de véhicules\nTransport sécurisé vers le garage de votre choix\nÉquipement adapté pour véhicules bas, sportifs ou de collection\nIntervention rapide sur autoroute',
+    title: 'Remorquage Voiture Toulouse',
+    description: 'Remorquage professionnel toutes distances vers le garage de votre choix.\nÉquipement spécialisé pour remorquage parking sous-sol et accès difficiles.\nIntervention rapide sur rocade et autoroute.',
     image: '/images/remorquage.webp'
   },
   {
     icon: <Crane className="h-6 w-6" />,
     title: 'Levage, Grutage, Treuillage',
-    description: 'Services spécialisés de levage et grutage pour situations complexes\nÉquipement professionnel pour treuillage de véhicules\nIntervention en conditions difficiles\nPersonnel qualifié et certifié.',
+    description: 'Services de levage et grutage pour véhicules accidentés ou fossés.\nTreuillage sécurisé en conditions difficiles (ravin, boue, neige).\nPersonnel certifié pour interventions complexes.',
     image: '/images/levage_grutage.webp'
   },
   {
     icon: <Key className="h-6 w-6" />,
-    title: 'Perte de clés',
-    description: 'Service d\'intervention rapide en cas de perte ou de casse de clés\nReproduction de clés toutes marques, programmation de clés électroniques et télécommandes\nOuverture de véhicule sans dommage.\nIntervention sur site ou dépannage.',
+    title: 'Ouverture Porte & Perte Clés',
+    description: 'Intervention rapide pour ouverture de porte voiture bloquée sans dégâts.\nReproduction et programmation de clés de voiture et télécommandes sur site.\nDépannage clés cassées ou perdues.',
     image: '/images/lose_key.webp'
   },
   {
     icon: <Warehouse className="h-6 w-6" />,
-    title: 'Fourrière',
-    description: 'Service agréé de mise en fourrière\nIntervention sur demande des autorités ou des propriétaires\nProcédure conforme à la réglementation\nStockage sécurisé et surveillance 24h/24',
+    title: 'Mise en Fourrière',
+    description: 'Service agréé de mise en fourrière et enlèvement d\'épave.\nIntervention conforme à la réglementation pour stationnement gênant ou abusif.\nStockage et gardiennage sécurisé 24h/24.',
     image: '/images/fourriere01.webp'
   },
   {
     icon: <Settings className="h-6 w-6" />,
-    title: 'Atelier réparation rapide',
-    description: 'Atelier équipé pour réparations rapides et entretien\nDiagnostic professionnel et devis transparent\nRéparations courantes sans rendez-vous\nTechniciens qualifiés multispécialistes',
+    title: 'Atelier Réparation Rapide',
+    description: 'Entretien et réparation rapide sans rendez-vous à Toulouse.\nVidange, freinage, pneus et diagnostic mécanique complet.\nDevis transparent avant toute intervention.',
     image: '/images/atelier_repa.webp'
   },
   {
     icon: <Spray className="h-6 w-6" />,
-    title: 'Nettoyage de véhicule',
-    description: 'Service complet de nettoyage et détailing automobile\nNettoyage intérieur et extérieur professionnel\nTraitement céramique et protection carrosserie\nRénovation des surfaces',
+    title: 'Nettoyage & Detailing',
+    description: 'Nettoyage de véhicule intérieur/extérieur haute performance.\nLavage professionnel, polissage et protection carrosserie (céramique).\nRénovation optiques de phares.',
     image: '/images/nettoyage_car.webp'
   },
   {
     icon: <ShoppingBag className="h-6 w-6" />,
-    title: 'Achat-Revente de véhicules',
-    description: 'Service d\'achat et de vente de véhicules toutes marques\nExpertise professionnelle et transparente\nAccompagnement dans les démarches administratives\nGarantie satisfaction',
+    title: 'Achat Revente de Véhicules',
+    description: 'Achat et vente de voitures d\'occasion révisées et garanties.\nEstimation gratuite de votre véhicule pour reprise immédiate.\nAccompagnement administratif (carte grise).',
     image: '/images/achat_revente.webp'
   }
 ];
@@ -112,10 +112,10 @@ const ServicesPage = () => {
   return (
     <>
       <Helmet>
-        <title>Nos Services - Le Bon Dépanneur Toulouse</title>
-        <meta 
-          name="description" 
-          content="Découvrez nos services complets : transport Europe, assistance, dépannage, remorquage, levage, location, fourrière et atelier de réparation rapide. Intervention 24h/24." 
+        <title>Services Dépannage Auto 24/7 & Remorquage Toulouse | Assistance 31</title>
+        <meta
+          name="description"
+          content="Découvrez nos services d'auto secours : dépannage voiture 24/24, remorquage moto, transport Europe, ouverture de porte et dépannage batterie à Toulouse et périphérie."
         />
       </Helmet>
 
@@ -125,12 +125,12 @@ const ServicesPage = () => {
           <div className="relative mb-16 overflow-hidden rounded-2xl bg-gradient-to-r from-light-primary to-light-hover text-white shadow-xl dark:from-dark-primary dark:to-dark-hover">
             <div className="relative z-10 p-8">
               <div className="max-w-6xl">
-                <h1 className="text-4xl font-bold">Services de Dépannage Auto</h1>
+                <h1 className="text-4xl font-bold">Dépannage Auto & Remorquage Voiture</h1>
                 <p className="mt-4 text-lg font-bold">
-                Nous intervenons 24h/24 et 7j/7 pour le dépannage, remorquage et transport de tous types de véhicules, de la citadine au poids lourd.
+                  Besoin d'une dépanneuse à Toulouse ? Nous intervenons 24h/24 et 7j/7 pour le dépannage urgent, le remorquage voiture et moto, ainsi que le transport de véhicules.
                 </p>
                 <p className="mt-4 text-lg font-bold">
-                Assistance rapide à Toulouse et partout en Europe, avec des techniciens qualifiés et du matériel professionnel.
+                  Assistance routière rapide sur Toulouse (Blagnac, Colomiers, Muret) et partout en Europe avec un équipement professionnel de levage et treuillage.
                 </p>
                 <div className="mt-8 flex flex-wrap gap-4">
                   <Link
@@ -157,7 +157,7 @@ const ServicesPage = () => {
           {/* Services Grid with Images */}
           <section className="mb-16">
             <h2 className="mb-8 text-2xl font-bold text-light-text dark:text-dark-text">
-              Nos services d'intervention
+              Nos prestations de dépannage et assistance routière
             </h2>
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
               {services.map((service, index) => (
@@ -183,9 +183,9 @@ const ServicesPage = () => {
                     </div>
                   </div>
                   <div className="p-4">
-                  <p className="text-gray-600 dark:text-gray-300" style={{ whiteSpace: 'pre-line' }}>
-                    {service.description}
-                  </p>
+                    <p className="text-gray-600 dark:text-gray-300" style={{ whiteSpace: 'pre-line' }}>
+                      {service.description}
+                    </p>
                   </div>
                 </motion.div>
               ))}
