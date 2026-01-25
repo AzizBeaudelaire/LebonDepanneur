@@ -1,317 +1,174 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import { Globe, Clock, PenTool as Tool, Truck, Wrench, CheckCircle, Phone, Car, Plane as Crane, Key, Settings, Warehouse, Award, Shield, Star, MapPin, Umbrella } from 'lucide-react';
-import { LazyImage } from '../components/LazyImage';
+import {
+  Globe, Clock, PenTool as Tool, Truck, Wrench, CheckCircle,
+  Phone, Car, Plane as Crane, Key, Settings, Warehouse,
+  Award, Shield, Star, MapPin, Umbrella, Zap, Fuel, Search, HardHat
+} from 'lucide-react';
 import { useInView } from 'react-intersection-observer';
 
 const garagesPartenaires = [
-  {
-    nom: "Garage Central Auto",
-    ville: "Toulouse Centre",
-    specialites: ["Mécanique générale", "Diagnostic électronique"]
-  },
-  {
-    nom: "Auto Service Premium",
-    ville: "Blagnac",
-    specialites: ["Véhicules premium", "Carrosserie"]
-  },
-  {
-    nom: "Rapid'Auto Services",
-    ville: "Colomiers",
-    specialites: ["Réparation rapide", "Pneumatiques"]
-  },
-  {
-    nom: "Garage de la Gare",
-    ville: "Toulouse Sud",
-    specialites: ["Toutes marques", "Climatisation"]
-  }
+  { nom: "Garage Central Auto", ville: "Toulouse Centre", specialites: ["Mécanique générale", "Diagnostic électronique"] },
+  { nom: "Auto Service Premium", ville: "Blagnac", specialites: ["Véhicules premium", "Carrosserie"] },
+  { nom: "Rapid'Auto Services", ville: "Colomiers", specialites: ["Réparation rapide", "Pneumatiques"] },
+  { nom: "Garage de la Gare", ville: "Toulouse Sud", specialites: ["Toutes marques", "Climatisation"] }
+];
+
+// ✅ Liste de services exclusivement basée sur tes choix
+const servicesDetaille = [
+  { icon: Globe, title: "Transport de véhicule Europe", desc: "Convoyage professionnel de votre véhicule en France et partout en Europe." },
+  { icon: Zap, title: "Assistance routière urgente", desc: "Intervention immédiate pour batterie HS, crevaison ou panne moteur." },
+  { icon: Wrench, title: "Dépannage mécanique Toulouse", desc: "Diagnostic et réparations légères sur place pour redémarrer rapidement." },
+  { icon: Truck, title: "Remorquage voiture / moto", desc: "Transport sécurisé de votre véhicule vers le garage de votre choix." },
+  { icon: Crane, title: "Levage, Grutage & Treuillage", desc: "Récupération de véhicules accidentés ou enlisés avec matériel spécialisé." },
+  { icon: Search, title: "Enlèvement fourrière / épave", desc: "Assistance transport pour sortie de fourrière ou enlèvement de véhicule hors d'usage." },
+  { icon: Settings, title: "Réparation rapide en atelier", desc: "Prise en charge de votre véhicule dans nos ateliers partenaires pour réparations express." },
+  { icon: Key, title: "Ouverture de porte & Perte de clés", desc: "Ouverture sécurisée de votre portière sans dégâts en cas d'oubli de clés." },
+  { icon: HardHat, title: "Nettoyage & Detailing complet", desc: "Remise à neuf esthétique intérieure et extérieure de votre véhicule." },
+  { icon: Car, title: "Estimation Achat-Revente", desc: "Service d'expertise et de conseil pour l'achat ou la revente de votre auto." }
 ];
 
 const whyChooseUs = [
-  {
-    icon: Clock,
-    title: "Intervention rapide",
-    description: "Arrivée en moins de 30 minutes sur Toulouse.",
-    image: "/images/Inter_rapide.webp"
-  },
-  {
-    icon: Tool,
-    title: "Expertise technique",
-    description: "Techniciens qualifiés et matériel professionnel.",
-    image: "/images/Expert_tech.webp"
-  },
-  {
-    icon: Car,
-    title: "Tous véhicules",
-    description: "De la citadine au poids lourd.",
-    image: "/images/All_car.webp"
-  },
-  {
-    icon: Umbrella,
-    title: "Assurance complète",
-    description: "Véhicules et clients entièrement assurés pendant l'intervention.",
-    image: "/images/Assurance.webp"
-  }
+  { icon: Clock, title: "Intervention rapide", description: "Arrivée en moins de 30 minutes sur Toulouse.", image: "/images/Inter_rapide.webp" },
+  { icon: Tool, title: "Expertise technique", description: "Techniciens qualifiés et matériel professionnel.", image: "/images/Expert_tech.webp" },
+  { icon: Car, title: "Tous véhicules", description: "De la citadine au poids lourd.", image: "/images/All_car.webp" },
+  { icon: Umbrella, title: "Assurance complète", description: "Véhicules et clients entièrement assurés.", image: "/images/Assurance.webp" }
 ];
 
 export const HomePage = () => {
-  const { ref, inView } = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
     <>
       <Helmet>
-        <title>Dépannage & Remorquage Auto Toulouse 24h/24 | Auto Secours 31</title>
+        <title>Dépannage & Remorquage Auto Toulouse 24h/24 | Expert Auto Secours 31</title>
         <meta
           name="description"
-          content="Besoin d'un dépannage auto à Toulouse ? Le Bon Remorquage intervient 24j/7 pour remorquage voiture, moto et utilitaire. Assistance rapide < 30 min. Appelez le 07 68 26 10 50."
+          content="Besoin d'un dépannage auto urgent à Toulouse ? Arrivée en 30 min. Remorquage voiture, moto, assistance 24j/7 et transport Europe. Devis Gratuit."
         />
       </Helmet>
 
-      <div className="relative min-h-[90vh] bg-gray-800">
+      {/* --- HERO SECTION --- */}
+      <div className="relative min-h-[90vh] bg-gray-900 flex items-center">
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40"
-          style={{
-            backgroundImage: 'url("/images/hero/hero-background.jpg")'
-          }}
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-50"
+          style={{ backgroundImage: 'url("/images/hero/hero-background.jpg")' }}
         />
-
-        <div className="relative mx-auto flex min-h-[80vh] flex-col items-center justify-center px-4 py-12 text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">
-            Dépannage & Remorquage Toulouse
-            <br />
-            <span className="text-light-primary dark:text-dark-primary">Auto Secours & Assistance 24/7</span>
-          </h1>
-
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-300 sm:text-xl">
-            Service de dépannage auto professionnel à Toulouse disponible jour et nuit.
-            <br className="hidden sm:block" />
-            Arrivée d'une dépanneuse en moins de 30 minutes pour tout remorquage voiture ou moto.
-          </p>
-
-          <div className="mt-8 flex w-full flex-col items-center gap-4 sm:flex-row sm:justify-center">
-            <Link
-              to="/contact"
-              className="flex w-full items-center justify-center space-x-2 rounded-full bg-light-primary px-6 py-3 text-lg font-semibold text-white transition-all hover:bg-light-hover dark:bg-dark-primary dark:hover:bg-dark-hover sm:w-auto"
-            >
-              <Phone className="h-5 w-5" />
-              <span>Urgence 24/7</span>
-            </Link>
-            <Link
-              to="/contact"
-              className="flex w-full items-center justify-center space-x-2 rounded-full border-2 border-white bg-transparent px-6 py-3 text-lg font-semibold text-white transition-all hover:bg-white hover:text-gray-900 sm:w-auto"
-            >
-              <span>Devis gratuit</span>
-            </Link>
-          </div>
-
-          <div className="mt-12 w-full max-w-4xl px-4">
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-4">
-              <div className="flex items-center justify-center space-x-3 rounded-xl bg-white/10 p-4 backdrop-blur-sm">
-                <Clock className="h-6 w-6 text-light-primary dark:text-dark-primary" />
-                <span className="text-sm font-medium text-white">Intervention &lt;30min</span>
-              </div>
-              <div className="flex items-center justify-center space-x-3 rounded-xl bg-white/10 p-4 backdrop-blur-sm">
-                <Wrench className="h-6 w-6 text-light-primary dark:text-dark-primary" />
-                <span className="text-sm font-medium text-white">Dépannage sur place</span>
-              </div>
-              <div className="flex items-center justify-center space-x-3 rounded-xl bg-white/10 p-4 backdrop-blur-sm">
-                <Truck className="h-6 w-6 text-light-primary dark:text-dark-primary" />
-                <span className="text-sm font-medium text-white">Tous véhicules</span>
-              </div>
-              <div className="flex items-center justify-center space-x-3 rounded-xl bg-white/10 p-4 backdrop-blur-sm">
-                <Globe className="h-6 w-6 text-light-primary dark:text-dark-primary" />
-                <span className="text-sm font-medium text-white">Transport Europe</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="bg-gray-50 py-8 dark:bg-dark-background/50">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-2xl font-bold tracking-tight text-light-text dark:text-dark-text">
-              Un réseau de garages agréés
-            </h2>
-            <p className="mx-auto mt-2 max-w-2xl text-base text-gray-600 dark:text-gray-300">
-              Notre réseau de partenaires certifiés garantit une qualité de service optimale
+        <div className="relative mx-auto max-w-7xl px-4 py-20 text-center lg:text-left lg:flex lg:items-center lg:gap-12">
+          <div className="lg:w-2/3">
+            <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-6xl">
+              Dépannage & Remorquage <span className="text-light-primary dark:text-dark-primary">Toulouse</span>
+            </h1>
+            <p className="mt-6 max-w-2xl text-lg text-gray-200 sm:text-2xl font-medium">
+              Assistance routière urgente 24h/24 et 7j/7.
+              <span className="block text-light-primary font-bold">Arrivée d'une dépanneuse en moins de 30 min.</span>
             </p>
-          </div>
 
-          <div className="mt-8 grid gap-6 sm:grid-cols-3">
-            <div className="rounded-lg bg-white p-4 text-center shadow-md transition-all hover:shadow-lg dark:bg-dark-card">
-              <div className="mx-auto mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-light-primary/10 dark:bg-dark-primary/10">
-                <Award className="h-6 w-6 text-light-primary dark:text-dark-primary" />
-              </div>
-              <h3 className="text-lg font-semibold text-light-text dark:text-dark-text">
-                Garages certifiés
-              </h3>
-              <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">
-                Partenaires audités et certifiés
-              </p>
-            </div>
-
-            <div className="rounded-lg bg-white p-4 text-center shadow-md transition-all hover:shadow-lg dark:bg-dark-card">
-              <div className="mx-auto mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-light-primary/10 dark:bg-dark-primary/10">
-                <Shield className="h-6 w-6 text-light-primary dark:text-dark-primary" />
-              </div>
-              <h3 className="text-lg font-semibold text-light-text dark:text-dark-text">
-                Garantie constructeur
-              </h3>
-              <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">
-                Respect des normes constructeurs
-              </p>
-            </div>
-
-            <div className="rounded-lg bg-white p-4 text-center shadow-md transition-all hover:shadow-lg dark:bg-dark-card">
-              <div className="mx-auto mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-light-primary/10 dark:bg-dark-primary/10">
-                <Star className="h-6 w-6 text-light-primary dark:text-dark-primary" />
-              </div>
-              <h3 className="text-lg font-semibold text-light-text dark:text-dark-text">
-                Service premium
-              </h3>
-              <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">
-                Expertise et professionnalisme
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-8">
-            <h3 className="mb-4 text-center text-lg font-semibold text-light-text dark:text-dark-text">
-              Nos garages partenaires
-            </h3>
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-              {garagesPartenaires.map((garage, index) => (
-                <div
-                  key={index}
-                  className="rounded-lg border border-light-border bg-white p-3 text-sm shadow-sm transition-all hover:shadow-md dark:border-dark-border dark:bg-dark-card"
-                >
-                  <div className="flex items-center gap-2">
-                    <MapPin className="h-4 w-4 text-light-primary dark:text-dark-primary" />
-                    <div>
-                      <h4 className="font-medium text-light-text dark:text-dark-text">
-                        {garage.nom}
-                      </h4>
-                      <p className="text-xs text-gray-600 dark:text-gray-400">
-                        {garage.ville}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="mt-2 flex flex-wrap gap-1">
-                    {garage.specialites.map((spec, idx) => (
-                      <span
-                        key={idx}
-                        className="rounded-full bg-light-primary/5 px-2 py-0.5 text-xs text-light-primary dark:bg-dark-primary/5 dark:text-dark-primary"
-                      >
-                        {spec}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="bg-white py-12 dark:bg-dark-card sm:py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-2xl font-bold tracking-tight text-light-text dark:text-dark-text sm:text-3xl">
-              Pourquoi nous choisir ?
-            </h2>
-          </div>
-
-          <div className="mt-12 grid grid-cols-1 gap-8 sm:mt-20 sm:grid-cols-2 lg:grid-cols-4">
-            {whyChooseUs.map((item, index) => {
-              const Icon = item.icon;
-              return (
-                <div
-                  key={index}
-                  className="group relative overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl"
-                  style={{
-                    height: '300px'
-                  }}
-                >
-                  <div
-                    className="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-110"
-                    style={{
-                      backgroundImage: `url(${item.image})`
-                    }}
-                  />
-
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30" />
-
-                  <div className="relative flex h-full flex-col items-center justify-end p-6 text-center text-white">
-                    <div className="mb-4 rounded-full bg-light-primary/90 p-3 dark:bg-dark-primary/90">
-                      <Icon className="h-8 w-8" />
-                    </div>
-                    <h3 className="mb-2 text-xl font-bold">
-                      {item.title}
-                    </h3>
-                    <p className="text-sm font-medium text-gray-200">
-                      {item.description}
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </div>
-
-      <div className="bg-light-card py-12 transition-colors dark:bg-dark-background sm:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-            <div>
-              <h2 className="text-xl font-bold text-light-text dark:text-dark-text sm:text-2xl">
-                Services professionnels
-              </h2>
-              <div className="mt-6 space-y-4">
-                <div className="flex items-start">
-                  <CheckCircle className="mr-3 h-6 w-6 flex-shrink-0 text-light-primary dark:text-dark-primary" />
-                  <p className="text-gray-600 dark:text-gray-300">
-                    Dépannage batterie, panne d'essence et réparation sur place à Toulouse.
-                  </p>
-                </div>
-                <div className="flex items-start">
-                  <CheckCircle className="mr-3 h-6 w-6 flex-shrink-0 text-light-primary dark:text-dark-primary" />
-                  <p className="text-gray-600 dark:text-gray-300">
-                    Remorquage voiture, moto, utilitaire et remorquage parking sous-sol.
-                  </p>
-                </div>
-                <div className="flex items-start">
-                  <CheckCircle className="mr-3 h-6 w-6 flex-shrink-0 text-light-primary dark:text-dark-primary" />
-                  <p className="text-gray-600 dark:text-gray-300">
-                    Assistance technique, levage, treuillage et transport de véhicules Europe.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="mt-8 sm:mt-0">
-              <h2 className="text-xl font-bold text-light-text dark:text-dark-text sm:text-2xl">
-                Zone d'intervention
-              </h2>
-              <p className="mt-4 text-gray-600 dark:text-gray-300">
-                Votre service d'auto secours 31 intervient rapidement sur Toulouse et sa périphérie (Blagnac, Colomiers, Muret, Tournefeuille) 24h/24h.
-                Nous couvrons un rayon de 50 km pour tout dépannage / remorquage urgent ou transport longue distance.
-              </p>
-              <Link
-                to="/contact"
-                className="mt-6 inline-flex items-center text-light-primary hover:text-light-hover dark:text-dark-primary dark:hover:text-dark-hover"
-              >
-                Contactez-nous
-                <svg className="ml-2 h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                </svg>
+            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <a href="tel:0768261050" className="flex items-center justify-center gap-3 rounded-full bg-light-primary px-8 py-4 text-xl font-bold text-white hover:bg-light-hover transition-all shadow-lg hover:scale-105">
+                <Phone className="h-6 w-6 animate-pulse" />
+                07 68 26 10 50
+              </a>
+              <Link to="/contact" className="flex items-center justify-center rounded-full border-2 border-white px-8 py-4 text-xl font-bold text-white hover:bg-white hover:text-gray-900 transition-all">
+                Devis Gratuit
               </Link>
             </div>
+
+            <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 text-white/90">
+              <div className="flex items-center gap-2 text-sm font-semibold"><CheckCircle className="text-green-500 h-5 w-5" /> Agréé Assurances</div>
+              <div className="flex items-center gap-2 text-sm font-semibold"><CheckCircle className="text-green-500 h-5 w-5" /> Intervention 30 min</div>
+              <div className="flex items-center gap-2 text-sm font-semibold"><CheckCircle className="text-green-500 h-5 w-5" /> Devis par téléphone</div>
+              <div className="flex items-center gap-2 text-sm font-semibold"><CheckCircle className="text-green-500 h-5 w-5" /> 7j/7 - 24h/24</div>
+            </div>
           </div>
         </div>
+      </div>
+
+      {/* --- SERVICES GRID (SEO Densité) --- */}
+      <div className="bg-white py-16 dark:bg-dark-background">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">Nos Services de Dépannage</h2>
+            <p className="mt-4 text-lg text-gray-600 dark:text-gray-400">Une solution complète pour votre sérénité sur la route.</p>
+          </div>
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {servicesDetaille.map((s, i) => (
+              <div key={i} className="p-8 rounded-2xl bg-gray-50 dark:bg-dark-card border border-gray-100 dark:border-dark-border hover:shadow-xl transition-shadow">
+                <s.icon className="h-12 w-12 text-light-primary mb-6" />
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">{s.title}</h3>
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* --- SECTION POURQUOI NOUS CHOISIR --- */}
+      <div className="bg-gray-50 py-16 dark:bg-dark-background/50">
+        <div className="mx-auto max-w-7xl px-4">
+          <h2 className="text-center text-3xl font-bold mb-16 dark:text-white">Pourquoi choisir Le Bon Remorquage ?</h2>
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {whyChooseUs.map((item, index) => (
+              <div key={index} className="group relative h-80 overflow-hidden rounded-2xl shadow-lg">
+                <div className="absolute inset-0 bg-cover bg-center transition-transform group-hover:scale-110" style={{ backgroundImage: `url(${item.image})` }} />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+                <div className="relative h-full flex flex-col justify-end p-6 text-white text-center">
+                  <div className="mx-auto mb-4 bg-light-primary p-3 rounded-full"><item.icon className="h-6 w-6" /></div>
+                  <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                  <p className="text-sm opacity-90">{item.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* --- ZONE & FAQ (SEO Local & Longue Traîne) --- */}
+      <div className="bg-white py-16 dark:bg-dark-card">
+        <div className="mx-auto max-w-7xl px-4 lg:grid lg:grid-cols-2 lg:gap-16">
+          <div>
+            <h2 className="text-3xl font-bold mb-6 dark:text-white">Intervention 50 km autour de Toulouse</h2>
+            <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+              Nous couvrons l'intégralité de la métropole toulousaine et les villes dans un rayon de **50 km**. Que vous soyez sur la **Rocade**, l'A61, A62 ou en périphérie, nous intervenons rapidement.
+            </p>
+            <ul className="grid grid-cols-2 gap-4 text-light-primary font-bold">
+              <li className="flex items-center gap-2"><MapPin className="h-4 w-4" /> Toulouse Centre</li>
+              <li className="flex items-center gap-2"><MapPin className="h-4 w-4" /> Blagnac / Colomiers</li>
+              <li className="flex items-center gap-2"><MapPin className="h-4 w-4" /> Muret / Portet</li>
+              <li className="flex items-center gap-2"><MapPin className="h-4 w-4" /> Tournefeuille / Plaisance</li>
+              <li className="flex items-center gap-2"><MapPin className="h-4 w-4" /> Balma / L'Union</li>
+              <li className="flex items-center gap-2"><MapPin className="h-4 w-4" /> + de 50 km alentours</li>
+            </ul>
+          </div>
+
+          <div className="mt-12 lg:mt-0">
+            <h2 className="text-2xl font-bold mb-6 dark:text-white">F.A.Q Dépannage</h2>
+            <div className="space-y-6">
+              <div>
+                <h4 className="font-bold text-gray-900 dark:text-white">Comment vous contacter pour une urgence ?</h4>
+                <p className="text-gray-600 dark:text-gray-400 text-sm mt-2">Appelez directement notre ligne d'urgence au **07 68 26 10 50**. Nous sommes joignables 24h/24 et 7j/7.</p>
+              </div>
+              <div>
+                <h4 className="font-bold text-gray-900 dark:text-white">Où peut-on retrouver vos actualités ?</h4>
+                <p className="text-gray-600 dark:text-gray-400 text-sm mt-2">Vous pouvez nous suivre sur Instagram **@lebon_remorquage** pour voir nos interventions en direct ou nous contacter via Snapchat et WhatsApp.</p>
+              </div>
+              <div>
+                <h4 className="font-bold text-gray-900 dark:text-white">Proposez-vous des devis ?</h4>
+                <p className="text-gray-600 dark:text-gray-400 text-sm mt-2">Oui, vous pouvez obtenir un devis gratuit et personnalisé par téléphone ou via notre formulaire de contact sur le site.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* --- BANDEAU APPEL À L'ACTION FINAL --- */}
+      <div className="bg-light-primary py-12 text-center text-white">
+        <h2 className="text-3xl font-bold mb-6">Besoin d'aide ? On arrive tout de suite.</h2>
+        <a href="tel:0768261050" className="inline-flex items-center gap-3 bg-white text-light-primary px-10 py-5 rounded-full text-2xl font-black shadow-2xl hover:bg-gray-100 transition-colors">
+          <Phone className="h-8 w-8" />
+          APPELER LE 07 68 26 10 50
+        </a>
       </div>
     </>
   );

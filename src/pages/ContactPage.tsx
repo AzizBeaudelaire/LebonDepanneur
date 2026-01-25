@@ -1,8 +1,15 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Phone, Mail, MapPin, Clock, Instagram } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Instagram, MessageSquare } from 'lucide-react';
 import { contactFormSchema, type ContactFormData, sendContactEmail, EmailSendError } from '../services/contact';
 import { z } from 'zod';
+
+// ✅ Logo Snapchat fidèle et colorable dynamiquement (Jaune/Thème)
+const SnapchatIcon = ({ className }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 2.5c-2.4 0-4.6 1-5.6 3-.2.5-.2 1-.2 1.4 0 .4 0 .7.1 1.1-.9.4-1.5 1.3-1.5 2.3 0 .7.3 1.3.8 1.7-.1.4-.2.8-.2 1.2 0 1.2.8 2.3 1.9 2.7-.4.4-.8.9-1.1 1.4-.8-.2-1.7-.1-2.4.3-.6.3-.8 1.1-.5 1.7.2.4.6.6 1 .6.2 0 .4 0 .6-.1.4-.2.8-.3 1.2-.3.3 0 .6.1.8.2.4.2.7.5 1 .8.2-.4.6-.7 1-.8.2-.1.5-.2.8-.2.4 0 .8.1 1.2.3.2.1.4.1.6.1.4 0 .8-.2 1-.6.3-.6.1-1.4-.5-1.7-.7-.4-1.6-.5-2.4-.3-.3-.5-.7-1-1.1-1.4 1.1-.4 1.9-1.5 1.9-2.7 0-.4-.1-.8-.2-1.2.5-.4.8-1 .8-1.7 0-1-.6-1.9-1.5-2.3.1-.4.1-.7.1-1.1 0-.4 0-.9-.2-1.4-1-2-3.2-3-5.6-3z" />
+  </svg>
+);
 
 const COOLDOWN_TIME = 100; // Temps d'attente en secondes
 
@@ -143,15 +150,24 @@ export const ContactPage = () => {
       <div className="min-h-screen bg-light-background py-12 transition-colors dark:bg-dark-background sm:py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-8 lg:grid-cols-2">
-            {/* Contact Information */}
-            <div className="order-1">
+
+            {/* Colonne de Gauche : Infos + Liste SEO */}
+            <div className="order-1 flex flex-col gap-8">
+
+              {/* Carte Contact Principale */}
               <div className="rounded-lg bg-white p-6 shadow-lg transition-colors dark:bg-dark-card sm:p-8">
                 <h1 className="text-2xl font-bold tracking-tight text-light-text dark:text-dark-text sm:text-3xl lg:text-4xl">
                   Assistance & Dépannage Urgent à Toulouse
                 </h1>
-                <p className="mt-4 text-base text-gray-600 dark:text-gray-300 sm:text-lg">
+                <p className="mt-4 text-base text-gray-600 dark:text-gray-300 sm:text-lg font-medium">
                   Notre service d'auto secours est disponible 24h/24 et 7j/7 pour intervenir rapidement sur votre véhicule en panne ou accidenté.
                 </p>
+
+                <div className="mt-6 rounded-md bg-light-primary/5 p-4 border-l-4 border-light-primary dark:bg-dark-primary/10 dark:border-dark-primary">
+                  <p className="text-sm sm:text-base text-light-text dark:text-dark-text font-semibold italic">
+                    Pour une intervention immédiate, n'hésitez pas à nous contacter directement par téléphone, WhatsApp ou Snapchat s'il vous le préférez !
+                  </p>
+                </div>
 
                 <div className="mt-8 space-y-6">
                   <div className="flex items-center space-x-4">
@@ -195,21 +211,9 @@ export const ContactPage = () => {
                       </p>
                     </div>
                   </div>
-
-                  <div className="flex items-center space-x-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-light-primary/10 dark:bg-dark-primary/10">
-                      <Clock className="h-6 w-6 text-light-primary dark:text-dark-primary" />
-                    </div>
-                    <div>
-                      <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Disponibilité</p>
-                      <p className="mt-1 text-base text-gray-600 dark:text-gray-300 sm:text-lg">
-                        Assistance routière 24h/24 - 7j/7
-                      </p>
-                    </div>
-                  </div>
                 </div>
 
-                {/* Social Media Links */}
+                {/* Social Media Links corrigés avec Jaune dynamique */}
                 <div className="mt-8 flex flex-wrap gap-4">
                   <a
                     href="https://www.instagram.com/lebon_remorquage/"
@@ -218,7 +222,7 @@ export const ContactPage = () => {
                     className="flex items-center space-x-2 rounded-lg bg-light-primary/10 px-4 py-2 transition-colors hover:bg-light-primary/20 dark:bg-dark-primary/10 dark:hover:bg-dark-primary/20"
                   >
                     <Instagram className="h-5 w-5 text-light-primary dark:text-dark-primary" />
-                    <span className="text-sm text-gray-600 dark:text-gray-300">@lebon_remorquage</span>
+                    <span className="text-sm text-gray-600 dark:text-gray-300">Instagram</span>
                   </a>
                   <a
                     href="https://wa.me/33768261050"
@@ -226,21 +230,25 @@ export const ContactPage = () => {
                     rel="noopener noreferrer"
                     className="flex items-center space-x-2 rounded-lg bg-light-primary/10 px-4 py-2 transition-colors hover:bg-light-primary/20 dark:bg-dark-primary/10 dark:hover:bg-dark-primary/20"
                   >
-                    <svg className="h-5 w-5 text-light-primary dark:text-dark-primary" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                    </svg>
-                    <span className="text-sm text-gray-600 dark:text-gray-300">07 68 26 10 50</span>
+                    <MessageSquare className="h-5 w-5 text-light-primary dark:text-dark-primary" />
+                    <span className="text-sm text-gray-600 dark:text-gray-300">WhatsApp</span>
+                  </a>
+                  <a
+                    href="https://www.snapchat.com/add/lebonremorquage"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-2 rounded-lg bg-light-primary/10 px-4 py-2 transition-colors hover:bg-light-primary/20 dark:bg-dark-primary/10 dark:hover:bg-dark-primary/20"
+                  >
+                    <SnapchatIcon className="h-5 w-5 text-light-primary dark:text-dark-primary" />
+                    <span className="text-sm text-gray-600 dark:text-gray-300">Snapchat</span>
                   </a>
                 </div>
               </div>
-            </div>
 
-            {/* Contact Form Section */}
-            <div className="order-2">
-              {/* SEO Content Block */}
-              <div className="mb-8 rounded-lg bg-light-primary/5 p-6 border border-light-primary/10 dark:bg-dark-primary/5 dark:border-dark-primary/10">
+              {/* Bloc SEO */}
+              <div className="rounded-lg bg-light-primary/5 p-6 border border-light-primary/10 dark:bg-dark-primary/5 dark:border-dark-primary/10">
                 <h2 className="text-lg font-bold text-light-text dark:text-dark-text mb-4">Nos interventions Auto Secours 31 :</h2>
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 text-sm text-gray-600 dark:text-gray-300">
+                <ul className="grid grid-cols-1 gap-y-2 text-sm text-gray-600 dark:text-gray-300">
                   <li>• Dépannage batterie Toulouse & Booster</li>
                   <li>• Remorquage voiture, moto et utilitaire</li>
                   <li>• Dépanneuse disponible 24h/24 et 7j/7</li>
@@ -251,9 +259,13 @@ export const ContactPage = () => {
                   <li>• Transport de véhicule longue distance & Europe</li>
                 </ul>
               </div>
+            </div>
 
-              {/* Form */}
+            {/* Colonne de Droite : Formulaire */}
+            <div className="order-2">
               <form ref={formRef} onSubmit={handleSubmit} className="rounded-lg bg-white p-6 shadow-lg transition-colors dark:bg-dark-card sm:p-8">
+                <h2 className="mb-6 text-xl font-bold text-light-text dark:text-dark-text">Formulaire de demande d'assistance</h2>
+
                 {cooldownTime > 0 && (
                   <div className="mb-6 rounded-lg bg-blue-50 p-4 dark:bg-blue-900/20">
                     <p className="text-blue-800 dark:text-blue-200">
@@ -303,44 +315,46 @@ export const ContactPage = () => {
                     )}
                   </div>
 
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-light-text dark:text-dark-text">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      id="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      className={`mt-2 block w-full rounded-lg border ${errors.email ? 'border-red-500' : 'border-light-border dark:border-dark-border'
-                        } bg-white px-4 py-3 text-light-text shadow-sm transition-colors focus:border-light-primary focus:outline-none focus:ring-light-primary dark:bg-dark-background dark:text-dark-text dark:focus:border-dark-primary dark:focus:ring-dark-primary`}
-                      required
-                      disabled={!isFormEnabled}
-                    />
-                    {errors.email && (
-                      <p className="mt-2 text-sm text-red-600 dark:text-red-400">{errors.email}</p>
-                    )}
-                  </div>
+                  <div className="grid gap-6 sm:grid-cols-2">
+                    <div>
+                      <label htmlFor="email" className="block text-sm font-medium text-light-text dark:text-dark-text">
+                        Email
+                      </label>
+                      <input
+                        type="email"
+                        name="email"
+                        id="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        className={`mt-2 block w-full rounded-lg border ${errors.email ? 'border-red-500' : 'border-light-border dark:border-dark-border'
+                          } bg-white px-4 py-3 text-light-text shadow-sm transition-colors focus:border-light-primary focus:outline-none focus:ring-light-primary dark:bg-dark-background dark:text-dark-text dark:focus:border-dark-primary dark:focus:ring-dark-primary`}
+                        required
+                        disabled={!isFormEnabled}
+                      />
+                      {errors.email && (
+                        <p className="mt-2 text-sm text-red-600 dark:text-red-400">{errors.email}</p>
+                      )}
+                    </div>
 
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-light-text dark:text-dark-text">
-                      Téléphone
-                    </label>
-                    <input
-                      type="tel"
-                      name="phone"
-                      id="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      className={`mt-2 block w-full rounded-lg border ${errors.phone ? 'border-red-500' : 'border-light-border dark:border-dark-border'
-                        } bg-white px-4 py-3 text-light-text shadow-sm transition-colors focus:border-light-primary focus:outline-none focus:ring-light-primary dark:bg-dark-background dark:text-dark-text dark:focus:border-dark-primary dark:focus:ring-dark-primary`}
-                      required
-                      disabled={!isFormEnabled}
-                    />
-                    {errors.phone && (
-                      <p className="mt-2 text-sm text-red-600 dark:text-red-400">{errors.phone}</p>
-                    )}
+                    <div>
+                      <label htmlFor="phone" className="block text-sm font-medium text-light-text dark:text-dark-text">
+                        Téléphone
+                      </label>
+                      <input
+                        type="tel"
+                        name="phone"
+                        id="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        className={`mt-2 block w-full rounded-lg border ${errors.phone ? 'border-red-500' : 'border-light-border dark:border-dark-border'
+                          } bg-white px-4 py-3 text-light-text shadow-sm transition-colors focus:border-light-primary focus:outline-none focus:ring-light-primary dark:bg-dark-background dark:text-dark-text dark:focus:border-dark-primary dark:focus:ring-dark-primary`}
+                        required
+                        disabled={!isFormEnabled}
+                      />
+                      {errors.phone && (
+                        <p className="mt-2 text-sm text-red-600 dark:text-red-400">{errors.phone}</p>
+                      )}
+                    </div>
                   </div>
 
                   <div>
@@ -392,7 +406,7 @@ export const ContactPage = () => {
 
                   <div>
                     <label htmlFor="message" className="block text-sm font-medium text-light-text dark:text-dark-text">
-                      Message
+                      Détails de votre demande
                     </label>
                     <textarea
                       name="message"
@@ -400,6 +414,7 @@ export const ContactPage = () => {
                       rows={4}
                       value={formData.message}
                       onChange={handleChange}
+                      placeholder="Indiquez ici votre localisation précise ou toute information utile..."
                       className={`mt-2 block w-full rounded-lg border ${errors.message ? 'border-red-500' : 'border-light-border dark:border-dark-border'
                         } bg-white px-4 py-3 text-light-text shadow-sm transition-colors focus:border-light-primary focus:outline-none focus:ring-light-primary dark:bg-dark-background dark:text-dark-text dark:focus:border-dark-primary dark:focus:ring-dark-primary`}
                       required
@@ -416,14 +431,14 @@ export const ContactPage = () => {
                     className={`w-full rounded-lg bg-light-primary px-6 py-4 text-base font-semibold text-white transition-colors hover:bg-light-hover focus:outline-none focus:ring-2 focus:ring-light-primary focus:ring-offset-2 dark:bg-dark-primary dark:hover:bg-dark-hover dark:focus:ring-dark-primary dark:focus:ring-offset-dark-background sm:text-lg ${(isSubmitting || !isFormEnabled) ? 'cursor-not-allowed opacity-70' : ''
                       }`}
                   >
-                    {isSubmitting ? 'Envoi en cours...' : 'Envoyer'}
+                    {isSubmitting ? 'Envoi en cours...' : 'Envoyer ma demande'}
                   </button>
 
                   {/* Status Messages */}
                   {submitStatus === 'success' && (
                     <div className="mt-4 rounded-md bg-green-50 p-4 dark:bg-green-900">
-                      <p className="text-green-800 dark:text-green-200">
-                        Votre message a été envoyé avec succès. Nous vous contacterons dans les plus brefs délais.
+                      <p className="text-green-800 dark:text-green-200 font-bold">
+                        Votre message a été envoyé avec succès. Un dépanneur va vous recontacter rapidement.
                       </p>
                     </div>
                   )}
@@ -431,7 +446,7 @@ export const ContactPage = () => {
                   {submitStatus === 'error' && (
                     <div className="mt-4 rounded-md bg-red-50 p-4 dark:bg-red-900">
                       <p className="text-red-800 dark:text-red-200">
-                        {errorMessage || 'Une erreur est survenue lors de l\'envoi du message. Veuillez réessayer.'}
+                        {errorMessage || 'Une erreur est survenue lors de l\'envoi. Merci de nous appeler directement.'}
                       </p>
                     </div>
                   )}

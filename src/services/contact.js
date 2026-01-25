@@ -22,78 +22,22 @@ export class EmailSendError extends Error {
         this.name = 'EmailSendError';
     }
 }
-// ✅ Vérification de type pour les erreurs
-const hasResponse = (error) => {
-    return typeof error === 'object' && error !== null && 'response' in error;
-};
-const hasText = (error) => {
-    return typeof error === 'object' && error !== null && 'text' in error;
-};
-// ✅ Fonction d’envoi de SMS via ClickSend (facultatif)
-const sendSMS = async (formData) => {
-    const messageBody = `Nouvelle demande :
-Nom : ${formData.name}
-Tel : ${formData.phone}
-Service : ${formData.service}
-Véhicule : ${formData.vehicleModel}
-Message : ${formData.message}`;
-    const smsPayload = {
-        messages: [
-            {
-                body: messageBody,
-                to: '+33770103429',
-                source: 'Le Bon Remorquage',
-            },
-        ],
-    };
-    const username = import.meta.env.VITE_CLICKSEND_USERNAME;
-    const apiKey = import.meta.env.VITE_CLICKSEND_API_KEY;
-    const auth = btoa(`${username}:${apiKey}`);
-    try {
-        const response = await fetch('https://rest.clicksend.com/v3/sms/send', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Basic ${auth}`,
-            },
-            body: JSON.stringify(smsPayload),
-        });
-        if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(`ClickSend API error: ${JSON.stringify(errorData)}`);
-        }
-    }
-    catch (error) {
-        console.error('Error sending SMS:', error);
-        throw new Error('Failed to send SMS notification');
-    }
-};
-// ✅ Fonction principale d’envoi du mail
+// ✅ Fonction principale d’envoi du mail (Sans SMS pour éviter les erreurs 401)
 export const sendContactEmail = async (formData) => {
     try {
-        console.log('=== DEBUG: Données envoyées à EmailJS ===');
-        console.log('FormData:', formData);
-        console.log('==========================================');
-        // 🔥 Ajout du sujet dynamique (Type - Tel - Date)
+        // 🔥 Sujet modifié : Titre intervention - Numéro - Email
         const templateParams = {
             ...formData,
-            subject: `${formData.service} - ${formData.phone} - ${formData.date}`,
+            subject: `${formData.service} - ${formData.phone} - ${formData.email}`,
         };
         // ✅ Envoi de l’email via EmailJS
         const emailResponse = await emailjs.send(import.meta.env.VITE_EMAILJS_SERVICE_ID, import.meta.env.VITE_EMAILJS_TEMPLATE_ID, templateParams, import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
-        console.log('EmailJS Response:', emailResponse);
         if (emailResponse.status !== 200) {
             throw new EmailSendError("Erreur lors de l'envoi du message");
         }
-        // ✅ Envoi SMS en parallèle
-        await sendSMS(formData);
     }
     catch (error) {
         console.error("Erreur lors de l'envoi:", error);
-        if (hasResponse(error))
-            console.error('Error response:', error.response);
-        if (hasText(error))
-            console.error('Error text:', error.text);
         if (error instanceof EmailSendError)
             throw error;
         throw new EmailSendError("Une erreur est survenue lors de l'envoi du message. Veuillez réessayer plus tard.", error);
