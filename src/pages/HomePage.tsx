@@ -162,12 +162,23 @@ export const HomePage = () => {
         </div>
       </div>
 
-      {/* --- BANDEAU APPEL À L'ACTION FINAL --- */}
+      {/* Bandeau Final existant */}
       <div className="bg-light-primary py-12 text-center text-white">
         <h2 className="text-3xl font-bold mb-6">Besoin d'aide ? On arrive tout de suite.</h2>
         <a href="tel:0768261050" className="inline-flex items-center gap-3 bg-white text-light-primary px-10 py-5 rounded-full text-2xl font-black shadow-2xl hover:bg-gray-100 transition-colors">
           <Phone className="h-8 w-8" />
-          APPELER LE 07 68 26 10 50
+          APPELEZ LE 07 68 26 10 50
+        </a>
+      </div>
+
+      {/* ✅ AJOUT ICI : BOUTON D'APPEL FLOTTANT */}
+      <div className="fixed bottom-6 right-6 z-50 md:hidden">
+        <a
+          href="tel:0768261050"
+          className="flex h-16 w-16 items-center justify-center rounded-full bg-light-primary text-white shadow-2xl transition-transform hover:scale-110 active:scale-95 animate-bounce"
+          aria-label="Appeler dépannage urgent"
+        >
+          <Phone className="h-8 w-8" />
         </a>
       </div>
     </>

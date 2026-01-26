@@ -133,13 +133,13 @@ const ServicesPage = () => {
                   Assistance routière rapide sur Toulouse (Blagnac, Colomiers, Muret) et partout en Europe avec un équipement professionnel de levage et treuillage.
                 </p>
                 <div className="mt-8 flex flex-wrap gap-4">
-                  <Link
-                    to="/contact"
-                    className="inline-flex items-center rounded-full bg-white px-6 py-3 text-light-primary transition-colors hover:bg-gray-100 dark:text-dark-primary"
+                  <a
+                    href="tel:0768261050"
+                    className="inline-flex items-center rounded-full bg-white px-6 py-3 text-light-primary transition-colors hover:bg-gray-100 dark:text-dark-primary shadow-lg"
                   >
                     <Phone className="mr-2 h-5 w-5" />
-                    <span className="font-semibold">Appeler maintenant</span>
-                  </Link>
+                    <span className="font-semibold text-lg">07 68 26 10 50</span>
+                  </a>
                   <Link
                     to="/contact"
                     className="inline-flex items-center rounded-full border-2 border-white px-6 py-3 text-white transition-colors hover:bg-white hover:text-light-primary"
@@ -152,6 +152,17 @@ const ServicesPage = () => {
             <div className="absolute -right-16 bottom-0 hidden opacity-10 lg:block">
               <Car className="h-64 w-64" />
             </div>
+          </div>
+
+          {/* ✅ BLOC SEO RICHE : Ajouté pour garantir l'indexation par Google */}
+          <div className="mb-16 rounded-xl bg-white p-8 shadow-md dark:bg-dark-card border-l-4 border-light-primary">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Expert du dépannage auto à Toulouse (31)</h2>
+            <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4 text-lg">
+              Le Bon Remorquage est votre partenaire privilégié pour tout <strong>dépannage Toulouse</strong>. Que vous soyez bloqué sur la rocade toulousaine ou dans un <strong>parking sous-sol</strong>, notre équipe intervient 24h/24. Nous sommes équipés de boosters professionnels pour tout problème de <strong>batterie</strong> et de dépanneuses adaptées aux accès difficiles.
+            </p>
+            <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-lg">
+              Nous couvrons un rayon de 50 km autour de Toulouse, incluant Blagnac, Colomiers et Muret. Notre expertise s'étend du simple auto secours au remorquage longue distance en Europe. En cas d'erreur de carburant ou de clés perdues, nos techniciens qualifiés vous assurent une assistance rapide et sécurisée.
+            </p>
           </div>
 
           {/* Services Grid with Images */}
@@ -225,13 +236,13 @@ const ServicesPage = () => {
                 Notre équipe est disponible 24h/24 et 7j/7 pour vous assister.
               </p>
               <div className="mt-6 flex justify-center space-x-4">
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center rounded-full bg-white px-6 py-3 text-light-primary shadow-lg transition-colors hover:bg-gray-100 dark:bg-dark-background dark:text-dark-primary dark:hover:bg-dark-card"
+                <a
+                  href="tel:0768261050"
+                  className="inline-flex items-center rounded-full bg-white px-6 py-3 text-light-primary shadow-lg transition-colors hover:bg-gray-100 dark:bg-dark-background dark:text-dark-primary dark:hover:bg-dark-card font-bold"
                 >
                   <Phone className="mr-2 h-5 w-5" />
                   Appeler maintenant
-                </Link>
+                </a>
                 <Link
                   to="/contact"
                   className="inline-flex items-center rounded-full border-2 border-white px-6 py-3 text-white transition-colors hover:bg-white hover:text-light-primary dark:hover:text-dark-primary"
