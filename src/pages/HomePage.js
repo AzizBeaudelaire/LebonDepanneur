@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import { Globe, Clock, PenTool as Tool, Truck, Wrench, CheckCircle, Phone, Car, Plane as Crane, Key, Settings, MapPin, Umbrella, Zap, Search, HardHat } from 'lucide-react';
+import { Globe, Clock, PenTool as Tool, Truck, Wrench, CheckCircle, Phone, Car, Plane as Crane, Key, Settings, Warehouse, Shield, MapPin, Umbrella, Zap, Search, HardHat } from 'lucide-react';
 import { useInView } from 'react-intersection-observer';
 const garagesPartenaires = [
     { nom: "Garage Central Auto", ville: "Toulouse Centre", specialites: ["Mécanique générale", "Diagnostic électronique"] },
@@ -82,7 +82,34 @@ export const HomePage = () => {
                             React.createElement(item.icon, { className: "h-6 w-6" })),
                         React.createElement("h3", { className: "text-xl font-bold mb-2" }, item.title),
                         React.createElement("p", { className: "text-sm opacity-90" }, item.description)))))))),
-        React.createElement("div", { className: "bg-white py-16 dark:bg-dark-card" },
+        React.createElement("div", { className: "py-16 bg-white dark:bg-dark-card transition-colors" },
+            React.createElement("div", { className: "mx-auto max-w-7xl px-4" },
+                React.createElement("div", { className: "relative overflow-hidden rounded-3xl bg-gradient-to-r from-gray-900 to-gray-800 dark:from-gray-800 dark:to-black text-white shadow-2xl transition-transform hover:-translate-y-1 duration-300 hover:shadow-light-primary/20" },
+                    React.createElement("div", { className: "absolute top-0 right-0 -mt-10 -mr-10 h-64 w-64 rounded-full bg-light-primary opacity-20 blur-3xl pointer-events-none" }),
+                    React.createElement("div", { className: "absolute bottom-0 left-0 -mb-10 -ml-10 h-48 w-48 rounded-full bg-light-primary/30 blur-2xl pointer-events-none" }),
+                    React.createElement("div", { className: "relative px-8 py-12 md:p-14 flex flex-col items-center text-center md:flex-row md:text-left gap-10" },
+                        React.createElement("div", { className: "flex-shrink-0 relative" },
+                            React.createElement("div", { className: "absolute inset-0 bg-light-primary rounded-full blur-xl opacity-50 animate-pulse pointer-events-none" }),
+                            React.createElement(Warehouse, { className: "relative h-24 w-24 text-white drop-shadow-lg" })),
+                        React.createElement("div", { className: "flex-1" },
+                            React.createElement("div", { className: "flex items-center justify-center md:justify-start gap-3 mb-4" },
+                                React.createElement(Shield, { className: "h-8 w-8 text-light-primary flex-shrink-0" }),
+                                React.createElement("h2", { className: "text-3xl font-extrabold sm:text-4xl tracking-tight" }, "Stockage S\u00E9curis\u00E9 de V\u00E9hicules")),
+                            React.createElement("p", { className: "text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto md:mx-0" },
+                                "Votre tranquillit\u00E9 d'esprit est notre priorit\u00E9. Nous poss\u00E9dons ",
+                                React.createElement("strong", { className: "text-white" }, "nos propres garages s\u00E9curis\u00E9s"),
+                                " sous haute surveillance pour conserver votre v\u00E9hicule (auto, moto, utilitaire). Que ce soit suite \u00E0 un accident ou en attente d'une r\u00E9paration, votre v\u00E9hicule est stock\u00E9 \u00E0 l'abri de tous risques et des intemp\u00E9ries."),
+                            React.createElement("div", { className: "mt-8 flex flex-wrap justify-center md:justify-start gap-3 sm:gap-4 text-sm font-semibold" },
+                                React.createElement("div", { className: "flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full border border-white/10 backdrop-blur-sm" },
+                                    React.createElement(CheckCircle, { className: "h-4 w-4 text-green-400" }),
+                                    " Locaux S\u00E9curis\u00E9s"),
+                                React.createElement("div", { className: "flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full border border-white/10 backdrop-blur-sm" },
+                                    React.createElement(CheckCircle, { className: "h-4 w-4 text-green-400" }),
+                                    " \u00C0 l'abri des intemp\u00E9ries"),
+                                React.createElement("div", { className: "flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full border border-white/10 backdrop-blur-sm" },
+                                    React.createElement(CheckCircle, { className: "h-4 w-4 text-green-400" }),
+                                    " Assurance garantie"))))))),
+        React.createElement("div", { className: "bg-gray-50 py-16 dark:bg-dark-background/50" },
             React.createElement("div", { className: "mx-auto max-w-7xl px-4 lg:grid lg:grid-cols-2 lg:gap-16" },
                 React.createElement("div", null,
                     React.createElement("h2", { className: "text-3xl font-bold mb-6 dark:text-white" }, "Intervention 50 km autour de Toulouse"),

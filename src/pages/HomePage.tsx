@@ -124,8 +124,38 @@ export const HomePage = () => {
         </div>
       </div>
 
+      {/* --- STOCKAGE SÉCURISÉ --- */}
+      <div className="py-16 bg-white dark:bg-dark-card transition-colors">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-gray-900 to-gray-800 dark:from-gray-800 dark:to-black text-white shadow-2xl transition-transform hover:-translate-y-1 duration-300 hover:shadow-light-primary/20">
+            <div className="absolute top-0 right-0 -mt-10 -mr-10 h-64 w-64 rounded-full bg-light-primary opacity-20 blur-3xl pointer-events-none" />
+            <div className="absolute bottom-0 left-0 -mb-10 -ml-10 h-48 w-48 rounded-full bg-light-primary/30 blur-2xl pointer-events-none" />
+            <div className="relative px-8 py-12 md:p-14 flex flex-col items-center text-center md:flex-row md:text-left gap-10">
+              <div className="flex-shrink-0 relative">
+                <div className="absolute inset-0 bg-light-primary rounded-full blur-xl opacity-50 animate-pulse pointer-events-none" />
+                <Warehouse className="relative h-24 w-24 text-white drop-shadow-lg" />
+              </div>
+              <div className="flex-1">
+                <div className="flex items-center justify-center md:justify-start gap-3 mb-4">
+                  <Shield className="h-8 w-8 text-light-primary flex-shrink-0" />
+                  <h2 className="text-3xl font-extrabold sm:text-4xl tracking-tight">Stockage Sécurisé de Véhicules</h2>
+                </div>
+                <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto md:mx-0">
+                  Votre tranquillité d'esprit est notre priorité. Nous possédons <strong className="text-white">nos propres garages sécurisés</strong> sous haute surveillance pour conserver votre véhicule (auto, moto, utilitaire). Que ce soit suite à un accident ou en attente d'une réparation, votre véhicule est stocké à l'abri de tous risques et des intempéries.
+                </p>
+                <div className="mt-8 flex flex-wrap justify-center md:justify-start gap-3 sm:gap-4 text-sm font-semibold">
+                  <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full border border-white/10 backdrop-blur-sm"><CheckCircle className="h-4 w-4 text-green-400" /> Locaux Sécurisés</div>
+                  <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full border border-white/10 backdrop-blur-sm"><CheckCircle className="h-4 w-4 text-green-400" /> À l'abri des intempéries</div>
+                  <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full border border-white/10 backdrop-blur-sm"><CheckCircle className="h-4 w-4 text-green-400" /> Assurance garantie</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* --- ZONE & FAQ (SEO Local & Longue Traîne) --- */}
-      <div className="bg-white py-16 dark:bg-dark-card">
+      <div className="bg-gray-50 py-16 dark:bg-dark-background/50">
         <div className="mx-auto max-w-7xl px-4 lg:grid lg:grid-cols-2 lg:gap-16">
           <div>
             <h2 className="text-3xl font-bold mb-6 dark:text-white">Intervention 50 km autour de Toulouse</h2>

@@ -23,7 +23,7 @@ const serviceOptions = {
   atelier: "Réparation rapide en atelier",
   clefs: "Ouverture de porte & Perte de clés",
   nettoyage: "Nettoyage & Detailing complet",
-  "achat-revente": "Estimation Achat-Revente"
+  "achat-revente": "Achat Véhicule Accidenté ou Épaves"
 };
 
 export const ContactPage = () => {
@@ -140,125 +140,139 @@ export const ContactPage = () => {
   return (
     <>
       <Helmet>
-        <title>Contact Dépannage Auto Toulouse | Assistance & Remorquage Urgent 31</title>
+        <title>Contact Dépannage Auto Toulouse | Rachat Épave & Intervention 31</title>
         <meta
           name="description"
-          content="Besoin d'un dépannage voiture immédiat à Toulouse ? Contactez Le Bon Remorquage 24h/24 et 7j/7 pour toute assistance routière, erreur carburant ou batterie HS."
+          content="Besoin d'un dépannage voiture immédiat à Toulouse ? Contactez Le Bon Remorquage 24h/24 et 7j/7 pour toute assistance routière, erreur carburant ou achat de véhicule accidenté."
         />
       </Helmet>
 
       <div className="min-h-screen bg-light-background py-12 transition-colors dark:bg-dark-background sm:py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-8 lg:grid-cols-2">
+          <div className="grid gap-12 lg:grid-cols-2">
 
-            {/* Colonne de Gauche : Infos + Liste SEO */}
+            {/* Colonne de Gauche : Infos + Liste SEO + FAQ */}
             <div className="order-1 flex flex-col gap-8">
 
               {/* Carte Contact Principale */}
-              <div className="rounded-lg bg-white p-6 shadow-lg transition-colors dark:bg-dark-card sm:p-8">
-                <h1 className="text-2xl font-bold tracking-tight text-light-text dark:text-dark-text sm:text-3xl lg:text-4xl">
-                  Assistance & Dépannage Urgent à Toulouse
+              <section className="rounded-2xl bg-white p-8 shadow-xl transition-colors dark:bg-dark-card border border-gray-100 dark:border-gray-800">
+                <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+                  Assistance & <span className="text-light-primary">Dépannage Urgent</span> Toulouse
                 </h1>
-                <p className="mt-4 text-base text-gray-600 dark:text-gray-300 sm:text-lg font-medium">
-                  Notre service d'auto secours est disponible 24h/24 et 7j/7 pour intervenir rapidement sur votre véhicule en panne ou accidenté.
+                <p className="mt-4 text-lg text-gray-600 dark:text-gray-300 leading-relaxed font-medium">
+                  Notre service d'auto secours est disponible 24h/24 et 7j/7 pour intervenir rapidement sur votre véhicule en panne, accidenté ou pour une estimation de rachat d'épave.
                 </p>
 
-                <div className="mt-6 rounded-md bg-light-primary/5 p-4 border-l-4 border-light-primary dark:bg-dark-primary/10 dark:border-dark-primary">
-                  <p className="text-sm sm:text-base text-light-text dark:text-dark-text font-semibold italic">
-                    Pour une intervention immédiate, n'hésitez pas à nous contacter directement par téléphone, WhatsApp ou Snapchat s'il vous le préférez !
-                  </p>
-                </div>
-
                 <div className="mt-8 space-y-6">
-                  <div className="flex items-center space-x-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-light-primary/10 dark:bg-dark-primary/10">
-                      <Phone className="h-6 w-6 text-light-primary dark:text-dark-primary" />
+                  <div className="flex items-center space-x-5 group">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-light-primary/10 dark:bg-dark-primary/20 text-light-primary transition-transform group-hover:scale-110">
+                      <Phone className="h-7 w-7" />
                     </div>
                     <div>
-                      <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Ligne d'urgence 24/7</p>
+                      <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider dark:text-gray-400">Ligne d'Urgence 24/7</p>
                       <a
                         href="tel:0768261050"
-                        className="mt-1 block text-lg font-semibold text-light-primary transition-colors hover:text-light-hover dark:text-dark-primary dark:hover:text-dark-hover sm:text-xl"
+                        className="mt-1 block text-2xl font-black text-gray-900 dark:text-white transition-colors hover:text-light-primary dark:hover:text-dark-primary"
                       >
                         07 68 26 10 50
                       </a>
                     </div>
                   </div>
 
-                  <div className="flex items-center space-x-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-light-primary/10 dark:bg-dark-primary/10">
-                      <Mail className="h-6 w-6 text-light-primary dark:text-dark-primary" />
+                  <div className="flex items-center space-x-5 group">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 group-hover:bg-light-primary/10 group-hover:text-light-primary transition-colors">
+                      <MapPin className="h-7 w-7" />
                     </div>
                     <div>
-                      <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Email</p>
+                      <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider dark:text-gray-400">Secteur 31 & Alentours</p>
+                      <p className="mt-1 text-lg font-medium text-gray-900 dark:text-white">
+                        Toulouse, Blagnac, Colomiers, Muret...
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center space-x-5 group">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 group-hover:bg-light-primary/10 group-hover:text-light-primary transition-colors">
+                      <Mail className="h-7 w-7" />
+                    </div>
+                    <div>
+                       <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider dark:text-gray-400">Message & Devis</p>
                       <a
                         href="mailto:contactlebondepannage@gmail.com"
-                        className="mt-1 block text-base text-gray-600 transition-colors hover:text-light-primary dark:text-gray-300 dark:hover:text-dark-primary sm:text-lg"
+                        className="mt-1 block text-base md:text-lg font-medium text-gray-900 dark:text-white transition-colors hover:text-light-primary dark:hover:text-dark-primary break-all"
                       >
                         contactlebondepannage@gmail.com
                       </a>
                     </div>
                   </div>
+                </div>
 
-                  <div className="flex items-center space-x-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-light-primary/10 dark:bg-dark-primary/10">
-                      <MapPin className="h-6 w-6 text-light-primary dark:text-dark-primary" />
-                    </div>
-                    <div>
-                      <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Secteur d'intervention</p>
-                      <p className="mt-1 text-base text-gray-600 dark:text-gray-300 sm:text-lg">
-                        Toulouse, Blagnac et périphérie 31
-                      </p>
-                    </div>
+                <hr className="my-8 border-gray-200 dark:border-gray-800" />
+
+                {/* Social Media Links avec contexte */}
+                <div>
+                  <p className="text-sm font-bold text-gray-900 dark:text-white mb-4">
+                    Envoyez-nous des photos de votre véhicule pour un devis direct :
+                  </p>
+                  <div className="flex flex-wrap gap-3">
+                    <a
+                      href="https://wa.me/33768261050"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center space-x-2 rounded-xl bg-green-50 px-4 py-3 text-green-700 hover:bg-green-100 dark:bg-green-900/40 dark:text-green-400 font-semibold transition-colors"
+                    >
+                      <MessageSquare className="h-5 w-5" />
+                      <span>WhatsApp</span>
+                    </a>
+                    <a
+                      href="https://www.snapchat.com/add/lebonremorquage"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center space-x-2 rounded-xl bg-yellow-50 px-4 py-3 text-yellow-700 hover:bg-yellow-100 dark:bg-yellow-900/40 dark:text-yellow-500 font-semibold transition-colors"
+                    >
+                      <SnapchatIcon className="h-5 w-5" />
+                      <span>Snapchat</span>
+                    </a>
+                    <a
+                      href="https://www.instagram.com/lebon_remorquage/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center space-x-2 rounded-xl bg-pink-50 px-4 py-3 text-pink-700 hover:bg-pink-100 dark:bg-pink-900/40 dark:text-pink-400 font-semibold transition-colors"
+                    >
+                      <Instagram className="h-5 w-5" />
+                      <span>Instagram</span>
+                    </a>
                   </div>
                 </div>
+              </section>
 
-                {/* Social Media Links corrigés avec Jaune dynamique */}
-                <div className="mt-8 flex flex-wrap gap-4">
-                  <a
-                    href="https://www.instagram.com/lebon_remorquage/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center space-x-2 rounded-lg bg-light-primary/10 px-4 py-2 transition-colors hover:bg-light-primary/20 dark:bg-dark-primary/10 dark:hover:bg-dark-primary/20"
-                  >
-                    <Instagram className="h-5 w-5 text-light-primary dark:text-dark-primary" />
-                    <span className="text-sm text-gray-600 dark:text-gray-300">Instagram</span>
-                  </a>
-                  <a
-                    href="https://wa.me/33768261050"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center space-x-2 rounded-lg bg-light-primary/10 px-4 py-2 transition-colors hover:bg-light-primary/20 dark:bg-dark-primary/10 dark:hover:bg-dark-primary/20"
-                  >
-                    <MessageSquare className="h-5 w-5 text-light-primary dark:text-dark-primary" />
-                    <span className="text-sm text-gray-600 dark:text-gray-300">WhatsApp</span>
-                  </a>
-                  <a
-                    href="https://www.snapchat.com/add/lebonremorquage"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center space-x-2 rounded-lg bg-light-primary/10 px-4 py-2 transition-colors hover:bg-light-primary/20 dark:bg-dark-primary/10 dark:hover:bg-dark-primary/20"
-                  >
-                    <SnapchatIcon className="h-5 w-5 text-light-primary dark:text-dark-primary" />
-                    <span className="text-sm text-gray-600 dark:text-gray-300">Snapchat</span>
-                  </a>
+              {/* NOUVEAU BLOC SEO : FAQ */}
+              <section className="rounded-2xl bg-white p-8 shadow-xl transition-colors dark:bg-dark-card border border-gray-100 dark:border-gray-800">
+                <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-6 border-b-2 border-light-primary inline-block pb-2">Questions Fréquentes (FAQ)</h2>
+                
+                <div className="space-y-6">
+                  <div className="border-l-4 border-light-primary pl-4">
+                    <h3 className="text-base font-bold text-gray-900 dark:text-white">Intervenez-vous en parking souterrain à Toulouse ?</h3>
+                    <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                      Oui, nous disposons de dépanneuses surbaissées parfaitement adaptées pour l'extraction de véhicules 4x4, berlines ou motos bloqués dans les parkings souterrains de l'agglomération (limite de hauteur gérée).
+                    </p>
+                  </div>
+                  
+                  <div className="border-l-4 border-light-primary pl-4">
+                    <h3 className="text-base font-bold text-gray-900 dark:text-white">Comment revendre ma voiture accidentée / mon épave ?</h3>
+                    <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                      L'estimation se fait par téléphone ou via l'envoi de photos sur WhatsApp. Nous vous faisons une offre de rachat cash. Si acceptée, l'enlèvement de l'épave par notre véhicule est entièrement inclus et nous occupons des papiers (certificat de cession).
+                    </p>
+                  </div>
+
+                  <div className="border-l-4 border-light-primary pl-4">
+                    <h3 className="text-base font-bold text-gray-900 dark:text-white">Combien de temps avant l'arrivée du dépanneur auto ?</h3>
+                    <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                      En cas de situation d'urgence (panne dangereuse, batterie HS, crevaison), notre délai d'intervention est généralement inférieur à 30 minutes sur Toulouse centre, rocade et Blagnac.
+                    </p>
+                  </div>
                 </div>
-              </div>
-
-              {/* Bloc SEO */}
-              <div className="rounded-lg bg-light-primary/5 p-6 border border-light-primary/10 dark:bg-dark-primary/5 dark:border-dark-primary/10">
-                <h2 className="text-lg font-bold text-light-text dark:text-dark-text mb-4">Nos interventions Auto Secours 31 :</h2>
-                <ul className="grid grid-cols-1 gap-y-2 text-sm text-gray-600 dark:text-gray-300">
-                  <li>• Dépannage batterie Toulouse & Booster</li>
-                  <li>• Remorquage voiture, moto et utilitaire</li>
-                  <li>• Dépanneuse disponible 24h/24 et 7j/7</li>
-                  <li>• Remorquage parking sous-sol (accès bas)</li>
-                  <li>• Erreur de carburant & Vidange réservoir</li>
-                  <li>• Ouverture de porte voiture (clés oubliées)</li>
-                  <li>• Assistance dépannage autoroute et rocade</li>
-                  <li>• Transport de véhicule longue distance & Europe</li>
-                </ul>
-              </div>
+              </section>
             </div>
 
             {/* Colonne de Droite : Formulaire */}
